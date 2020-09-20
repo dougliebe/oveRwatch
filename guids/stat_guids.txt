@@ -1,0 +1,905 @@
+stat_name,guid,statCategory
+Damage Reflected - Avg per 10 Min,1244,Hero
+Damage Absorbed - Most in Game,1721,Hero
+Damage Absorbed - Avg per 10 Min,1722,Hero
+|Rpl {0}:Elimination:Eliminations;,31,Hero
+Time Played,33,Hero
+|Rpl {0}:Elimination:Eliminations; - Most in Life,34,Hero
+|Rpl {0}:Soul:Souls; Consumed,36,Hero
+|Rpl {0}:Elimination:Eliminations;,37,Hero
+Time Played,38,Hero
+|Rpl {0}:Death:Deaths;,41,Hero
+|Rpl {0}:Death:Deaths;,42,Hero
+Final |Rpl {0}:Blow:Blows;,43,Hero
+Final |Rpl {0}:Blow:Blows;,44,Hero
+Solo |Rpl {0}:Kill:Kills;,45,Hero
+Solo |Rpl {0}:Kill:Kills;,46,Hero
+Weapon Accuracy,47,Hero
+|Rpl {0}:Shot:Shots; Fired,48,Hero
+|Rpl {0}:Shot:Shots; Hit,49,Hero
+All Damage Done - Most in Life,53,Hero
+Healing Done - Most in Life,54,Hero
+|Rpl {0}:Game:Games; Played,56,Hero
+|Rpl {0}:Game:Games; Won,57,Hero
+Death Blossom |Rpl {0}:Kill:Kills;,58,Hero
+Weapon Accuracy,100,Hero
+Pulse Bomb |Rpl {0}:Kill:Kills;,105,Hero
+Match |Rpl {0}:Blink:Blinks; Used,106,Hero
+|Rpl {0}:Recall:Recalls; Used,107,Hero
+Rocket Direct |Rpl {0}:Hit:Hits;,130,Hero
+Barrage |Rpl {0}:Kill:Kills;,132,Hero
+Venom Mine |Rpl {0}:Kill:Kills;,138,Hero
+Map |Rpl {0}:Win:Wins;,141,PlayerMap
+Map |Rpl {0}:Enter:Enters;,146,PlayerMap
+Map |Rpl {0}:Disconnect:Disconnects;,147,PlayerMap
+Map |Rpl {0}:Reconnect:Reconnects;,148,PlayerMap
+Game |Rpl {0}:Leave:Leaves;,149,PlayerMap
+|Rpl {0}:Win:Wins;,153,PlayerMap
+|Rpl {0}:Game:Games;,154,PlayerMap
+Map |Rpl {0}:Disconnect:Disconnects;,155,PlayerMap
+Map |Rpl {0}:Reconnect:Reconnects;,156,PlayerMap
+Map |Rpl {0}:Leave:Leaves;,157,PlayerMap
+Map |Rpl {0}:Loss:Losses;,171,PlayerMap
+Map |Rpl {0}:Loss:Losses;,172,PlayerMap
+Offense |Rpl {0}:Win:Wins;,178,PlayerMap
+Offense |Rpl {0}:Enter:Enters;,179,PlayerMap
+Offense |Rpl {0}:Loss:Losses;,180,PlayerMap
+Defense |Rpl {0}:Win:Wins;,181,PlayerMap
+Defense |Rpl {0}:Loss:Losses;,182,PlayerMap
+Defense |Rpl {0}:Enter:Enters;,183,PlayerMap
+Offense |Rpl {0}:Win:Wins;,184,PlayerMap
+Defense |Rpl {0}:Win:Wins;,185,PlayerMap
+Photon Projector |Rpl {0}:Kill:Kills;,189,Hero
+All Damage Done,201,Hero
+Deadeye |Rpl {0}:Kill:Kills;,222,Hero
+Frag Launcher Direct |Rpl {0}:Hit:Hits;,306,Hero
+Total Mayhem |Rpl {0}:Kill:Kills;,307,Hero
+|Rpl {0}:Teleporter:Teleporters; Placed,321,Hero
+Average |Rpl {0}:Player:Players; per Teleporter,322,Hero
+Critical Hit |Rpl {0}:Kill:Kills;,381,Hero
+Damage Taken,401,Hero
+|Rpl {0}:Elimination:Eliminations; - Most in Game,441,Player
+Weapon Accuracy - Best in Game,443,Hero
+All Damage Done,447,Hero
+Healing Done,449,Hero
+Pulse Bomb |Rpl {0}:Kill:Kills; - Most in Game,452,Hero
+Pulse |Rpl {0}:Bomb:Bombs; Attached - Most in Game,454,Hero
+Pulse |Rpl {0}:Bomb:Bombs; Attached,455,Hero
+Healing Done,465,Hero
+Final |Rpl {0}:Blow:Blows; - Most in Game,482,Player
+All Damage Done - Most in Game,483,Player
+Healing Done - Most in Game,484,Player
+|Rpl {0}:Enemy:Enemies; Hooked - Most in Game,521,Hero
+|Rpl {0}:Enemy:Enemies; Hooked,522,Hero
+Hook Accuracy,523,Hero
+|Rpl {0}:Hook:Hooks; Attempted,524,Hero
+Whole Hog |Rpl {0}:Kill:Kills; - Most in Game,527,Hero
+Whole Hog |Rpl {0}:Kill:Kills;,529,Hero
+Deadeye |Rpl {0}:Kill:Kills; - Most in Game,533,Hero
+Scoped |Rpl {0}:Hit:Hits;,534,Hero
+Scoped |Rpl {0}:Shot:Shots;,535,Hero
+Scoped Accuracy,536,Hero
+Scoped Critical |Rpl {0}:Hit:Hits;,539,Hero
+Scoped Critical |Rpl {0}:Hit:Hits; - Most in Game,541,Hero
+Venom Mine |Rpl {0}:Kill:Kills; - Most in Game,542,Hero
+Kill Streak - Best,547,Hero
+Damage Blocked,549,Hero
+Damage Blocked - Most in Game,551,Hero
+Graviton Surge |Rpl {0}:Kill:Kills;,553,Hero
+Graviton Surge |Rpl {0}:Kill:Kills; - Most in Game,554,Hero
+High Energy |Rpl {0}:Kill:Kills; - Most in Game,556,Hero
+High Energy |Rpl {0}:Kill:Kills;,557,Hero
+Lifetime Energy Accumulation,559,Hero
+Average Energy,561,Hero
+All Damage Done,562,Team
+Helix |Rpl {0}:Rocket:Rockets; Kills - Most in Game,565,Hero
+Helix |Rpl {0}:Rocket:Rockets; Kills,566,Hero
+Tactical Visor |Rpl {0}:Kill:Kills;,567,Hero
+Tactical Visor |Rpl {0}:Kill:Kills; - Most in Game,569,Hero
+Transcendence Healing - Best,571,Hero
+of Team's Damage,576,Hero
+Dragonstrike |Rpl {0}:Kill:Kills;,577,Hero
+Dragonstrike |Rpl {0}:Kill:Kills; - Most in Game,579,Hero
+Scatter Arrow |Rpl {0}:Kill:Kills;,580,Hero
+Scatter Arrow |Rpl {0}:Kill:Kills; - Most in Game,581,Hero
+Recon |Rpl {0}:Kill:Kills;,583,Hero
+Sentry |Rpl {0}:Kill:Kills;,584,Hero
+Tank |Rpl {0}:Kill:Kills;,585,Hero
+Sentry |Rpl {0}:Kill:Kills; - Most in Game,586,Hero
+Recon |Rpl {0}:Kill:Kills; - Most in Game,588,Hero
+Tank |Rpl {0}:Kill:Kills; - Most in Game,589,Hero
+Rocket Direct |Rpl {0}:Hit:Hits; - Most in Game,592,Hero
+Barrage |Rpl {0}:Kill:Kills; - Most in Game,594,Hero
+Damage Blocked,596,Hero
+|Rpl {0}:Soul:Souls; Consumed - Most in Game,598,Hero
+Death Blossom |Rpl {0}:Kill:Kills; - Most in Game,600,Hero
+Damage Blocked,601,Hero
+Damage Blocked - Most in Game,603,Hero
+Charge |Rpl {0}:Kill:Kills;,604,Hero
+Charge |Rpl {0}:Kill:Kills; - Most in Game,606,Hero
+Fire Strike |Rpl {0}:Kill:Kills;,608,Hero
+Fire Strike |Rpl {0}:Kill:Kills; - Most in Game,609,Hero
+Earthshatter |Rpl {0}:Kill:Kills;,611,Hero
+Earthshatter |Rpl {0}:Kill:Kills; - Most in Game,613,Hero
+Blaster |Rpl {0}:Kill:Kills;,615,Hero
+Blaster |Rpl {0}:Kill:Kills; - Most in Game,616,Hero
+|Rpl {0}:Player:Players; Resurrected,618,Hero
+|Rpl {0}:Player:Players; Resurrected - Most in Game,619,Hero
+|Rpl {0}:Player:Players; Saved,621,Hero
+Most |Rpl {0}:Player:Players; Saved in a Game,622,Hero
+|Rpl {0}:Player:Players; Knocked Back,624,Hero
+Damage Blocked,626,Hero
+Damage Blocked - Most in Game,628,Hero
+|Rpl {0}:Player:Players; Knocked Back - Most in Game,629,Hero
+Melee |Rpl {0}:Kill:Kills;,630,Hero
+Melee |Rpl {0}:Kill:Kills; - Most in Game,631,Hero
+Jump Pack |Rpl {0}:Kill:Kills;,633,Hero
+Jump Pack |Rpl {0}:Kill:Kills; - Most in Game,634,Hero
+Armor |Rpl {0}:Pack:Packs; Created,637,Hero
+TorbjÃ¶rn |Rpl {0}:Kill:Kills;,639,Hero
+Turret |Rpl {0}:Kill:Kills;,641,Hero
+Sentry Turret |Rpl {0}:Kill:Kills;,645,Hero
+Sentry Turret |Rpl {0}:Kill:Kills; - Most in Game,647,Hero
+|Rpl {0}:Player:Players; Teleported,648,Hero
+|Rpl {0}:Player:Players; Teleported - Most in Game,650,Hero
+|Rpl {0}:Shield:Shields; Provided,651,Hero
+|Rpl {0}:Shield:Shields; Provided - Most in Game,653,Hero
+Teleporter Uptime,654,Hero
+Teleporter Uptime - Average,655,Hero
+Sound |Rpl {0}:Barrier:Barriers; Provided,659,Hero
+Sound |Rpl {0}:Barrier:Barriers; Provided - Most in Game,660,Hero
+of Team Damage Taken,668,Hero
+Team Damage Taken,669,Team
+Team |Rpl {0}:Death:Deaths;,672,Team
+of Team |Rpl {0}:Death:Deaths;,673,Hero
+Damage Blocked,675,Hero
+All Damage Done - Most in Game,676,Hero
+Healing Done - Most in Game,677,Hero
+Dragonblade |Rpl {0}:Kill:Kills;,691,Hero
+Dragonblade |Rpl {0}:Kill:Kills; - Most in Game,692,Hero
+|Rpl {0}:Enemy:Enemies; Trapped - Most in Game,695,Hero
+|Rpl {0}:Enemy:Enemies; Trapped,697,Hero
+RIP-Tire |Rpl {0}:Kill:Kills; - Most in Game,699,Hero
+RIP-Tire |Rpl {0}:Kill:Kills;,701,Hero
+Self-Destruct |Rpl {0}:Kill:Kills;,703,Hero
+Self-Destruct |Rpl {0}:Kill:Kills; - Most in Game,705,Hero
+|Rpl {0}:Mech:Mechs; Called,707,Hero
+|Rpl {0}:Mech:Mechs; Called - Most in Game,709,Hero
+|Rpl {0}:Enemy:Enemies; Frozen,711,Hero
+|Rpl {0}:Enemy:Enemies; Frozen - Most in Game,713,Hero
+Blizzard |Rpl {0}:Kill:Kills; - Most in Game,715,Hero
+Blizzard |Rpl {0}:Kill:Kills;,716,Hero
+Damage Reflected,719,Hero
+Damage Reflected - Most in Game,721,Hero
+Damage Blocked - Most in Game,723,Hero
+Damage Blocked,725,Hero
+Damage Blocked - Most in Game,727,Hero
+Damage Blocked,729,Hero
+|Rpl {0}:Elimination:Eliminations; - Most in Game,730,Hero
+Final |Rpl {0}:Blow:Blows; - Most in Game,731,Hero
+of Team |Rpl {0}:Death:Deaths;,734,Hero
+Fractional Kills,736,Team
+Kill Participation,739,Hero
+Infra-sight Uptime,741,Hero
+Infra-sight Uptime,742,Hero
+of |Rpl {0}:Rocket:Rockets; Fired,744,Hero
+Earthshatter |Rpl {0}:Stun:Stuns;,750,Hero
+Death |Rpl {0}:Blossom:Blossoms;,751,Hero
+Rocket |Rpl {0}:Barrage:Barrages;,752,Hero
+Tactical |Rpl {0}:Visor:Visors;,753,Hero
+Team Time Played,758,Team
+Armor Uptime,759,Hero
+Armor Uptime,760,Hero
+Kill Participation,761,Hero
+of Match on Fire,764,Hero
+|Rpl {0}:Dragonblade:Dragonblades;,767,Hero
+Total Time Frozen,768,Hero
+Deflection |Rpl {0}:Kill:Kills;,769,Hero
+Sound Barrier |Rpl {0}:Cast:Casts;,770,Hero
+Self-|Rpl {0}:Destruct:Destructs;,771,Hero
+Kill Participation,776,Hero
+Kill Participation,779,Hero
+Defensive |Rpl {0}:Assist:Assists;,791,Hero
+Offensive |Rpl {0}:Assist:Assists;,792,Hero
+Defensive |Rpl {0}:Assist:Assists; - Most in Game,793,Player
+Offensive |Rpl {0}:Assist:Assists; - Most in Game,794,Player
+Objective |Rpl {0}:Kill:Kills;,796,Hero
+Objective Time,797,Hero
+Objective |Rpl {0}:Kill:Kills; - Most in Game,798,Hero
+Objective Time - Most in Game,800,Hero
+Objective |Rpl {0}:Kill:Kills; - Most in Game,802,Player
+Objective Time - Most in Game,803,Player
+Objective |Rpl {0}:Kill:Kills;,806,Hero
+Objective Time,807,Hero
+Teleporter |Rpl {0}:Pad:Pads; Destroyed,809,Hero
+Teleporter |Rpl {0}:Pad:Pads; Destroyed,811,Hero
+TorbjÃ¶rn |Rpl {0}:Kill:Kills; - Most in Game,815,Hero
+Armor |Rpl {0}:Pack:Packs; Created - Most in Game,816,Hero
+Turret |Rpl {0}:Kill:Kills; - Most in Game,817,Hero
+Molten Core |Rpl {0}:Kill:Kills;,819,Hero
+Molten Core |Rpl {0}:Kill:Kills; - Most in Game,820,Hero
+Recon |Rpl {0}:Assist:Assists;,825,Hero
+Recon |Rpl {0}:Assist:Assists; - Most in Game,827,Hero
+|Rpl {0}:Turret:Turrets; Destroyed,829,Hero
+|Rpl {0}:Multikill:Multikills;,837,Hero
+Multikill - Best,838,Hero
+|Rpl {0}:Multikill:Multikills;,839,Hero
+Multikill - Best,840,Player
+Recon |Rpl {0}:Assist:Assists;,842,Hero
+Recon |Rpl {0}:Assist:Assists; - Most in Game,843,Hero
+Kill Participation,844,Hero
+Primal Rage |Rpl {0}:Kill:Kills;,848,Hero
+Transcendence Healing,850,Hero
+Transcendence Percent of Healing,851,Hero
+Fan the Hammer |Rpl {0}:Kill:Kills;,854,Hero
+Projected |Rpl {0}:Barrier:Barriers; Applied,856,Hero
+Projected Barrier Damage Blocked,857,Hero
+Biotic |Rpl {0}:Field:Fields; Deployed,860,Hero
+Biotic Field Healing Done,861,Hero
+Mech |Rpl {0}:Death:Deaths;,863,Hero
+Environmental |Rpl {0}:Kill:Kills;,866,Hero
+Environmental |Rpl {0}:Kill:Kills;,867,Hero
+Environmental |Rpl {0}:Death:Deaths;,869,Hero
+Environmental |Rpl {0}:Death:Deaths;,871,Hero
+Self Healing Percent of Damage Taken,872,Hero
+Solo |Rpl {0}:Kill:Kills; - Most in Game,875,Player
+Solo |Rpl {0}:Kill:Kills; - Most in Game,876,Hero
+|Rpl {0}:Medal:Medals; - Bronze,877,Hero
+|Rpl {0}:Medal:Medals; - Silver,878,Hero
+|Rpl {0}:Medal:Medals; - Gold,879,Hero
+|Rpl {0}:Medal:Medals; - Bronze,880,Hero
+|Rpl {0}:Medal:Medals; - Silver,881,Hero
+|Rpl {0}:Medal:Medals; - Gold,882,Hero
+|Rpl {0}:Medal:Medals;,883,Hero
+|Rpl {0}:Medal:Medals;,884,Hero
+|Rpl {0}:Card:Cards;,885,Hero
+|Rpl {0}:Card:Cards;,886,Hero
+Hook Accuracy - Best in Game,887,Hero
+Scoped Accuracy - Best in Game,888,Hero
+Average Energy - Best in Game,889,Hero
+Teleporter Uptime - Best in Game,890,Hero
+Team |Rpl {0}:Teleporter:Teleporters; Placed,891,Team
+Total |Rpl {0}:Medal:Medals; Earned,892,Player
+Gold |Rpl {0}:Medal:Medals; Earned,893,Player
+Melee Final |Rpl {0}:Blow:Blows;,895,Hero
+Melee Final |Rpl {0}:Blow:Blows;,897,Hero
+Melee Percentage of Final |Rpl {0}:Blow:Blows;,898,Hero
+|Rpl {0}:Elimination:Eliminations; - Average,899,Hero
+|Rpl {0}:Game:Games; Played,901,Hero
+All Damage Done - Avg per 10 Min,902,Hero
+|Rpl {0}:Death:Deaths; - Average,903,Hero
+Final |Rpl {0}:Blow:Blows; - Average,904,Hero
+Healing Done - Average,905,Hero
+Objective |Rpl {0}:Kill:Kills; - Average,906,Hero
+Objective Time - Average,907,Hero
+Solo |Rpl {0}:Kill:Kills; - Average,908,Hero
+Blaster |Rpl {0}:Kill:Kills; - Average,909,Hero
+|Rpl {0}:Player:Players; Resurrected - Average,910,Hero
+|Rpl {0}:Player:Players; Saved - Average,911,Hero
+Dragonstrike |Rpl {0}:Kill:Kills; - Average,912,Hero
+Scatter Arrow |Rpl {0}:Kill:Kills; - Average,913,Hero
+Deadeye |Rpl {0}:Kill:Kills; - Average,914,Hero
+Damage Blocked - Average,916,Hero
+|Rpl {0}:Mech:Mechs; Called - Average,917,Hero
+Self-Destruct |Rpl {0}:Kill:Kills; - Average,918,Hero
+Sound |Rpl {0}:Barrier:Barriers; Provided - Average,919,Hero
+All Damage Done - Avg per 10 Min,920,Hero
+|Rpl {0}:Elimination:Eliminations; - Average,921,Hero
+Final |Rpl {0}:Blow:Blows; - Average,922,Hero
+Healing Done - Average,923,Hero
+Objective |Rpl {0}:Kill:Kills; - Average,924,Hero
+Objective Time - Average,925,Hero
+Solo |Rpl {0}:Kill:Kills; - Average,926,Hero
+Damage Reflected - Average,928,Hero
+Dragonblade |Rpl {0}:Kill:Kills; - Average,929,Hero
+Recon |Rpl {0}:Kill:Kills; - Average,931,Hero
+Sentry |Rpl {0}:Kill:Kills; - Average,932,Hero
+Tank |Rpl {0}:Kill:Kills; - Average,933,Hero
+Armor |Rpl {0}:Pack:Packs; Created - Average,934,Hero
+Molten Core |Rpl {0}:Kill:Kills; - Average,935,Hero
+TorbjÃ¶rn |Rpl {0}:Kill:Kills; - Average,936,Hero
+Turret |Rpl {0}:Kill:Kills; - Average,937,Hero
+Charge |Rpl {0}:Kill:Kills; - Average,938,Hero
+Damage Blocked - Average,939,Hero
+Earthshatter |Rpl {0}:Kill:Kills; - Average,940,Hero
+Fire Strike |Rpl {0}:Kill:Kills; - Average,941,Hero
+|Rpl {0}:Enemy:Enemies; Trapped - Average,942,Hero
+RIP-Tire |Rpl {0}:Kill:Kills; - Average,943,Hero
+Blizzard |Rpl {0}:Kill:Kills; - Average,944,Hero
+Damage Blocked - Average,945,Hero
+|Rpl {0}:Enemy:Enemies; Frozen - Average,946,Hero
+Damage Blocked - Average,947,Hero
+Graviton Surge |Rpl {0}:Kill:Kills; - Average,948,Hero
+High Energy |Rpl {0}:Kill:Kills; - Average,949,Hero
+Recon |Rpl {0}:Assist:Assists; - Average,950,Hero
+Scoped Critical |Rpl {0}:Hit:Hits; - Average,951,Hero
+Death Blossom |Rpl {0}:Kill:Kills; - Average,952,Hero
+|Rpl {0}:Soul:Souls; Consumed - Average,953,Hero
+|Rpl {0}:Enemy:Enemies; Hooked - Average,954,Hero
+Whole Hog |Rpl {0}:Kill:Kills; - Average,955,Hero
+Barrage |Rpl {0}:Kill:Kills; - Average,956,Hero
+Rocket Direct |Rpl {0}:Hit:Hits; - Average,957,Hero
+Helix |Rpl {0}:Rocket:Rockets; Kills - Average,958,Hero
+Tactical Visor |Rpl {0}:Kill:Kills; - Average,959,Hero
+Damage Blocked - Average,960,Hero
+Jump Pack |Rpl {0}:Kill:Kills; - Average,961,Hero
+Melee |Rpl {0}:Kill:Kills; - Average,962,Hero
+|Rpl {0}:Player:Players; Knocked Back - Average,963,Hero
+|Rpl {0}:Player:Players; Teleported - Average,964,Hero
+Sentry Turret |Rpl {0}:Kill:Kills; - Average,965,Hero
+|Rpl {0}:Shield:Shields; Provided - Average,966,Hero
+Pulse |Rpl {0}:Bomb:Bombs; Attached - Average,967,Hero
+Pulse Bomb |Rpl {0}:Kill:Kills; - Average,968,Hero
+Venom Mine |Rpl {0}:Kill:Kills; - Average,970,Hero
+Time Spent on Fire - Most in Game,971,Player
+Time Spent on Fire,972,Hero
+Time Spent on Fire,973,Hero
+Time Spent on Fire - Average,974,Hero
+|Rpl {0}:Death:Deaths; - Average,975,Hero
+Win Percentage,977,Hero
+|Rpl {0}:Elimination:Eliminations; per Life,978,Hero
+Offensive |Rpl {0}:Assist:Assists;,980,Hero
+Offensive |Rpl {0}:Assist:Assists; - Most in Game,982,Hero
+Offensive |Rpl {0}:Assist:Assists; - Average,983,Hero
+Defensive |Rpl {0}:Assist:Assists;,986,Hero
+Defensive |Rpl {0}:Assist:Assists; - Average,987,Hero
+Defensive |Rpl {0}:Assist:Assists; - Most in Game,988,Hero
+Critical |Rpl {0}:Hit:Hits;,990,Hero
+Critical |Rpl {0}:Hit:Hits; - Most in Game,991,Hero
+Critical |Rpl {0}:Hit:Hits; - Most in Life,992,Hero
+Critical Hit Accuracy,994,Hero
+Critical |Rpl {0}:Hit:Hits; - Average,996,Hero
+Self Healing,998,Hero
+Self Healing - Most in Game,999,Hero
+Self Healing - Average,1000,Hero
+Fan the Hammer |Rpl {0}:Kill:Kills; - Most in Game,1003,Hero
+Fan the Hammer |Rpl {0}:Kill:Kills; - Average,1004,Hero
+Melee Final |Rpl {0}:Blow:Blows; - Most in Game,1005,Player
+Melee Final |Rpl {0}:Blow:Blows; - Average,1006,Hero
+Melee Final |Rpl {0}:Blow:Blows; - Average,1007,Hero
+Melee Final |Rpl {0}:Blow:Blows; - Most in Game,1008,Hero
+Primal Rage |Rpl {0}:Kill:Kills; - Most in Game,1009,Hero
+Primal Rage |Rpl {0}:Kill:Kills;  - Average,1010,Hero
+Projected |Rpl {0}:Barrier:Barriers; Applied - Most in Game,1011,Hero
+Projected |Rpl {0}:Barrier:Barriers; Applied - Average,1012,Hero
+|Rpl {0}:Game:Games; Won,1013,Hero
+Healing Done,1015,Hero
+Healing Done - Average,1016,Hero
+Healing Done - Most in Game,1017,Hero
+|Rpl {0}:Player:Players; Saved,1028,Hero
+|Rpl {0}:Player:Players; Saved - Average,1029,Hero
+|Rpl {0}:Player:Players; Saved - Most in Game,1030,Hero
+Unscoped |Rpl {0}:Shot:Shots;,1039,Hero
+Unscoped |Rpl {0}:Hit:Hits;,1040,Hero
+Unscoped Accuracy,1041,Hero
+|Rpl {0}:Enemy:Enemies; Slept,1042,Hero
+Nano |Rpl {0}:Boost:Boosts; Applied,1043,Hero
+Nano Boost |Rpl {0}:Assist:Assists;,1044,Hero
+Unscoped Accuracy - Best in Game,1045,Hero
+|Rpl {0}:Enemy:Enemies; Slept - Average,1049,Hero
+|Rpl {0}:Enemy:Enemies; Slept - Most in Game,1054,Hero
+Nano Boost |Rpl {0}:Assist:Assists; - Average,1055,Hero
+Nano Boost |Rpl {0}:Assist:Assists; - Most in Game,1056,Hero
+Nano |Rpl {0}:Boost:Boosts; Applied - Average,1057,Hero
+Nano |Rpl {0}:Boost:Boosts; Applied - Most in Game,1058,Hero
+|Rpl {0}:Game:Games; Not Won,1068,Hero
+|Rpl {0}:Game:Games; Tied,1069,Hero
+|Rpl {0}:Game:Games; Lost,1070,Hero
+|Rpl {0}:Game:Games; Tied,1071,Hero
+|Rpl {0}:Game:Games; Lost,1072,Hero
+|Rpl {0}:Game:Games; Not Won,1073,Hero
+Map |Rpl {0}:Tie:Ties;,1075,PlayerMap
+Map |Rpl {0}:Not Win:Not Wins;,1076,PlayerMap
+Map |Rpl {0}:Tie:Ties;,1077,PlayerMap
+Map |Rpl {0}:Not Win:Not Wins;,1078,PlayerMap
+Biotic Grenade |Rpl {0}:Kill:Kills;,1084,Hero
+Healing Done,1089,Team
+|Rpl {0}:Enemy:Enemies; Hacked,1092,Hero
+|Rpl {0}:Enemy:Enemies; EMP'd,1093,Hero
+|Rpl {0}:Enemy:Enemies; Hacked - Average,1096,Hero
+|Rpl {0}:Enemy:Enemies; Hacked - Most in Game,1097,Hero
+|Rpl {0}:Enemy:Enemies; EMP'd - Average,1098,Hero
+|Rpl {0}:Enemy:Enemies; EMP'd - Most in Game,1099,Hero
+Team |Rpl {0}:Elimination:Eliminations;,1120,Team
+|Rpl {0}:Ultimate:Ultimates; Earned,1122,Hero
+|Rpl {0}:Ultimate:Ultimates; Used,1123,Hero
+|Rpl {0}:Ultimate:Ultimates; Earned,1124,Hero
+|Rpl {0}:Ultimate:Ultimates; Used,1125,Hero
+Time Holding Ultimate,1126,Hero
+Time Holding Ultimate,1127,Hero
+|Rpl {0}:Shot:Shots; Fired,1132,Hero
+Time Alive,1133,Hero
+Lives,1134,Hero
+Average Time Alive,1135,Hero
+Lives,1136,Hero
+Time Alive,1137,Hero
+Kill Streak - Best,1138,Hero
+Average Time Alive,1139,Hero
+Damage Blocked,1142,Hero
+Damage Blocked - Average,1143,Hero
+Damage Blocked - Most in Game,1144,Hero
+Flag |Rpl {0}:Capture:Captures;,1146,Hero
+Flag |Rpl {0}:Capture:Captures;,1147,Hero
+Flag |Rpl {0}:Return:Returns;,1148,Hero
+Flag |Rpl {0}:Return:Returns;,1149,Hero
+Shield |Rpl {0}:Generator:Generators; Destroyed,1151,Hero
+Health Recovered,1152,Hero
+Health Recovered - Average,1153,Hero
+Health Recovered - Most in Game,1154,Hero
+Damage Amplified,1162,Hero
+Damage Amplified - Average,1163,Hero
+Damage Amplified - Most in Game,1164,Hero
+Damage Blocked,1166,Hero
+Damage Blocked - Average,1167,Hero
+Damage Blocked - Most in Game,1168,Hero
+|Rpl {0}:Turret:Turrets; Destroyed,1169,Hero
+Shield |Rpl {0}:Generator:Generators; Destroyed,1170,Hero
+Shield |Rpl {0}:Generator:Generators; Destroyed - Most in Game,1171,Player
+|Rpl {0}:Turret:Turrets; Destroyed - Most in Game,1172,Player
+Environmental |Rpl {0}:Kill:Kills; - Most in Game,1173,Player
+Teleporter |Rpl {0}:Pad:Pads; Destroyed - Most in Game,1174,Player
+Kill Streak - Best,1175,Player
+Time Spent on Fire - Average,1176,Hero
+Time Spent on Fire - Most in Game,1177,Hero
+|Rpl {0}:Elimination:Eliminations; - Avg per 10 Min,1200,Hero
+Final |Rpl {0}:Blow:Blows; - Avg per 10 Min,1201,Hero
+Healing Done - Avg per 10 Min,1202,Hero
+Objective |Rpl {0}:Kill:Kills; - Avg per 10 Min,1203,Hero
+Objective Time - Avg per 10 Min,1204,Hero
+Solo |Rpl {0}:Kill:Kills; - Avg per 10 Min,1205,Hero
+Time Spent on Fire - Avg per 10 Min,1206,Hero
+Hero Damage Done,1207,Hero
+Hero Damage Done,1208,Hero
+Hero Damage Done,1209,Team
+Hero Damage Done - Most in Game,1210,Player
+Hero Damage Done - Most in Game,1211,Hero
+Hero Damage Done - Most in Life,1212,Hero
+Hero Damage Done - Avg per 10 Min,1213,Hero
+Time Played Since 1.12,1214,Hero
+Time Played Since 1.12,1215,Hero
+Team Time Played,1216,Team
+Hero Damage Done - Avg per 10 Min,1217,Hero
+of Team's Hero Damage,1218,Hero
+|Rpl {0}:Death:Deaths; - Avg per 10 Min,1219,Hero
+Melee Final |Rpl {0}:Blow:Blows; - Avg per 10 Min,1220,Hero
+|Rpl {0}:Enemy:Enemies; Slept - Avg per 10 Min,1221,Hero
+Nano Boost |Rpl {0}:Assist:Assists; - Avg per 10 Min,1222,Hero
+Nano |Rpl {0}:Boost:Boosts; Applied - Avg per 10 Min,1223,Hero
+Blaster |Rpl {0}:Kill:Kills; - Avg per 10 Min,1224,Hero
+|Rpl {0}:Player:Players; Resurrected - Avg per 10 Min,1225,Hero
+|Rpl {0}:Player:Players; Saved - Avg per 10 Min,1226,Hero
+Dragonstrike |Rpl {0}:Kill:Kills; - Avg per 10 Min,1227,Hero
+Scatter Arrow |Rpl {0}:Kill:Kills; - Avg per 10 Min,1228,Hero
+Deadeye |Rpl {0}:Kill:Kills; - Avg per 10 Min,1229,Hero
+Fan the Hammer |Rpl {0}:Kill:Kills; - Avg per 10 Min,1230,Hero
+Damage Blocked - Avg per 10 Min,1231,Hero
+|Rpl {0}:Mech:Mechs; Called - Avg per 10 Min,1232,Hero
+Self-Destruct |Rpl {0}:Kill:Kills; - Avg per 10 Min,1233,Hero
+Sound |Rpl {0}:Barrier:Barriers; Provided - Avg per 10 Min,1234,Hero
+|Rpl {0}:Death:Deaths; - Avg per 10 Min,1235,Hero
+|Rpl {0}:Elimination:Eliminations; - Avg per 10 Min,1236,Hero
+Final |Rpl {0}:Blow:Blows; - Avg per 10 Min,1237,Hero
+Healing Done - Avg per 10 Min,1238,Hero
+Melee Final |Rpl {0}:Blow:Blows; - Avg per 10 Min,1239,Hero
+Objective |Rpl {0}:Kill:Kills; - Avg per 10 Min,1240,Hero
+Objective Time - Avg per 10 Min,1241,Hero
+Solo |Rpl {0}:Kill:Kills; - Avg per 10 Min,1242,Hero
+Time Spent on Fire - Avg per 10 Min,1243,Hero
+Dragonblade |Rpl {0}:Kill:Kills; - Avg per 10 Min,1245,Hero
+Recon |Rpl {0}:Kill:Kills; - Avg per 10 Min,1246,Hero
+Sentry |Rpl {0}:Kill:Kills; - Avg per 10 Min,1247,Hero
+Tank |Rpl {0}:Kill:Kills; - Avg per 10 Min,1248,Hero
+Armor |Rpl {0}:Pack:Packs; Created - Avg per 10 Min,1249,Hero
+Molten Core |Rpl {0}:Kill:Kills; - Avg per 10 Min,1250,Hero
+TorbjÃ¶rn |Rpl {0}:Kill:Kills; - Avg per 10 Min,1251,Hero
+Turret |Rpl {0}:Kill:Kills; - Avg per 10 Min,1252,Hero
+Charge |Rpl {0}:Kill:Kills; - Avg per 10 Min,1253,Hero
+Damage Blocked - Avg per 10 Min,1254,Hero
+Earthshatter |Rpl {0}:Kill:Kills; - Avg per 10 Min,1255,Hero
+Fire Strike |Rpl {0}:Kill:Kills; - Avg per 10 Min,1256,Hero
+|Rpl {0}:Enemy:Enemies; Trapped - Avg per 10 Min,1257,Hero
+RIP-Tire |Rpl {0}:Kill:Kills; - Avg per 10 Min,1258,Hero
+Blizzard |Rpl {0}:Kill:Kills; - Avg per 10 Min,1259,Hero
+Damage Blocked - Avg per 10 Min,1260,Hero
+|Rpl {0}:Enemy:Enemies; Frozen - Avg per 10 Min,1261,Hero
+Damage Blocked - Avg per 10 Min,1262,Hero
+Graviton Surge |Rpl {0}:Kill:Kills; - Avg per 10 Min,1263,Hero
+High Energy |Rpl {0}:Kill:Kills; - Avg per 10 Min,1264,Hero
+Projected |Rpl {0}:Barrier:Barriers; Applied - Avg per 10 Min,1265,Hero
+Critical |Rpl {0}:Hit:Hits; - Avg per 10 Min,1266,Hero
+Damage Amplified - Avg per 10 Min,1267,Hero
+Defensive |Rpl {0}:Assist:Assists; - Avg per 10 Min,1268,Hero
+Healing Done - Avg per 10 Min,1269,Hero
+Offensive |Rpl {0}:Assist:Assists; - Avg per 10 Min,1271,Hero
+|Rpl {0}:Player:Players; Saved - Avg per 10 Min,1272,Hero
+Recon |Rpl {0}:Assist:Assists; - Avg per 10 Min,1273,Hero
+Scoped Critical |Rpl {0}:Hit:Hits; - Avg per 10 Min,1274,Hero
+Self Healing - Avg per 10 Min,1275,Hero
+Damage Blocked - Avg per 10 Min,1276,Hero
+Death Blossom |Rpl {0}:Kill:Kills; - Avg per 10 Min,1277,Hero
+|Rpl {0}:Soul:Souls; Consumed - Avg per 10 Min,1278,Hero
+|Rpl {0}:Enemy:Enemies; Hooked - Avg per 10 Min,1279,Hero
+Whole Hog |Rpl {0}:Kill:Kills; - Avg per 10 Min,1280,Hero
+Barrage |Rpl {0}:Kill:Kills; - Avg per 10 Min,1281,Hero
+Rocket Direct |Rpl {0}:Hit:Hits; - Avg per 10 Min,1282,Hero
+Helix |Rpl {0}:Rocket:Rockets; Kills - Avg per 10 Min,1283,Hero
+Tactical Visor |Rpl {0}:Kill:Kills; - Avg per 10 Min,1284,Hero
+|Rpl {0}:Enemy:Enemies; EMP'd - Avg per 10 Min,1285,Hero
+|Rpl {0}:Enemy:Enemies; Hacked - Avg per 10 Min,1286,Hero
+Damage Blocked - Avg per 10 Min,1287,Hero
+Jump Pack |Rpl {0}:Kill:Kills; - Avg per 10 Min,1288,Hero
+Melee |Rpl {0}:Kill:Kills; - Avg per 10 Min,1289,Hero
+|Rpl {0}:Player:Players; Knocked Back - Avg per 10 Min,1290,Hero
+Primal Rage |Rpl {0}:Kill:Kills;  - Avg per 10 Min,1291,Hero
+Damage Blocked - Avg per 10 Min,1292,Hero
+|Rpl {0}:Player:Players; Teleported - Avg per 10 Min,1293,Hero
+Sentry Turret |Rpl {0}:Kill:Kills; - Avg per 10 Min,1294,Hero
+|Rpl {0}:Shield:Shields; Provided - Avg per 10 Min,1295,Hero
+Health Recovered - Avg per 10 Min,1296,Hero
+Pulse Bomb |Rpl {0}:Kill:Kills; - Avg per 10 Min,1297,Hero
+Pulse |Rpl {0}:Bomb:Bombs; Attached - Avg per 10 Min,1298,Hero
+Venom Mine |Rpl {0}:Kill:Kills; - Avg per 10 Min,1299,Hero
+Transcendence Healing - Avg per 10 Min,1300,Hero
+Barrier Damage Done,1301,Hero
+Barrier Damage Done,1302,Hero
+Barrier Damage Done - Most in Game,1303,Hero
+Barrier Damage Done - Avg per 10 Min,1304,Hero
+Barrier Damage Done - Avg per 10 Min,1305,Hero
+Ability Damage Done,1306,Hero
+Ability Damage Done - Avg per 10 Min,1307,Hero
+Ability Damage Done - Most in Game,1308,Hero
+Meteor Strike |Rpl {0}:Kill:Kills;,1309,Hero
+Meteor Strike |Rpl {0}:Kill:Kills; - Avg per 10 Min,1310,Hero
+Meteor Strike |Rpl {0}:Kill:Kills; - Most in Game,1311,Hero
+|Rpl {0}:Shield:Shields; Created,1312,Hero
+|Rpl {0}:Shield:Shields; Created - Avg per 10 Min,1313,Hero
+|Rpl {0}:Shield:Shields; Created - Most in Game,1314,Hero
+|Rpl {0}:Game:Games; Played Without Ties,1315,Hero
+|Rpl {0}:Game:Games; Played Without Ties,1316,Hero
+|Rpl {0}:Assist:Assists;,1319,Hero
+|Rpl {0}:Assist:Assists;,1321,Hero
+Barrier Damage Done - Most in Game,1322,Player
+Damage - Quick Melee,1323,Hero
+Damage - Quick Melee,1324,Hero
+Damage - Weapon,1325,Hero
+Damage - Seismic Slam,1326,Hero
+Damage - Rising Uppercut,1327,Hero
+Damage - Rocket Punch,1328,Hero
+Damage - Meteor Strike,1329,Hero
+Damage - Weapon Primary,1330,Hero
+Damage - Weapon Secondary,1331,Hero
+Damage - Deflect,1332,Hero
+Damage - Swift Strike,1333,Hero
+Damage - Dragonblade,1334,Hero
+Damage - Weapon Primary,1335,Hero
+Damage - Weapon Secondary,1336,Hero
+Damage - Flashbang,1337,Hero
+Damage - Deadeye,1338,Hero
+Damage - Weapon,1339,Hero
+Damage - Barrage,1340,Hero
+Damage - Weapon,1341,Hero
+Damage - Death Blossom,1342,Hero
+Damage - Weapon,1343,Hero
+Damage - Helix Rockets,1344,Hero
+Damage - Tactical Visor,1345,Hero
+Damage - Weapon,1346,Hero
+Damage - Weapon,1347,Hero
+Damage - Pulse Bomb,1348,Hero
+Damage - Weapon Recon,1349,Hero
+Damage - Weapon Sentry,1350,Hero
+Damage - Weapon Tank,1351,Hero
+Damage - Weapon,1352,Hero
+Damage - Scatter,1353,Hero
+Damage - Sonic,1354,Hero
+Damage - Dragonstrike,1355,Hero
+Damage - Weapon,1356,Hero
+Damage - Concussion Mine,1357,Hero
+Damage - Steel Trap,1358,Hero
+Damage - Total Mayhem,1359,Hero
+Damage - RIP-Tire,1360,Hero
+Damage - Weapon Primary,1361,Hero
+Damage - Weapon Secondary,1362,Hero
+Damage - Blizzard,1363,Hero
+Damage - Weapon Primary,1364,Hero
+Damage - Weapon Secondary,1365,Hero
+Damage - Weapon Hammer,1366,Hero
+Turret Damage,1367,Hero
+Damage - Turret Rockets,1368,Hero
+Damage - Molten Core,1369,Hero
+Damage - Weapon,1370,Hero
+Damage - Weapon Scoped,1371,Hero
+Damage - Venom Mine,1372,Hero
+Damage - Weapon,1373,Hero
+Damage - Pistol,1374,Hero
+Damage - Boosters,1375,Hero
+Damage - Self Destruct,1376,Hero
+Damage - Call Mech,1377,Hero
+Damage - Weapon,1378,Hero
+Damage - Weapon,1379,Hero
+Damage - Charge,1380,Hero
+Damage - Fire Strike,1381,Hero
+Damage - Earthshatter,1382,Hero
+Damage - Weapon Primary,1383,Hero
+Damage - Weapon Secondary,1384,Hero
+Damage - Chain Hook,1385,Hero
+Damage - Whole Hog,1386,Hero
+Damage - Weapon,1387,Hero
+Damage - Jump Pack,1388,Hero
+Damage - Primal Rage Melee,1389,Hero
+Damage - Primal Rage Total,1390,Hero
+Damage - Weapon Primary,1391,Hero
+Damage - Weapon Secondary,1392,Hero
+Damage - Graviton Surge,1393,Hero
+Damage - Weapon,1394,Hero
+Damage - Weapon Scoped,1395,Hero
+Damage - Biotic Grenade,1396,Hero
+Damage - Nano Boost,1397,Hero
+Damage - Weapon Primary,1398,Hero
+Damage - Weapon Secondary,1399,Hero
+Damage - Weapon Pistol,1400,Hero
+Damage - Weapon Primary,1401,Hero
+Damage - Weapon Secondary,1402,Hero
+Damage - Sentry Turret,1403,Hero
+Damage - Weapon Primary,1404,Hero
+Damage - Weapon Charged,1405,Hero
+Damage - EMP,1406,Hero
+Damage - Micro Missiles,1410,Hero
+Speed Song Time Elapsed,1413,Hero
+Heal Song Time Elapsed,1414,Hero
+Amped Heal |Rpl {0}:Activation:Activations;,1415,Hero
+Amped Speed |Rpl {0}:Activation:Activations;,1416,Hero
+Coalescence |Rpl {0}:Kill:Kills;,1417,Hero
+Coalescence |Rpl {0}:Kill:Kills; - Avg per 10 Min,1418,Hero
+Coalescence |Rpl {0}:Kill:Kills; - Most in Game,1419,Hero
+Damage - Weapon,1420,Hero
+Damage - Biotic Orb,1421,Hero
+Damage - Coalescence,1422,Hero
+Coalescence Healing,1424,Hero
+Coalescence Healing - Avg per 10 Min,1425,Hero
+Coalescence Healing - Most in Game,1426,Hero
+Healing - Coalescence,1427,Hero
+Primary Fire Accuracy,1429,Hero
+Primary Fire |Rpl {0}:Hit:Hits;,1430,Hero
+Primary Fire |Rpl {0}:Tick:Ticks;,1431,Hero
+Tesla Cannon |Rpl {0}:Tick:Ticks;,1435,Hero
+Tesla Cannon |Rpl {0}:Hit:Hits;,1436,Hero
+Tesla Cannon Accuracy,1437,Hero
+Tesla Cannon Efficiency,1438,Hero
+Tesla Cannon |Rpl {0}:Hit:Hits; - Multiple,1439,Hero
+Primal Rage Melee |Rpl {0}:Hit:Hits;,1440,Hero
+Primal Rage Melee |Rpl {0}:Tick:Ticks;,1441,Hero
+Primal Rage Melee |Rpl {0}:Hit:Hits; - Multiple,1442,Hero
+Primal Rage Melee Accuracy,1443,Hero
+Primal Rage Melee Efficiency,1444,Hero
+Rocket Hammer Melee |Rpl {0}:Tick:Ticks;,1445,Hero
+Rocket Hammer Melee |Rpl {0}:Hit:Hits;,1446,Hero
+Rocket Hammer Melee |Rpl {0}:Hit:Hits; - Multiple,1447,Hero
+Rocket Hammer Melee Average Targets,1448,Hero
+Rocket Hammer Melee Accuracy,1449,Hero
+Quick Melee |Rpl {0}:Tick:Ticks;,1450,Hero
+Quick Melee |Rpl {0}:Hit:Hits;,1451,Hero
+Quick Melee Accuracy,1452,Hero
+Primary Fire |Rpl {0}:Tick:Ticks;,1453,Hero
+Primary Fire |Rpl {0}:Hit:Hits;,1454,Hero
+Primary Fire Hits |Rpl {0}:Hit:Hits; - Level,1455,Hero
+Primary Fire Average Level,1456,Hero
+Primary Fire Accuracy,1457,Hero
+Secondary Fire |Rpl {0}:Tick:Ticks;,1459,Hero
+Secondary Fire |Rpl {0}:Hit:Hits;,1460,Hero
+Secondary Fire Accuracy,1461,Hero
+Secondary Fire Accuracy - Best in Game,1462,Hero
+Shield Generator Uptime,1463,Hero
+Concussion Mine |Rpl {0}:Kill:Kills;,1464,Hero
+Concussion Mine |Rpl {0}:Kill:Kills; - Avg per 10 Min,1465,Hero
+Concussion Mine |Rpl {0}:Kill:Kills; - Most in Game,1466,Hero
+Supercharger |Rpl {0}:Assist:Assists;,1467,Hero
+Supercharger |Rpl {0}:Assist:Assists; - Avg per 10 Min,1468,Hero
+Supercharger |Rpl {0}:Assist:Assists; - Most in Game,1469,Hero
+Time Building Ultimate,1470,Hero
+Time Building Ultimate,1471,Hero
+Time Elapsed per Ultimate Earned,1472,Hero
+Time Elapsed per Ultimate Earned,1473,Hero
+Nano Boost Efficiency,1474,Hero
+Tank Efficiency,1475,Hero
+Meteor Strike Efficiency,1476,Hero
+Self Destruct Efficiency,1477,Hero
+Dragonblade Efficiency,1478,Hero
+Dragonstrike Efficiency,1479,Hero
+RIP-Tire Efficiency,1480,Hero
+Sound Barrier Efficiency,1481,Hero
+Deadeye Efficiency,1482,Hero
+Blizzard Efficiency,1483,Hero
+Supercharger Efficiency,1484,Hero
+Barrage Efficiency,1485,Hero
+Death Blossom Efficiency,1486,Hero
+Earthshatter Efficiency,1487,Hero
+Whole Hog Efficiency,1488,Hero
+Tactical Visor Efficiency,1489,Hero
+EMP Efficiency,1490,Hero
+Molten Core Efficiency,1491,Hero
+Pulse Bomb Efficiency,1492,Hero
+Infra-Sight Efficiency,1493,Hero
+Primal Rage Efficiency,1494,Hero
+Graviton Surge Efficiency,1495,Hero
+Transcendence Efficiency,1496,Hero
+|Rpl {0}:Ultimate:Ultimates; Earned - Fractional,1497,Hero
+Sleep Dart Success Rate,1498,Hero
+Sleep Dart |Rpl {0}:Shot:Shots;,1499,Hero
+Sleep Dart |Rpl {0}:Hit:Hits;,1500,Hero
+Pulse Bomb Attach Rate,1501,Hero
+Coalesence - Healing per Use,1502,Hero
+Coalesence - Damage per Use,1503,Hero
+Biotic Orb Damage Efficiency,1504,Hero
+Biotic Orb Healing Efficiency,1505,Hero
+Healing - Biotic Orb,1506,Hero
+Biotic Orb Maximum Healing,1507,Hero
+Biotic Orb Maximum Damage,1508,Hero
+Healing - Primary Fire,1520,Hero
+Healing - Secondary Fire,1521,Hero
+|Rpl {0}:Shot:Shots; Missed,1522,Hero
+|Rpl {0}:Shot:Shots; Hits + Missed,1523,Hero
+Damage - Primal Rage Leap,1524,Hero
+Healing - Biotic Grenade,1525,Hero
+Healing - Weapon,1526,Hero
+Healing - Weapon Scoped,1527,Hero
+Healing - Healing Boost,1528,Hero
+Healing - Healing Boost Amped,1529,Hero
+Healing - Weapon,1530,Hero
+Healing - Weapon Valkyrie,1531,Hero
+Healing - Harmony Orb,1532,Hero
+Healing - Transcendence,1533,Hero
+Harmony Orb Time,1534,Hero
+Discord Orb Time,1535,Hero
+|Rpl {0}:Player:Players; Knocked Back,1536,Hero
+Players Halted,1537,Hero
+Damage - Swift Strike Dragonblade,1538,Hero
+Damage - Dragonblade Total,1539,Hero
+Damage Blocked,1540,Hero
+Damage Blocked - Avg per 10 Min,1541,Hero
+Damage Blocked - Most in Game,1542,Hero
+Armor Provided,1543,Hero
+Armor Provided - Most in Game,1544,Hero
+Armor Provided - Avg per 10 Min,1545,Hero
+Damage - Weapon,1546,Hero
+Damage - Weapon,1547,Hero
+Damage - Shield Bash,1548,Hero
+Healing - Repair Pack,1549,Hero
+Healing - Inspire,1550,Hero
+Armor - Repair Pack,1551,Hero
+Armor - Rally,1552,Hero
+Inspire Uptime,1553,Hero
+Inspire Uptime Percentage,1554,Hero
+Damage Taken,1564,Hero
+Valkyrie Healing Efficiency,1570,Hero
+|Rpl {0}:Ultimate:Ultimates; Earned - Fractional,1571,Hero
+Direct Hit Accuracy,1572,Hero
+Damage - Storm Arrows,1573,Hero
+Storm Arrow |Rpl {0}:Kill:Kills;,1574,Hero
+Storm Arrow |Rpl {0}:Kill:Kills; - Avg per 10 Min,1576,Hero
+Storm Arrow |Rpl {0}:Kill:Kills; - Most in Game,1577,Hero
+Time Played Since 2.23,1578,Hero
+Time Played Before 2.23,1579,Hero
+Scoped Critical Hit Accuracy,1583,Hero
+Rally Armor Efficiency,1584,Hero
+Secondary Fire Accuracy,1585,Hero
+Secondary Direct |Rpl {0}:Hit:Hits;,1586,Hero
+Secondary Direct |Rpl {0}:Hit:Hits; - Most in Game,1587,Hero
+Secondary Direct |Rpl {0}:Hit:Hits; - Avg per 10 Min,1588,Hero
+Damage - Weapon,1589,Hero
+Damage - Piledriver,1590,Hero
+Damage - Minefield,1591,Hero
+Damage - Grappling Claw,1592,Hero
+Shielding - Adaptive Shield,1593,Hero
+Damage Taken - Adaptive Shield,1594,Hero
+Adaptive Shield |Rpl {0}:Use:Uses;,1595,Hero
+Piledriver |Rpl {0}:Kill:Kills;,1596,Hero
+Piledriver |Rpl {0}:Use:Uses;,1597,Hero
+Grappling Claw |Rpl {0}:Kill:Kills;,1598,Hero
+Grappling Claw |Rpl {0}:Impact:Impacts;,1599,Hero
+Grappling Claw |Rpl {0}:Use:Uses;,1600,Hero
+Roll Uptime,1601,Hero
+Roll Uptime Percentage,1602,Hero
+Roll |Rpl {0}:Use:Uses;,1603,Hero
+Air Uptime,1604,Hero
+Air Uptime Percentage,1605,Hero
+|Rpl {0}:Player:Players; Knocked Back,1606,Hero
+Minefield |Rpl {0}:Kill:Kills;,1607,Hero
+Damage Taken - Tank,1609,Hero
+Damage Taken - Ball,1610,Hero
+Grappling Claw |Rpl {0}:Kill:Kills; - Most in Game,1611,Hero
+Grappling Claw |Rpl {0}:Kill:Kills; - Avg per 10 Min,1612,Hero
+Minefield |Rpl {0}:Kill:Kills; - Avg per 10 Min,1613,Hero
+Minefield |Rpl {0}:Kill:Kills; - Most in Game,1614,Hero
+Piledriver |Rpl {0}:Kill:Kills; - Avg per 10 Min,1615,Hero
+Piledriver |Rpl {0}:Kill:Kills; - Most in Game,1616,Hero
+|Rpl {0}:Player:Players; Knocked Back - Avg per 10 Min,1617,Hero
+|Rpl {0}:Player:Players; Knocked Back - Most in Game,1618,Hero
+Turret Damage - Avg per 10 Min,1619,Hero
+Turret |Rpl {0}:Damage:Damage; Done - Most in Game,1620,Hero
+Time Played Before 10.09,1622,Hero
+Time Played Since 10.09,1623,Hero
+Hammer |Rpl {0}:Kill:Kills;,1624,Hero
+Hammer |Rpl {0}:Kill:Kills; - Most in Game,1625,Hero
+Overload |Rpl {0}:Kill:Kills;,1626,Hero
+Overload |Rpl {0}:Kill:Kills; - Most in Game,1627,Hero
+Damage - Weapon,1628,Hero
+Damage - Weapon Scoped,1629,Hero
+Damage - Dynamite,1630,Hero
+Damage - Coach Gun,1631,Hero
+Damage - Bob,1632,Hero
+|Rpl {0}:Player:Players; Knocked Back,1633,Hero
+Dynamite |Rpl {0}:Kill:Kills;,1634,Hero
+Dynamite |Rpl {0}:Kill:Kills; - Average,1635,Hero
+Dynamite |Rpl {0}:Kill:Kills; - Avg per 10 Min,1636,Hero
+Dynamite |Rpl {0}:Kill:Kills; - Most in Game,1637,Hero
+Coach Gun |Rpl {0}:Kill:Kills;,1638,Hero
+Coach Gun |Rpl {0}:Kill:Kills; - Average,1639,Hero
+Coach Gun |Rpl {0}:Kill:Kills; - Avg per 10 Min,1640,Hero
+Coach Gun |Rpl {0}:Kill:Kills; - Most in Game,1641,Hero
+Bob |Rpl {0}:Kill:Kills;,1642,Hero
+Damage - Bob Charge,1643,Hero
+Bob Gun Damage,1644,Hero
+Bob |Rpl {0}:Kill:Kills; - Avg per 10 Min,1645,Hero
+Bob |Rpl {0}:Kill:Kills; - Most in Game,1646,Hero
+Scoped Critical Hit |Rpl {0}:Kill:Kills;,1655,Hero
+Scoped Critical Hit |Rpl {0}:Kill:Kills; - Avg per 10 Min,1656,Hero
+Scoped Critical |Rpl {0}:Hit:Hits; - Most in Game,1657,Hero
+|Rpl {0}:Ultimate:Ultimates; Negated,1658,Hero
+|Rpl {0}:Ultimate:Ultimates; Negated - Avg per 10 Min,1659,Hero
+|Rpl {0}:Ultimate:Ultimates; Negated - Most in Game,1660,Hero
+Damage - Discord Orb,1661,Hero
+Damage - Weapon Primary,1678,Hero
+Amplification Matrix |Rpl {0}:Assist:Assists;,1679,Hero
+Healing - Regenerative Burst,1680,Hero
+Healing - Biotic Launcher,1681,Hero
+Healing - Immortality Field,1682,Hero
+Biotic Launcher Healing |Rpl {0}:Shot:Shots;,1683,Hero
+Biotic Launcher Healing |Rpl {0}:Explosion:Explosions;,1684,Hero
+Healing Accuracy,1685,Hero
+Healing Accuracy - Best in Game,1686,Hero
+Amplification Matrix |Rpl {0}:Assist:Assists; - Best in Game,1687,Hero
+Amplification Matrix |Rpl {0}:Assist:Assists; - Avg per 10 Min,1688,Hero
+Immortality Field |Rpl {0}:Death:Deaths; Prevented,1689,Hero
+Immortality Field |Rpl {0}:Death:Deaths; Prevented - Avg per 10 Min,1690,Hero
+Immortality Field |Rpl {0}:Death:Deaths; Prevented - Most in Game,1691,Hero
+Healing Amplified,1692,Hero
+Healing Amplified - Average,1693,Hero
+Healing Amplified - Avg per 10 Min,1694,Hero
+Healing Amplified - Most in Game,1695,Hero
+Damage Blocked,1697,Hero
+Damage Blocked - Most in Game,1698,Hero
+Damage Blocked - Avg per 10 Min,1699,Hero
+Soundwave |Rpl {0}:Kill:Kills;,1700,Hero
+Soundwave |Rpl {0}:Kill:Kills; - Average,1701,Hero
+Soundwave |Rpl {0}:Kill:Kills; - Avg per 10 Min,1702,Hero
+Soundwave |Rpl {0}:Kill:Kills; - Most in Game,1703,Hero
+Amplification Matrix |Rpl {0}:Cast:Casts;,1708,Hero
+Amplification Matrix |Rpl {0}:Cast:Casts; - Avg per 10 Min,1710,Hero
+Amplification Matrix |Rpl {0}:Cast:Casts; - Most in Game,1711,Hero
+Amplification Matrix Efficiency,1712,Hero
+Damage Prevented,1713,Hero
+Time Discorded,1714,Hero
+Time Hacked,1715,Hero
+Healing Received,1716,Hero
+Healing Received - Most in Game,1717,Hero
+Healing Received - Avg per 10 Min,1718,Hero
+Damage Absorbed,1720,Hero
+Accretion |Rpl {0}:Kill:Kills; - Avg per 10 Min,1723,Hero
+Accretion |Rpl {0}:Kill:Kills; - Most in Game,1724,Hero
+Accretion |Rpl {0}:Kill:Kills;,1725,Hero
+Damage - Accretion,1726,Hero
+Gravitic Flux |Rpl {0}:Kill:Kills;,1727,Hero
+Gravitic Flux |Rpl {0}:Kill:Kills; - Most in Game,1728,Hero
+Gravitic Flux Damage Done,1729,Hero
+Gravitic Flux |Rpl {0}:Kill:Kills; - Avg per 10 Min,1730,Hero
+Damage - Hyperspheres,1732,Hero
+Hyperspheres Direct |Rpl {0}:Hit:Hits;,1733,Hero
+Accretion |Rpl {0}:Stun :Stuns;,1734,Hero
+|Rpl {0}:Shot:Shots; Hit,1752,Hero
+|Rpl {0}:Shot:Shots; Hits + Missed,1754,Hero
+|Rpl {0}:Shot:Shots; Missed,1755,Hero
+|Rpl {0}:Ultimate:Ultimates; Negated,1756,Hero
+|Rpl {0}:Ultimate:Ultimates; Negated - Avg per 10 Min,1757,Hero
+|Rpl {0}:Ultimate:Ultimates; Negated - Most in Game,1758,Hero
+Knockback |Rpl {0}:Kill:Kills;,1768,Hero
+Knockback |Rpl {0}:Kill:Kills;,1769,Hero

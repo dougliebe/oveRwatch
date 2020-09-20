@@ -1,0 +1,75 @@
+map_name,map_guid
+Ecopoint: Antarctica,5233
+Temple of Anubis,3579
+King's Row,3700
+Hanamura,3845
+Watchpoint: Gibraltar,3876
+Numbani,3956
+Volskaya Industries,3963
+Hollywood,4175
+Dorado,4195
+Nepal,4695
+Route 66,4955
+Tutorial,5121
+Lijiang Tower,5122
+Ilios,5133
+Practice Range,5160
+Eichenwalde,5165
+Oasis,5182
+Hollywood,5195
+King's Row,5201
+EstÃ¡dio das RÃ£s,5203
+Hanamura,5205
+Lijiang Tower,5207
+VPP Green Room,5223
+Junkenstein's Revenge,5225
+Horizon Lunar Colony,5235
+King's Row,5278
+Necropolis,5285
+Black Forest,5292
+Ecopoint: Antarctica,5293
+Lijiang Garden,5297
+Lijiang Night Market,5298
+Nepal Sanctum,5303
+Lijiang Control Center,5306
+Castillo,5308
+Nepal Village,5334
+Nepal Shrine,5336
+Ilios Well,5338
+Ilios Lighthouse,5341
+Ilios Ruins,5342
+Lijiang Control Center,5348
+Lijiang Garden,5349
+Lijiang Night Market,5350
+Oasis City Center,5354
+Oasis Gardens,5356
+Oasis University,5357
+Numbani,5361
+Junkertown,5366
+Blizzard World,5374
+Sydney Harbour Arena,5427
+Rialto,5439
+Ayutthaya,5441
+ChÃ¢teau Guillard,5444
+Busan,5506
+Eichenwalde,5524
+Black Forest,5527
+Nepal Village (Winter),5533
+Junkertown,5537
+ChÃ¢teau Guillard,5590
+Black Forest,5631
+Rialto,5649
+Petra,5680
+Paris,5681
+Rialto,5726
+Busan Stadium,5834
+Havana,6116
+ChÃ¢teau Guillard,6138
+Blizzard World,6139
+Busan Sanctuary,6170
+Busan Downtown,6182
+Paris,6288
+Havana,6302
+Havana,6389
+Eichenwalde,6564
+Black Forest,6657

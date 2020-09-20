@@ -1,0 +1,32 @@
+hero,hero_guid
+Reaper,2818
+Tracer,2819
+Mercy,2820
+Hanzo,2821
+Torbjorn,2822
+Reinhardt,2823
+Pharah,2824
+Winston,2825
+Widowmaker,2826
+Bastion,2837
+Symmetra,2838
+Zenyatta,2848
+Genji,2857
+Roadhog,2880
+McCree,2882
+Junkrat,2917
+Zarya,2920
+Soldier: 76,2926
+Lucio,2937
+D.Va,2938
+Mei,3037
+Sombra,3118
+Doomfist,3119
+Ana,3131
+Orisa,3134
+Brigitte,3221
+Moira,3234
+Wrecking Ball,3274
+Ashe,3328
+Baptiste,3361
+Sigma,3387
