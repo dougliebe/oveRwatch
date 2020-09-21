@@ -289,7 +289,7 @@ get_KillEvents <- function(path) {
                   instance_src = jnumber(instance_id, src),
                   instance_seq = jnumber(instance_id, seq)
                 ) %>%
-                as.tibble() %>%
+                as_tibble() %>%
                 select(-document.id))
 }
 
