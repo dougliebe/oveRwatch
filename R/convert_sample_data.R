@@ -260,7 +260,7 @@ player_level_vars %>%
   # head(12) %>% data.frame
 
 ### Create Teamfight-level data to blend with kill-level data
-tf_level_vars <- add_impact_added %>%
+tf_level_vars <- player_level_vars %>%
   add_count(game_id, tf_id_unique, player_id, team_id,hero) %>%
   group_by(game_id, tf_id_unique, player_id, team_id) %>%
   summarise(won_tf = mean(player_team_won_teamfight),
@@ -269,19 +269,16 @@ tf_level_vars <- add_impact_added %>%
             player_first_death = sum(got_first_death),
             player_kills_in_tf = sum(got_kill),
             player_deaths_in_tf = sum(got_dead),
-            player_death_impact = sum((got_dead == 1)*impact),
-            player_kill_impact = sum((impact>=0)*impact),
             player_high_impact_deaths = sum((abs(player_situation_pre_kill) <= 1)*got_dead),
             player_high_impact_deaths = sum((abs(player_situation_pre_kill) <= 1)*got_kill),
             hero = hero[n == max(n)][1],
             max_frame = max(frame),
-            min_frame = min(frame),
-            impact = sum(impact)) %>%
+            min_frame = min(frame)) %>%
   group_by(game_id, tf_id_unique) %>%
   mutate(length_tf = max(max_frame)-min(min_frame)) %>%
   select(-min_frame, -max_frame) 
 
 tf_level_vars %>%
-  write_csv("D:/Downloads/tf_days1_3.csv")
+  write_csv("D:/Downloads/teamfights_player_level.csv")
 
 
