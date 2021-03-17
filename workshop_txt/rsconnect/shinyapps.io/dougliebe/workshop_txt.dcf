@@ -1,0 +1,13 @@
+name: workshop_txt
+title: workshop_txt
+username:
+account: dougliebe
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3584133
+bundleId: 4250154
+url: https://dougliebe.shinyapps.io/workshop_txt/
+when: 1613866480.71575
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: helper_funcs.R

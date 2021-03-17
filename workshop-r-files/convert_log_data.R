@@ -18,7 +18,7 @@ for( file in 1:length(filenames)) {
   #   select(-hr, -min,-s)
   game_id = paste0(unlist(str_extract_all(filenames[file], "\\d")), collapse = "")
   teams <-
-    str_match_all(filenames[file], "-(.*)-vs-(.*)/")
+    str_match_all(filenames[file], "-(.*)-(.*)/")
   date <- str_extract(filenames[file], "(20\\d\\d)-(\\d\\d)-(\\d\\d)") %>%
     lubridate::as_date()
   team_1 <- teams[[1]][1,2]
@@ -29,7 +29,7 @@ for( file in 1:length(filenames)) {
   log_ <- read_delim(filenames[file],
                      delim = "\n",
                      col_names = F,
-                     locale = locale(encoding = "ascii")
+                     locale = locale(encoding = "utf-8")
                      ) %>%
     separate(X1, into=c("time", 'event', 'time_s','log'), sep = ",", extra = "merge", fill = 'right') %>%
     mutate(time = hms::as_hms(str_remove(time, "\\[")),
@@ -79,10 +79,10 @@ print(paste0("unpacked ", length(filenames), " files"))
 
 all_times <-
   data %>%
-  filter(event == 'damage') %>%
+  filter(event == 'kill') %>%
   mutate(time = as.numeric(time)) %>%
   group_by(game_id) %>%
-  expand(game_id, time = min(time):max(time)+15)
+  expand(game_id, time = (min(time)-15):(max(time)+15))
 
 ## define threshold dmg
 # thresh = 0
@@ -171,20 +171,24 @@ data %>%
   filter(tf_no > 0) %>%
   group_by(game_id, tf_no) %>%
   mutate(tf_length = n(),
-         kills = sum(kill)) ->
-  teamfight_index
-
-teamfight_index %>%
-  group_by(game_id, tf_no) %>%
+         kills = sum(kill)) %>%
   mutate(tf_no = cur_group_id()) %>%
   mutate(tf_no = ifelse(tf_length < 16 | kills < 3, -10, tf_no))  %>%
-  # filter(game_id == "20210222182652") %>%
-  # left_join(data %>%
-  #             filter(event == 'kill') %>%
-  #             mutate(time = as.numeric(time),
-  #                    kill=TRUE),
-  #           by = c("game_id", 'time'))
-  ggplot() +
-  geom_line(aes(time, tf_no)) +
-  geom_col(aes(time, kill*tf_no), color = 'red', width = 0)+
-  facet_wrap(~game_id)
+  select(game_id, time, tf_no, kill, tf_length, kills) %>%
+  filter(tf_no > 0) ->
+  teamfight_index
+# 
+# teamfight_index %>%
+#   group_by(game_id, tf_no) %>%
+#   mutate(tf_no = cur_group_id()) %>%
+#   mutate(tf_no = ifelse(tf_length < 16 | kills < 3, -10, tf_no))  %>%
+#   # filter(game_id == "20210222182652") %>%
+#   # left_join(data %>%
+#   #             filter(event == 'kill') %>%
+#   #             mutate(time = as.numeric(time),
+#   #                    kill=TRUE),
+#   #           by = c("game_id", 'time'))
+#   ggplot() +
+#   geom_line(aes(time, tf_no)) +
+#   geom_col(aes(time, kill*tf_no), color = 'red', width = 0)+
+#   facet_wrap(~game_id)

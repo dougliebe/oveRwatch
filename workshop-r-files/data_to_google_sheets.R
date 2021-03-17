@@ -5,21 +5,38 @@ library(odbc)
 library(DBI)
 library(tidyverse)
 library(dbplyr)
+library(googlesheets4)
+# 
+# con <- DBI::dbConnect(drv = RMySQL::MySQL(),
+#                       dbname = "overwatch",
+#                       username    = 'admin',
+#                       password    = "guerrillas",
+#                       host = "database-1.cyhyxhbkkfox.us-east-2.rds.amazonaws.com",
+#                       port = 3306)
 
-con <- DBI::dbConnect(drv = RMySQL::MySQL(),
-                      dbname = "overwatch",
-                      username    = 'admin',
-                      password    = "guerrillas",
-                      host = "database-1.cyhyxhbkkfox.us-east-2.rds.amazonaws.com",
-                      port = 3306)
+# aliases_q <- tbl(con, "ALIASES")
+aliases_q <- read_sheet("1WuctfnFjLekCh3SX4kpv9TS9WD07hsVgVEI98ywMaok",sheet = 'aliases',col_types = 'cccc') %>%
+  mutate(player_alias = tolower(player_alias),
+         player_name = tolower(player_name))
 
-aliases_q <- tbl(con, "ALIASES")
+
 # add to game info
 data %>% filter(event == "match_start") %>%
   separate(log, into = c('map', 'mode'),sep ="," ,extra = 'drop') %>%
   select(game_id, map, mode) %>%
-  right_join(game_info) ->
+  right_join(game_info) %>%
+  arrange(game_id) ->
   GAME
+
+# edit team games for any games that switched sides
+team_game %>%
+  group_by(game_id) %>%
+  mutate(team_name = case_when(
+    game_id == "030820210308223612" & team_num == 1 ~ lead(team_name),
+    game_id == "030820210308223612" ~ lag(team_name),
+    TRUE ~ team_name
+  )) ->
+  team_game
 
 # data %>% filter(event == "match_end") %>%
 #   separate(log, into = c('round', 'team_1_score', 'team_2_score'),
@@ -78,10 +95,11 @@ data %>%
   mutate(total_score = sum(score),
          opponent = ifelse(1:n() == 1, lead(team_name), lag(team_name)),
          result = case_when(
-           score > sum(score)- score ~ 1,
-           score == sum(score) - score ~ 0.5,
-           TRUE ~ 0
-         )) %>%
+           score > (sum(score)- score) ~ 1,
+           score == (sum(score) - score) ~ NA_real_,
+           score < (sum(score)- score) ~ 0
+         ),
+         ) %>%
   filter(total_score > 0, team_name == "gladiators") %>%
   select(-total_score) ->
   game_results
@@ -92,7 +110,7 @@ GAME %>%
   mutate(patch = "",
          region = "",
          week = as.numeric(ceiling(difftime(date, "2021-02-14", units = 'weeks')))) %>%
-  select(game_id, date, week, map, type = mode,team_name,  result, opponent, patch, region) ->
+  select(game_id, date, week, map, type = mode, result, opponent,team_name, patch, region) ->
   game_result_combined
 
 ## For control games only, add scores by point
@@ -149,6 +167,7 @@ game_result_combined %>%
   replace_na(list(objective_index = 0)) %>%
   pivot_wider(names_from = c(objective_index),
               values_from = score,
+              values_fn = sum,
               names_glue = "point_{objective_index}") ->
   sams_output
 
@@ -202,8 +221,19 @@ data %>%
          player_id = tolower(player_id)) %>%
   group_by(game_id, player_team, player_id) %>%
   summarise(hero_time_played = max(hero_time_played)) %>%
-  filter(hero_time_played > 50) %>%
-  left_join(aliases_q %>% collect(), by = c('player_id' = 'player_name')) %>%
+  filter(hero_time_played > 50) ->
+  player_hero_time_map
+
+## add new names to alias table
+player_hero_time_map %>%
+  anti_join(aliases_q, by = c('player_id'='player_name')) %>%
+  ungroup() %>%
+  select(player_id) %>%
+  distinct() %>%
+  sheet_append(ss = "1WuctfnFjLekCh3SX4kpv9TS9WD07hsVgVEI98ywMaok",sheet = 'aliases')
+
+player_hero_time_map %>%
+  left_join(aliases_q, by = c('player_id' = 'player_name')) %>%
   mutate(player_name = coalesce(player_alias, player_id)) %>%
   select(game_id, team_in_game_name = player_team, player_name) %>%
   left_join(team_game) %>%
@@ -228,8 +258,8 @@ sams_output %>%
   left_join(team_comps) %>%
   sheet_append(ss = "1WuctfnFjLekCh3SX4kpv9TS9WD07hsVgVEI98ywMaok",
               sheet = "GameScores")
-googlesheets4::sheet_append(ss = "1WuctfnFjLekCh3SX4kpv9TS9WD07hsVgVEI98ywMaok",
-                            sheet = "teamscores")
+# googlesheets4::sheet_append(ss = "1WuctfnFjLekCh3SX4kpv9TS9WD07hsVgVEI98ywMaok",
+#                             sheet = "teamscores")
 
 
 
@@ -303,6 +333,8 @@ game_output %>%
   
 
 ## teamfight stats by round
+
+koth_maps <- read_csv(here::here("koth_maps.csv"))
 
 ## need round times first
 data %>%
@@ -431,20 +463,22 @@ teamfight_index %>%
   mutate(extra_deaths = sum(extra_kills)-extra_kills) %>%
   left_join(team_game %>% select(-team_num), by = c("game_id", 'team_in_game_name')) %>%
   left_join(team_round_comps) %>%
-  mutate(attacking = team_in_game_name == attacking_team) %>%
+  mutate(attacking = team_in_game_name == attacking_team,
+         objective_index = as.numeric(objective_index)) %>%
   select(-attacking_team, -team_in_game_name) %>%
-  left_join(GAME) ->
+  left_join(GAME) %>%
+  left_join(koth_maps, by = c('map', 'objective_index')) ->
   tf_output
 
 library(googlesheets4)
 
-output %>%
-  anti_join(
-    read_sheet(ss = "15EZ6F5GGcPJrHITTWoiyCCSn67064wJDDPTsO3UhvX4",
-               sheet = "teamscores"),
-    by = 'game_id'
-  ) ->
-  new_output
+# output %>%
+#   anti_join(
+#     read_sheet(ss = "15EZ6F5GGcPJrHITTWoiyCCSn67064wJDDPTsO3UhvX4",
+#                sheet = "teamscores"),
+#     by = 'game_id'
+#   ) ->
+#   new_output
 
 tf_output %>%
   anti_join(read_sheet(ss = "15EZ6F5GGcPJrHITTWoiyCCSn67064wJDDPTsO3UhvX4",
@@ -452,16 +486,19 @@ tf_output %>%
    by = c('game_id', 'round_no')) ->
   new_tf_output
 
-output %>%
-  googlesheets4::sheet_append(ss = "15EZ6F5GGcPJrHITTWoiyCCSn67064wJDDPTsO3UhvX4",
-              sheet = "teamscores")
+# output %>%
+#   googlesheets4::sheet_append(ss = "15EZ6F5GGcPJrHITTWoiyCCSn67064wJDDPTsO3UhvX4",
+#               sheet = "teamscores")
 new_tf_output %>%
   googlesheets4::sheet_append(ss = "15EZ6F5GGcPJrHITTWoiyCCSn67064wJDDPTsO3UhvX4",
                               sheet = "teamfightscores")
 
-tf_output %>%
-  write_sheet(ss = "15EZ6F5GGcPJrHITTWoiyCCSn67064wJDDPTsO3UhvX4",
-              sheet = "teamfightscores")
+# tf_output %>%
+#   write_sheet(ss = "15EZ6F5GGcPJrHITTWoiyCCSn67064wJDDPTsO3UhvX4",
+#               sheet = "teamfightscores")
+# 
+
+### read aliases and change names in gamescore table
 
 
 
