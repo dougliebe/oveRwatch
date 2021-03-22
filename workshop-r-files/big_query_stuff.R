@@ -1,3 +1,5 @@
+
+source(here::here('workshop-r-files',"convert_log_data.R"))
 library(odbc)
 library(DBI)
 library(tidyverse)
@@ -19,11 +21,17 @@ bq_dataset_tables(con)
 
 bq_table_upload(STATS)
 
+bq_table_download(x = bq_table("civil-ripple-305517",'overwatch','STATS')) %>%
+  pull(game_id) %>%
+  unique(.) ->
+  games_already_in
+
 STATS %>%
-  # as.list() %>%
-  bq_table_create(x = bq_table("civil-ripple-305517",'overwatch','STATS'))
-STATS %>%
-  filter(game_id == "031920210319115100") %>%
+  filter(!game_id %in% games_already_in) ->
+  filtered_STATS
+
+filtered_STATS %>%
+  # filter(game_id == "031920210319115100") %>%
   # as.list() %>%
   bq_table_upload(x = bq_table("civil-ripple-305517",'overwatch','STATS'),
                   create_disposition='CREATE_IF_NEEDED', write_disposition='WRITE_APPEND')
