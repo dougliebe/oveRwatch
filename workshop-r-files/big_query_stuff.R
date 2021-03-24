@@ -36,7 +36,6 @@ filtered_STATS %>%
   bq_table_upload(x = bq_table("civil-ripple-305517",'overwatch','STATS'),
                   create_disposition='CREATE_IF_NEEDED', write_disposition='WRITE_APPEND')
 
-bq_tab
 
 data %>%
   filter(event == "player_stat") %>%
