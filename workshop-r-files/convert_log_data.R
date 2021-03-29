@@ -178,17 +178,17 @@ data %>%
   filter(tf_no > 0) ->
   teamfight_index
 # 
-# teamfight_index %>%
-#   group_by(game_id, tf_no) %>%
-#   mutate(tf_no = cur_group_id()) %>%
-#   mutate(tf_no = ifelse(tf_length < 16 | kills < 3, -10, tf_no))  %>%
-#   # filter(game_id == "20210222182652") %>%
-#   # left_join(data %>%
-#   #             filter(event == 'kill') %>%
-#   #             mutate(time = as.numeric(time),
-#   #                    kill=TRUE),
-#   #           by = c("game_id", 'time'))
-#   ggplot() +
-#   geom_line(aes(time, tf_no)) +
-#   geom_col(aes(time, kill*tf_no), color = 'red', width = 0)+
-#   facet_wrap(~game_id)
+teamfight_index %>%
+  group_by(game_id, tf_no) %>%
+  mutate(tf_no = cur_group_id()) %>%
+  mutate(tf_no = ifelse(tf_length < 16 | kills < 3, -10, tf_no))  %>%
+  # filter(game_id == "20210222182652") %>%
+  # left_join(data %>%
+  #             filter(event == 'kill') %>%
+  #             mutate(time = as.numeric(time),
+  #                    kill=TRUE),
+  #           by = c("game_id", 'time'))
+  ggplot() +
+  geom_line(aes(time, tf_no)) +
+  geom_col(aes(time, kill*tf_no), color = 'red', width = 0)+
+  facet_wrap(~game_id)

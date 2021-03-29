@@ -38,7 +38,7 @@ pbp_full %>%
   mutate(alive = (cummax(lag(time_back, default = 0)) < time_back)*1) %>%
   select(-time_back) %>%
   tidyr::pivot_wider(
-    id_cols = c(game_id, kill_id, time_s, attacker_team),
+    id_cols = c(game_id, kill_id, time_s,time, attacker_team),
     names_from = c(player_id, type),
     names_glue = "{player_id}_{type}",
     values_from = alive,
@@ -99,7 +99,7 @@ pbp_data_wide %>%
 
 
 KILLS %>%
-  select(game_id, time_s, kill_id) %>%
+  select(game_id,time, time_s, kill_id) %>%
   left_join(state_by_events, c('game_id', 'kill_id')) ->
   state_by_time
 
