@@ -1,0 +1,429 @@
+document.id,event_type,time_elapsed,map_name,map_mode,team_1_name,team_2_name,round_number,team_1_score,team_2_score,attacking_team,defending_team,player_team,player_name,from_hero,to_hero,attacker_team,attacker_name,attacker_hero,victim_team,victim_name,victim_hero,event_ability,event_damage,was_critical,was_environmental,was_self_damage,player_hero,objective_index,capturing_team
+1,match_start_event,0.16,垃圾鎮,護送,隊伍1,隊伍2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2,round_start_event,0.16,NA,NA,NA,NA,1,0,0,隊伍2,隊伍1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+3,hero_swap_event,7.30,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,0,半藏,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+4,hero_swap_event,9.02,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Adam,0,席格馬,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+5,hero_swap_event,9.81,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,0,禪亞塔,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+6,hero_swap_event,10.96,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,0,席格馬,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+7,hero_swap_event,11.53,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,0,禪亞塔,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+8,hero_swap_event,11.82,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,0,火爆鋼球,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+9,hero_swap_event,12.24,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,guriyo,0,奪命女,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+10,hero_swap_event,12.49,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,半藏,托比昂,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+11,hero_swap_event,15.57,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,0,攔路豬,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+12,hero_swap_event,20.01,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,0,慈悲,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+13,hero_swap_event,23.45,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Nyang,0,奪命女,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+14,hero_swap_event,27.17,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,托比昂,半藏,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+15,hero_swap_event,29.07,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,0,慈悲,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+16,hero_swap_event,36.46,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,火爆鋼球,歐瑞莎,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+17,hero_swap_event,46.72,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,攔路豬,火爆鋼球,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+18,hero_swap_event,49.13,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,0,半藏,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+19,hero_swap_event,60.43,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,半藏,閃光,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+20,setup_complete_event,99.57,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+21,kill_event,105.55,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Nyang,奪命女,隊伍2,CQB,慈悲,Primary Fire,200,True,0,False,NA,NA,NA
+22,kill_event,157.18,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Adam,席格馬,Primary Fire,5.15,0,0,False,NA,NA,NA
+23,offensive_assist_event,157.42,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+24,defensive_assist_event,157.42,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+25,defensive_assist_event,157.50,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+26,kill_event,160.18,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,guriyo,奪命女,隊伍1,Nyang,奪命女,Primary Fire,114.99,0,0,False,NA,NA,NA
+27,kill_event,161.89,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,禪亞塔,隊伍2,guriyo,奪命女,Primary Fire,50.20,True,0,False,NA,NA,NA
+28,offensive_assist_event,162.18,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+29,defensive_assist_event,162.18,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+30,kill_event,166.48,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,歐瑞莎,隊伍2,ManGoLongJai,禪亞塔,Primary Fire,6,True,0,False,NA,NA,NA
+31,defensive_assist_event,166.90,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+32,hero_swap_event,167.18,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Adam,席格馬,火爆鋼球,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+33,kill_event,170.16,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍1,Terry,禪亞塔,Primary Fire,9.87,True,0,False,NA,NA,NA
+34,defensive_assist_event,170.22,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+35,kill_event,176.41,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Adam,火爆鋼球,隊伍2,CQB,慈悲,Crouch,50.36,0,0,False,NA,NA,NA
+36,kill_event,176.53,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Vulture,半藏,Primary Fire,2.65,0,0,False,NA,NA,NA
+37,offensive_assist_event,176.74,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,歐瑞莎,NA,NA
+38,defensive_assist_event,176.82,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+39,ultimate_charged_event,181.76,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+40,kill_event,181.90,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Bertlog,慈悲,Secondary Fire,3.20,0,0,False,NA,NA,NA
+41,defensive_assist_event,182.38,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+42,ultimate_used_event,183.81,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+43,kill_event,184.90,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Adam,火爆鋼球,隊伍2,EmolGa,席格馬,Primary Fire,0.31,0,0,False,NA,NA,NA
+44,defensive_assist_event,185.28,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+45,kill_event,185.34,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Nyang,奪命女,隊伍2,November,閃光,Primary Fire,30,0,0,False,NA,NA,NA
+46,hero_swap_event,186.53,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,半藏,閃光,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+47,kill_event,187.58,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,禪亞塔,隊伍1,cuFFa,歐瑞莎,Primary Fire,5.18,0,0,False,NA,NA,NA
+48,offensive_assist_event,187.98,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+49,defensive_assist_event,187.98,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+50,ultimate_charged_event,191.09,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,火爆鋼球,NA,NA
+51,kill_event,192.62,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Adam,火爆鋼球,Primary Fire,5.42,0,0,False,NA,NA,NA
+52,offensive_assist_event,192.72,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+53,ultimate_charged_event,195.57,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+54,ultimate_used_event,211.38,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+55,ultimate_charged_event,213.29,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+56,ultimate_charged_event,215.50,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,歐瑞莎,NA,NA
+57,kill_event,215.55,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Nyang,奪命女,隊伍2,guriyo,奪命女,Primary Fire,175,True,0,False,NA,NA,NA
+58,defensive_assist_event,215.77,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+59,ultimate_used_event,216.77,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,歐瑞莎,NA,NA
+60,kill_event,218.14,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Nyang,奪命女,Melee,18.96,0,0,False,NA,NA,NA
+61,ultimate_used_event,218.40,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+62,ultimate_used_event,219.02,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,火爆鋼球,NA,NA
+63,offensive_assist_event,219.58,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+64,defensive_assist_event,219.58,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+65,kill_event,219.58,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,禪亞塔,隊伍2,ManGoLongJai,禪亞塔,Secondary Fire,56,0,0,False,NA,NA,NA
+66,offensive_assist_event,220.01,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,歐瑞莎,NA,NA
+67,kill_event,222.08,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,席格馬,隊伍1,Terry,禪亞塔,Ultimate,20,0,0,False,NA,NA,NA
+68,defensive_assist_event,222.29,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+69,offensive_assist_event,222.41,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+70,kill_event,222.65,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,席格馬,隊伍1,Adam,火爆鋼球,Primary Fire,37.61,0,0,False,NA,NA,NA
+71,defensive_assist_event,222.77,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+72,offensive_assist_event,222.82,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+73,defensive_assist_event,222.82,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+74,offensive_assist_event,222.88,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+75,ultimate_charged_event,227.34,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+76,ultimate_charged_event,230.05,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+77,kill_event,232.00,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍1,Bertlog,慈悲,Primary Fire,3.93,0,0,False,NA,NA,NA
+78,defensive_assist_event,232.19,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+79,kill_event,233.25,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,席格馬,隊伍1,cuFFa,歐瑞莎,Primary Fire,53.30,0,0,False,NA,NA,NA
+80,defensive_assist_event,233.60,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+81,offensive_assist_event,233.63,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+82,defensive_assist_event,233.63,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+83,kill_event,234.41,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Vulture,閃光,Ultimate,89,0,0,False,NA,NA,NA
+84,defensive_assist_event,234.53,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+85,offensive_assist_event,234.56,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+86,defensive_assist_event,234.56,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+87,objective_captured_event,236.91,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,隊伍2
+88,hero_swap_event,243.25,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,歐瑞莎,席格馬,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+89,ultimate_charged_event,249.57,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Nyang,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,奪命女,NA,NA
+90,ultimate_charged_event,255.57,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+91,ultimate_used_event,260.85,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Nyang,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,奪命女,NA,NA
+92,ultimate_used_event,272.43,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+93,ultimate_charged_event,273.20,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Adam,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,火爆鋼球,NA,NA
+94,ultimate_used_event,273.79,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Adam,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,火爆鋼球,NA,NA
+95,ultimate_charged_event,273.95,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,guriyo,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,奪命女,NA,NA
+96,ultimate_charged_event,275.54,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+97,ultimate_used_event,275.95,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,guriyo,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,奪命女,NA,NA
+98,ultimate_charged_event,278.33,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+99,ultimate_used_event,282.42,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+100,kill_event,283.57,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍1,cuFFa,席格馬,Ultimate,324.03,0,0,False,NA,NA,NA
+101,ultimate_used_event,287.47,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+102,ultimate_used_event,288.33,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+103,ultimate_used_event,288.80,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+104,kill_event,298.45,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Nyang,奪命女,Crouch,59.64,0,0,False,NA,NA,NA
+105,defensive_assist_event,298.49,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+106,defensive_assist_event,298.88,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+107,kill_event,300.67,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,禪亞塔,隊伍1,Adam,火爆鋼球,Primary Fire,0.56,0,0,False,NA,NA,NA
+108,offensive_assist_event,300.80,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+109,defensive_assist_event,300.80,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+110,offensive_assist_event,300.82,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+111,defensive_assist_event,300.82,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+112,ultimate_charged_event,301.79,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,火爆鋼球,NA,NA
+113,kill_event,302.43,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Terry,禪亞塔,Melee,26.72,0,0,False,NA,NA,NA
+114,kill_event,306.89,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,guriyo,奪命女,隊伍1,Bertlog,慈悲,Primary Fire,2.09,0,0,False,NA,NA,NA
+115,offensive_assist_event,306.94,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+116,defensive_assist_event,306.94,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+117,defensive_assist_event,306.96,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+118,kill_event,308.75,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,禪亞塔,隊伍1,Vulture,閃光,Primary Fire,86.40,True,0,False,NA,NA,NA
+119,offensive_assist_event,308.83,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+120,defensive_assist_event,308.85,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+121,hero_swap_event,310.67,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Adam,火爆鋼球,攔路豬,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+122,ultimate_charged_event,314.37,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+123,hero_swap_event,316.43,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,席格馬,歐瑞莎,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+124,hero_swap_event,316.91,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Adam,攔路豬,席格馬,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+125,objective_captured_event,322.42,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,隊伍2
+126,ultimate_used_event,341.57,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+127,ultimate_charged_event,345.68,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+128,ultimate_used_event,345.93,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+129,kill_event,353.05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,guriyo,奪命女,隊伍1,Vulture,閃光,Primary Fire,150,True,0,False,NA,NA,NA
+130,defensive_assist_event,353.50,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+131,ultimate_used_event,353.97,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,火爆鋼球,NA,NA
+132,kill_event,356.51,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Nyang,奪命女,隊伍2,guriyo,奪命女,Primary Fire,138.92,True,0,False,NA,NA,NA
+133,defensive_assist_event,356.73,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+134,ultimate_charged_event,357.12,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+135,kill_event,357.34,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,席格馬,隊伍1,cuFFa,歐瑞莎,Primary Fire,49,0,0,False,NA,NA,NA
+136,offensive_assist_event,357.71,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+137,defensive_assist_event,357.71,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+138,offensive_assist_event,357.77,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+139,kill_event,359.21,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍1,Adam,席格馬,Primary Fire,12.18,0,0,False,NA,NA,NA
+140,offensive_assist_event,359.58,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+141,defensive_assist_event,364.78,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+142,kill_event,364.78,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,席格馬,隊伍1,Nyang,奪命女,Primary Fire,20.52,0,0,False,NA,NA,NA
+143,defensive_assist_event,365.21,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+144,ultimate_used_event,387.57,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+145,ultimate_charged_event,392.72,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+146,kill_event,392.85,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,禪亞塔,隊伍1,Bertlog,慈悲,Secondary Fire,18.80,0,0,False,NA,NA,NA
+147,offensive_assist_event,393.02,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+148,offensive_assist_event,393.04,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+149,defensive_assist_event,393.04,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+150,kill_event,393.57,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍1,Vulture,閃光,Primary Fire,10.35,0,0,False,NA,NA,NA
+151,defensive_assist_event,393.93,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+152,kill_event,394.42,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Nyang,奪命女,Secondary Fire,40.29,0,0,False,NA,NA,NA
+153,kill_event,398.29,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Terry,禪亞塔,Melee,28.36,0,0,False,NA,NA,NA
+154,offensive_assist_event,398.65,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+155,ultimate_charged_event,398.99,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+156,ultimate_charged_event,400.61,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+157,kill_event,400.77,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍1,cuFFa,歐瑞莎,Primary Fire,6.59,0,0,False,NA,NA,NA
+158,hero_swap_event,402.85,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,慈悲,巴帝斯特,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+159,hero_swap_event,405.36,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,巴帝斯特,路西歐,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+160,hero_swap_event,406.22,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Nyang,奪命女,毀滅拳王,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+161,kill_event,407.30,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Adam,席格馬,Primary Fire,3.00,0,0,False,NA,NA,NA
+162,defensive_assist_event,407.55,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+163,defensive_assist_event,407.60,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+164,hero_swap_event,410.77,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,歐瑞莎,火爆鋼球,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+165,ultimate_used_event,411.93,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+166,hero_swap_event,413.42,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,禪亞塔,莫伊拉,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+167,ultimate_used_event,414.43,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+168,kill_event,416.03,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍2,November,閃光,Ultimate,150,0,0,True,NA,NA,NA
+169,kill_event,416.58,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,席格馬,隊伍1,Nyang,毀滅拳王,Primary Fire,9.26,0,0,False,NA,NA,NA
+170,offensive_assist_event,416.96,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+171,defensive_assist_event,416.96,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+172,defensive_assist_event,417.01,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+173,ultimate_used_event,419.73,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+174,ultimate_charged_event,424.59,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+175,ultimate_used_event,425.55,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+176,kill_event,427.31,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,guriyo,奪命女,隊伍1,Bertlog,路西歐,Primary Fire,53.32,0,0,False,NA,NA,NA
+177,ultimate_charged_event,427.31,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,guriyo,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,奪命女,NA,NA
+178,defensive_assist_event,427.33,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+179,offensive_assist_event,427.74,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+180,defensive_assist_event,427.74,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+181,kill_event,429.23,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,閃光,隊伍2,guriyo,奪命女,Melee,27.08,0,0,False,NA,NA,NA
+182,defensive_assist_event,429.58,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,莫伊拉,NA,NA
+183,offensive_assist_event,429.60,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,路西歐,NA,NA
+184,kill_event,433.92,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Terry,莫伊拉,Primary Fire,3.30,0,0,False,NA,NA,NA
+185,ultimate_charged_event,435.54,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,火爆鋼球,NA,NA
+186,ultimate_used_event,436.40,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,火爆鋼球,NA,NA
+187,kill_event,436.83,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,禪亞塔,隊伍1,cuFFa,火爆鋼球,Primary Fire,27.19,0,0,False,NA,NA,NA
+188,offensive_assist_event,437.17,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+189,defensive_assist_event,437.17,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+190,defensive_assist_event,437.21,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+191,kill_event,438.93,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍1,Adam,席格馬,Melee,14.67,0,0,False,NA,NA,NA
+192,defensive_assist_event,439.04,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+193,defensive_assist_event,439.09,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+194,kill_event,441.18,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Nyang,毀滅拳王,Ultimate,1.33,0,0,False,NA,NA,NA
+195,offensive_assist_event,441.39,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+196,defensive_assist_event,441.39,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+197,defensive_assist_event,441.44,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+198,round_end_event,442.26,NA,NA,NA,NA,NA,0,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+199,hero_swap_event,442.56,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,guriyo,奪命女,毀滅拳王,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+200,hero_swap_event,453.86,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,莫伊拉,,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+201,hero_swap_event,453.86,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,路西歐,,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+202,hero_swap_event,453.86,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,火爆鋼球,,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+203,hero_swap_event,453.86,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,席格馬,,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+204,hero_swap_event,453.86,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+205,hero_swap_event,453.86,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,禪亞塔,,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+206,hero_swap_event,453.86,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,慈悲,,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+207,hero_swap_event,453.86,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+208,hero_swap_event,453.86,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Nyang,毀滅拳王,,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+209,hero_swap_event,453.86,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Adam,席格馬,,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+210,hero_swap_event,453.87,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,閃光,,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+211,hero_swap_event,453.87,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,guriyo,毀滅拳王,,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+212,round_start_event,453.87,NA,NA,NA,NA,2,0,3,隊伍1,隊伍2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+213,hero_swap_event,459.58,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,,火爆鋼球,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+214,hero_swap_event,460.00,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,,歐瑞莎,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+215,hero_swap_event,460.06,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,,閃光,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+216,hero_swap_event,461.82,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,,禪亞塔,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+217,hero_swap_event,464.00,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,,半藏,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+218,hero_swap_event,466.00,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Nyang,,奪命女,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+219,hero_swap_event,466.58,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,,席格馬,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+220,hero_swap_event,467.38,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,,慈悲,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+221,hero_swap_event,467.95,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Adam,,席格馬,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+222,hero_swap_event,468.75,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,guriyo,,奪命女,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+223,hero_swap_event,473.70,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,,禪亞塔,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+224,hero_swap_event,475.71,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,,慈悲,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+225,setup_complete_event,488.51,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+226,kill_event,513.50,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Bertlog,慈悲,Primary Fire,4,0,0,False,NA,NA,NA
+227,kill_event,522.13,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Nyang,奪命女,Melee,30.44,0,0,False,NA,NA,NA
+228,offensive_assist_event,522.43,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+229,defensive_assist_event,522.43,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+230,defensive_assist_event,522.48,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+231,kill_event,529.34,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,半藏,隊伍2,guriyo,奪命女,Primary Fire,175,True,0,False,NA,NA,NA
+232,kill_event,530.66,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Vulture,半藏,Crouch,2.76,0,0,False,NA,NA,NA
+233,kill_event,531.97,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Adam,席格馬,Primary Fire,0.29,0,0,False,NA,NA,NA
+234,offensive_assist_event,532.27,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+235,defensive_assist_event,532.27,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+236,offensive_assist_event,532.35,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+237,defensive_assist_event,532.35,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+238,kill_event,536.00,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Bertlog,慈悲,Primary Fire,3,0,0,False,NA,NA,NA
+239,defensive_assist_event,536.06,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+240,kill_event,539.18,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Nyang,奪命女,隊伍2,ManGoLongJai,禪亞塔,Primary Fire,189,True,0,False,NA,NA,NA
+241,offensive_assist_event,539.31,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+242,defensive_assist_event,539.31,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+243,kill_event,539.57,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,禪亞塔,隊伍2,November,閃光,Melee,25.20,0,0,False,NA,NA,NA
+244,defensive_assist_event,539.79,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+245,defensive_assist_event,539.81,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+246,offensive_assist_event,552.03,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,歐瑞莎,NA,NA
+247,kill_event,552.03,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,歐瑞莎,隊伍2,CQB,慈悲,Primary Fire,3.70,0,0,False,NA,NA,NA
+248,offensive_assist_event,552.45,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+249,defensive_assist_event,552.45,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+250,offensive_assist_event,557.17,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+251,defensive_assist_event,557.17,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+252,kill_event,557.17,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,歐瑞莎,隊伍2,EmolGa,席格馬,Primary Fire,5.09,0,0,False,NA,NA,NA
+253,kill_event,559.42,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Terry,禪亞塔,Primary Fire,0.78,0,0,False,NA,NA,NA
+254,defensive_assist_event,559.57,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+255,kill_event,560.22,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,歐瑞莎,隊伍2,DonTrustMeXD,火爆鋼球,Primary Fire,1.10,0,0,False,NA,NA,NA
+256,offensive_assist_event,560.45,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+257,defensive_assist_event,560.45,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+258,offensive_assist_event,560.48,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+259,ultimate_charged_event,582.21,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+260,ultimate_used_event,582.82,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+261,ultimate_charged_event,584.51,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,歐瑞莎,NA,NA
+262,kill_event,585.71,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍1,Terry,禪亞塔,Primary Fire,1.52,0,0,False,NA,NA,NA
+263,offensive_assist_event,585.89,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+264,defensive_assist_event,585.93,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+265,ultimate_used_event,586.00,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,歐瑞莎,NA,NA
+266,kill_event,587.23,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,半藏,隊伍2,CQB,慈悲,Melee,25,0,0,False,NA,NA,NA
+267,defensive_assist_event,587.25,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+268,defensive_assist_event,587.28,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+269,offensive_assist_event,587.29,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,歐瑞莎,NA,NA
+270,kill_event,587.97,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,席格馬,隊伍1,Nyang,奪命女,Primary Fire,21.84,0,0,False,NA,NA,NA
+271,offensive_assist_event,589.12,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+272,defensive_assist_event,589.12,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+273,kill_event,589.12,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,歐瑞莎,隊伍2,DonTrustMeXD,火爆鋼球,Primary Fire,0.11,0,0,False,NA,NA,NA
+274,offensive_assist_event,589.15,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+275,defensive_assist_event,589.15,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+276,kill_event,589.26,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,半藏,隊伍2,ManGoLongJai,禪亞塔,Primary Fire,47.84,0,0,False,NA,NA,NA
+277,offensive_assist_event,589.63,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+278,defensive_assist_event,589.63,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+279,offensive_assist_event,589.66,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,歐瑞莎,NA,NA
+280,kill_event,592.37,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Adam,席格馬,隊伍2,guriyo,奪命女,Primary Fire,29.50,0,0,False,NA,NA,NA
+281,offensive_assist_event,592.45,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,歐瑞莎,NA,NA
+282,kill_event,598.40,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,半藏,隊伍2,November,閃光,Primary Fire,63.33,0,0,False,NA,NA,NA
+283,defensive_assist_event,598.56,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+284,offensive_assist_event,598.58,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,歐瑞莎,NA,NA
+285,ultimate_charged_event,599.38,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,半藏,NA,NA
+286,ultimate_charged_event,599.50,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+287,kill_event,600.85,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Adam,席格馬,隊伍2,EmolGa,席格馬,Primary Fire,11.52,0,0,False,NA,NA,NA
+288,defensive_assist_event,600.91,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+289,offensive_assist_event,601.28,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Adam,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+290,objective_captured_event,602.61,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,隊伍1
+291,ultimate_charged_event,613.50,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,火爆鋼球,NA,NA
+292,ultimate_charged_event,624.51,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Nyang,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,奪命女,NA,NA
+293,ultimate_charged_event,626.53,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Adam,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+294,kill_event,631.73,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍1,Nyang,奪命女,Primary Fire,1.44,0,0,False,NA,NA,NA
+295,defensive_assist_event,631.95,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+296,ultimate_charged_event,636.78,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+297,kill_event,639.52,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Vulture,半藏,Primary Fire,1,0,0,False,NA,NA,NA
+298,ultimate_charged_event,640.48,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+299,ultimate_charged_event,644.21,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,guriyo,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,奪命女,NA,NA
+300,ultimate_charged_event,649.23,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+301,ultimate_used_event,657.14,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+302,kill_event,657.28,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,禪亞塔,隊伍2,November,閃光,Primary Fire,39.60,0,0,False,NA,NA,NA
+303,defensive_assist_event,657.31,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+304,ultimate_used_event,657.81,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+305,ultimate_used_event,658.41,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+306,kill_event,658.48,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Nyang,奪命女,Primary Fire,5,0,0,False,NA,NA,NA
+307,defensive_assist_event,658.77,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+308,ultimate_used_event,659.10,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,guriyo,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,奪命女,NA,NA
+309,ultimate_used_event,660.90,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,火爆鋼球,NA,NA
+310,ultimate_charged_event,661.38,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+311,kill_event,661.76,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,禪亞塔,隊伍1,cuFFa,歐瑞莎,Primary Fire,38.25,True,0,False,NA,NA,NA
+312,offensive_assist_event,662.03,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+313,offensive_assist_event,662.05,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+314,offensive_assist_event,662.08,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+315,defensive_assist_event,662.08,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+316,ultimate_used_event,665.41,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Nyang,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,奪命女,NA,NA
+317,ultimate_used_event,668.21,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Adam,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+318,kill_event,670.08,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,慈悲,隊伍2,ManGoLongJai,禪亞塔,Primary Fire,37.50,True,0,False,NA,NA,NA
+319,offensive_assist_event,670.48,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+320,ultimate_used_event,672.17,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,半藏,NA,NA
+321,ultimate_used_event,674.54,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+322,kill_event,675.07,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,半藏,隊伍2,guriyo,奪命女,Ultimate,60.39,0,0,False,NA,NA,NA
+323,offensive_assist_event,675.15,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+324,defensive_assist_event,675.15,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+325,kill_event,678.86,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Terry,禪亞塔,Crouch,40,0,0,False,NA,NA,NA
+326,ultimate_charged_event,682.02,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+327,ultimate_used_event,683.47,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+328,kill_event,684.54,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍1,Vulture,半藏,Ultimate,123.60,0,0,False,NA,NA,NA
+329,defensive_assist_event,684.64,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+330,kill_event,687.66,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Bertlog,慈悲,Primary Fire,4.20,0,0,False,NA,NA,NA
+331,defensive_assist_event,687.93,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+332,kill_event,691.05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,席格馬,隊伍1,Nyang,奪命女,Primary Fire,30.32,0,0,False,NA,NA,NA
+333,kill_event,693.05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍1,Adam,席格馬,Melee,12.97,0,0,False,NA,NA,NA
+334,hero_swap_event,694.54,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,半藏,閃光,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+335,kill_event,697.76,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍1,cuFFa,歐瑞莎,Primary Fire,2.46,0,0,False,NA,NA,NA
+336,defensive_assist_event,697.79,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+337,hero_swap_event,701.38,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,慈悲,碧姬,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+338,hero_swap_event,707.76,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,歐瑞莎,火爆鋼球,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+339,kill_event,744.21,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,席格馬,隊伍1,Bertlog,碧姬,Primary Fire,34.43,0,0,False,NA,NA,NA
+340,defensive_assist_event,744.32,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,慈悲,NA,NA
+341,ultimate_used_event,744.61,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+342,ultimate_charged_event,748.43,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+343,ultimate_charged_event,749.01,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,火爆鋼球,NA,NA
+344,kill_event,750.46,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Nyang,奪命女,Melee,19.33,0,0,False,NA,NA,NA
+345,kill_event,750.69,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍1,Adam,席格馬,Primary Fire,0.12,0,0,False,NA,NA,NA
+346,offensive_assist_event,750.85,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+347,defensive_assist_event,750.85,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+348,offensive_assist_event,750.88,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+349,kill_event,752.69,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍1,Terry,禪亞塔,Primary Fire,11,0,0,False,NA,NA,NA
+350,defensive_assist_event,752.73,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+351,kill_event,753.17,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,閃光,隊伍2,CQB,慈悲,Primary Fire,5,True,0,False,NA,NA,NA
+352,kill_event,756.02,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,閃光,隊伍2,guriyo,奪命女,Melee,26,0,0,False,NA,NA,NA
+353,hero_swap_event,763.17,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,慈悲,碧姬,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+354,ultimate_charged_event,770.64,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+355,ultimate_charged_event,775.26,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+356,ultimate_used_event,777.38,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+357,kill_event,778.49,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,閃光,隊伍2,CQB,碧姬,Ultimate,139.66,0,0,False,NA,NA,NA
+358,ultimate_used_event,779.29,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,火爆鋼球,NA,NA
+359,ultimate_used_event,780.06,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+360,kill_event,783.97,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,席格馬,隊伍1,Adam,席格馬,Ultimate,232.80,0,0,False,NA,NA,NA
+361,offensive_assist_event,784.22,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+362,defensive_assist_event,784.22,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+363,offensive_assist_event,784.26,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+364,ultimate_used_event,787.38,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+365,kill_event,788.49,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍1,Terry,禪亞塔,Ultimate,200,0,0,False,NA,NA,NA
+366,offensive_assist_event,788.91,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+367,kill_event,793.07,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,閃光,隊伍2,guriyo,奪命女,Primary Fire,2.20,0,0,False,NA,NA,NA
+368,ultimate_charged_event,795.55,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,火爆鋼球,NA,NA
+369,kill_event,802.41,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍1,Vulture,閃光,Melee,22.30,0,0,False,NA,NA,NA
+370,defensive_assist_event,802.56,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+371,kill_event,803.22,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,禪亞塔,隊伍1,Nyang,奪命女,Secondary Fire,37.25,True,0,False,NA,NA,NA
+372,offensive_assist_event,803.49,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+373,defensive_assist_event,803.49,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+374,ultimate_charged_event,810.11,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,guriyo,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,奪命女,NA,NA
+375,ultimate_charged_event,819.26,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+376,kill_event,828.49,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,guriyo,奪命女,隊伍1,cuFFa,火爆鋼球,Primary Fire,10.08,0,0,False,NA,NA,NA
+377,ultimate_charged_event,843.29,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Nyang,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,奪命女,NA,NA
+378,ultimate_charged_event,845.41,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+379,ultimate_used_event,847.42,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+380,ultimate_used_event,849.33,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Nyang,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,奪命女,NA,NA
+381,ultimate_used_event,850.51,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,guriyo,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,奪命女,NA,NA
+382,ultimate_charged_event,851.22,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+383,ultimate_used_event,856.58,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Terry,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+384,kill_event,857.29,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Nyang,奪命女,Primary Fire,1.24,0,0,False,NA,NA,NA
+385,offensive_assist_event,857.57,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+386,defensive_assist_event,857.57,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+387,ultimate_charged_event,858.56,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Adam,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+388,ultimate_used_event,858.86,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,cuFFa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,火爆鋼球,NA,NA
+389,ultimate_charged_event,859.70,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,火爆鋼球,NA,NA
+390,ultimate_used_event,860.88,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+391,ultimate_used_event,865.15,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,火爆鋼球,NA,NA
+392,kill_event,865.70,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍1,cuFFa,火爆鋼球,Melee,16.80,0,0,False,NA,NA,NA
+393,offensive_assist_event,866.00,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+394,defensive_assist_event,866.00,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+395,defensive_assist_event,866.06,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,碧姬,NA,NA
+396,hero_swap_event,867.29,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Nyang,奪命女,源氏,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+397,ultimate_charged_event,868.46,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+398,ultimate_charged_event,871.36,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,碧姬,NA,NA
+399,ultimate_used_event,872.24,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,碧姬,NA,NA
+400,kill_event,873.23,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,DonTrustMeXD,火爆鋼球,隊伍1,Vulture,閃光,Primary Fire,5,True,0,False,NA,NA,NA
+401,defensive_assist_event,873.58,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,碧姬,NA,NA
+402,ultimate_used_event,877.82,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Adam,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+403,kill_event,878.08,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,閃光,隊伍1,Terry,禪亞塔,Melee,38.34,0,0,False,NA,NA,NA
+404,offensive_assist_event,878.22,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,席格馬,NA,NA
+405,offensive_assist_event,878.24,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+406,kill_event,884.00,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,禪亞塔,隊伍1,Bertlog,碧姬,Primary Fire,43.12,0,0,False,NA,NA,NA
+407,offensive_assist_event,884.34,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+408,defensive_assist_event,884.34,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+409,offensive_assist_event,884.38,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,碧姬,NA,NA
+410,defensive_assist_event,884.38,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,碧姬,NA,NA
+411,kill_event,887.55,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,guriyo,奪命女,隊伍1,Adam,席格馬,Primary Fire,6.22,0,0,False,NA,NA,NA
+412,offensive_assist_event,887.60,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+413,defensive_assist_event,887.60,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+414,defensive_assist_event,887.68,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,碧姬,NA,NA
+415,ultimate_charged_event,889.02,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,November,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+416,kill_event,889.29,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Nyang,源氏,隊伍2,November,閃光,Ability 1,34.64,0,0,False,NA,NA,NA
+417,defensive_assist_event,889.49,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,碧姬,NA,NA
+418,kill_event,892.82,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,EmolGa,席格馬,隊伍1,Nyang,源氏,Primary Fire,15.48,0,0,False,NA,NA,NA
+419,defensive_assist_event,892.85,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,碧姬,NA,NA
+420,offensive_assist_event,893.26,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+421,defensive_assist_event,893.26,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+422,ultimate_used_event,896.45,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Vulture,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,閃光,NA,NA
+423,hero_swap_event,896.99,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍1,Bertlog,碧姬,路西歐,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+424,kill_event,901.97,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,碧姬,隊伍1,cuFFa,火爆鋼球,Ability 1,27.33,0,0,False,NA,NA,NA
+425,defensive_assist_event,902.19,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,ManGoLongJai,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,禪亞塔,NA,NA
+426,offensive_assist_event,902.24,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,碧姬,NA,NA
+427,defensive_assist_event,902.24,NA,NA,NA,NA,NA,NA,NA,NA,NA,隊伍2,CQB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,碧姬,NA,NA
+428,round_end_event,904.67,NA,NA,NA,NA,NA,1,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

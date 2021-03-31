@@ -1,0 +1,15 @@
+kill_team,death_team,kill_hero,death_hero,kill_player,death_player,time_s
+1,2,Mei,Bastion,Mei,Bastion,115
+1,2,Roadhog,Ana,Roadhog,Ana,123
+2,1,Zarya,Mei,Zarya,Mei,127
+1,2,Ana,Zarya,Ana,Zarya,142
+2,1,Bastion,Zenyatta,Bastion,Zenyatta,151
+2,1,Bastion,Ana,Bastion,Ana,152
+2,1,Lúcio,Lúcio,Lúcio,Lúcio,155
+2,1,Lúcio,Roadhog,Lúcio,Roadhog,158
+2,1,Roadhog,Zarya,Roadhog,Zarya,163
+2,1,Bastion,Mei,Bastion,Mei,176
+2,1,Roadhog,Zenyatta,Roadhog,Zenyatta,180
+2,1,Ana,Lúcio,Ana,Lúcio,188
+2,1,Bastion,Roadhog,Bastion,Roadhog,189
+2,1,Roadhog,Ana,Roadhog,Ana,191

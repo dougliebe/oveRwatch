@@ -23,7 +23,7 @@ STATS %>%
   # as.list() %>%
   bq_table_create(x = bq_table("civil-ripple-305517",'overwatch','STATS'))
 STATS %>%
-  filter(game_id == "031920210319115100") %>%
+  # filter(game_id == "031920210319115100") %>%
   # as.list() %>%
   bq_table_upload(x = bq_table("civil-ripple-305517",'overwatch','STATS'),
                   create_disposition='CREATE_IF_NEEDED', write_disposition='WRITE_APPEND')

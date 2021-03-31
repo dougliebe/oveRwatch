@@ -1,5 +1,6 @@
 kills <-
   data %>%
+  group_by(game_id) %>%
   filter(event == "kill") %>%
   mutate(kill_id = 1:n(),
          time = as.numeric(time)) %>%
