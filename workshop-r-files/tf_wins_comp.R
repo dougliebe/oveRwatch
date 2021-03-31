@@ -79,7 +79,7 @@ data %>%
   inner_join(players_filter, by = c('game_id','player_name' = 'player_id', "player_team")) %>%
   arrange(game_id, time_s) %>%
   # filter(player_team == "Team 1", p_num == 4, game_id == "031020210310160547")
-  select(time, game_id, p_num, player_hero, player_team) %>%
+  select(time, game_id, p_num, player_name, player_hero, player_team) %>%
   group_by(time, game_id,player_team, p_num) %>%
   slice(n()) %>%
   # pivot_wider(

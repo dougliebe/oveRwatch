@@ -4,32 +4,23 @@ library(DBI)
 library(tidyverse)
 library(dbplyr)
 
-con <- DBI::dbConnect(drv = RMySQL::MySQL(),
-                      dbname = "overwatch",
-                      username    = 'admin',
-                      password    = "guerrillas",
-                      host = "database-1.cyhyxhbkkfox.us-east-2.rds.amazonaws.com",
-                      port = 3306)
+# which players actually play the round?
+source(here::here('workshop-r-files','get_player_stats.R'))
+head(player_round_max)
+player_round_max %>%
+  select(game_id,player_team, player_id) %>%
+  group_by(game_id, player_team) %>%
+  mutate(p_num = 1:n()) ->
+  players_filter
 
-roster_q <- tbl(con, "STATS") %>%
-  group_by(game_id, player_team, player_id) %>%
-  count() %>%
-  select(-n)
-
-kills_q <- tbl(con, "KILLS")
-
-
-kills_q %>%
-  left_join(roster_q, by = 'game_id') %>%
-  collect() %>%
-  mutate(type=case_when(player_team == attacker_team  ~ "FOR", TRUE ~ "AGAINST")) %>%
-  select(-starts_with("team_")) ->
+KILLS %>%
+  left_join(players_filter, by = 'game_id') %>%
+  mutate(type=case_when(player_team == attacker_team  ~ "FOR", TRUE ~ "AGAINST")) ->
   pbp_full
 
 ## label each interaction with the time since
 ## last engagement for the two participating players
-kills_q %>%
-  collect() %>%
+KILLS %>%
   pivot_longer(c(attacker_name, victim_name),
                names_to = "type",
                values_to = "player") ->
@@ -47,7 +38,7 @@ pbp_full %>%
   mutate(alive = (cummax(lag(time_back, default = 0)) < time_back)*1) %>%
   select(-time_back) %>%
   tidyr::pivot_wider(
-    id_cols = c(game_id, kill_id, time_s, attacker_team),
+    id_cols = c(game_id, kill_id, time_s,time, attacker_team),
     names_from = c(player_id, type),
     names_glue = "{player_id}_{type}",
     values_from = alive,
@@ -74,6 +65,24 @@ pbp_data_wide %>%
   rename(against_alive = value) ->
   against_l
 
+adv_tbl <-
+  tibble(
+    adv = seq(-6, 6),
+    win_prob_added = c(0, #-6
+                       0,
+                       0,
+                       6.2,
+                       15.3-6.2, 
+                       44.1-15.3, # -1 to +0
+                       79.2-50, # 0 to +1
+                       92.1-79.2,
+                       95.4-92.1,
+                       2.1,
+                       0,
+                       0,
+                       0)
+  )
+
 pbp_data_wide %>%
   # left_join(match_info %>% collect() %>% select(match_id, mode, map),
   #           by = "match_id") %>%
@@ -82,22 +91,25 @@ pbp_data_wide %>%
   group_by(game_id) %>%
   mutate(state = as.factor(paste0(for_alive, "v", against_alive)),
          adv = for_alive - against_alive) %>%
-  select(game_id, kill_id, adv, state) ->
+  select(game_id, kill_id, adv, state) %>%
+  left_join(adv_tbl, by = 'adv') ->
   state_by_events
 
-kills_q %>%
-  collect()  %>%
-  select(game_id, time_s, kill_id) %>%
+## need to put kills into tfs by game_id
+
+
+KILLS %>%
+  select(game_id,time, time_s, kill_id) %>%
   left_join(state_by_events, c('game_id', 'kill_id')) ->
   state_by_time
 
-kills_q %>%
-  collect() %>%
-  left_join(state_by_events, by = c('game_id', "kill_id")) %>%
-  filter(state %in% c("6v6","6v5", '5v6')) %>%
-  pivot_longer(c(attacker_name, victim_name)) %>%
-  group_by(name, value, attacker_hero) %>%
-  count() %>%
-  # filter(adv == 0) %>%
-  pivot_wider(id_cols = c(value, attacker_hero), names_from = name, values_from = n) %>%
-  mutate(pm = attacker_name-victim_name) %>% arrange(desc(pm))
+# KILLS %>%
+#   left_join(state_by_events, by = c('game_id', "kill_id")) %>%
+#   # filter(state %in% c("6v6","6v5", '5v6')) %>%
+#   pivot_longer(c(attacker_name, victim_name)) %>%
+#   group_by(name, value, attacker_hero) %>%
+#   summarise(n= n(),
+#             wpa = sum(ifelse(name == "attacker_name", win_prob_added, -win_prob_added))) %>%
+#   # filter(adv == 0) %>%
+#   pivot_wider(id_cols = c(value, attacker_hero), names_from = name, values_from = c(n, wpa)) %>%
+#   mutate(pm = attacker_name-victim_name) %>% arrange(desc(pm))
