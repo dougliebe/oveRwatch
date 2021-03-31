@@ -1,0 +1,33 @@
+Hero
+Ana
+Mei
+D.Va
+Echo
+Moira
+McCree
+Tracer
+Baptiste
+Reinhardt
+Ashe
+Genji
+Hanzo
+Mercy
+Orisa
+Sigma
+Zarya
+Lúcio
+Pharah
+Reaper
+Sombra
+Junkrat
+Roadhog
+Winston
+Brigitte
+Doomfist
+Symmetra
+Zenyatta
+Widowmaker
+"Soldier: 76"
+"Wrecking Ball"
+Bastion
+Torbjörn
