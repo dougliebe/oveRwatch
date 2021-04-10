@@ -1,0 +1,12 @@
+name: player_compare
+title: player_compare
+username:
+account: dougliebe
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3913454
+bundleId: 4435045
+url: https://dougliebe.shinyapps.io/player_compare/
+when: 1617661251.80502
+asMultiple: FALSE
+asStatic: FALSE

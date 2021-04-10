@@ -32,8 +32,16 @@ data %>% filter(event == "match_start") %>%
 team_game %>%
   group_by(game_id) %>%
   mutate(team_name = case_when(
-    game_id == "030820210308223612" & team_num == 1 ~ lead(team_name),
-    game_id == "030820210308223612" ~ lag(team_name),
+    game_id %in% c("030820210308223612",
+                   '040720210407132737',
+                   '040720210407134526',
+                   '040720210407141258',
+                   '040720210407142937') & team_num == 1 ~ lead(team_name),
+    game_id  %in% c("030820210308223612",
+                    '040720210407132737',
+                    '040720210407134526',
+                    '040720210407141258',
+                    '040720210407142937') ~ lag(team_name),
     TRUE ~ team_name
   )) ->
   team_game
@@ -225,6 +233,7 @@ data %>%
   player_hero_time_map
 
 ## add new names to alias table
+googlesheets4::gs4_auth()
 player_hero_time_map %>%
   anti_join(aliases_q, by = c('player_id'='player_name')) %>%
   ungroup() %>%

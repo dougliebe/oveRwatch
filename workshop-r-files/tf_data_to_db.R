@@ -116,36 +116,40 @@ kill_context %>%
 
 tf_kill_context %>%
   group_by(game_id, tf_no, player_team) %>%
-  mutate(
-    game_id = as.character(game_id),
-    # player_hero = recode(player_hero, "Lúcio"="Lucio", "Torbjörn" = "Torbjorn"),
-         player_kill = player_name == attacker_name,
-         player_death = player_name == victim_name,
-         player_event = case_when(player_kill ~ "KILL", player_death ~ "DEATH", TRUE ~ NA_character_),
-         tf_win = (sum(player_team != victim_team)/6)/mean(kills) > 0.5) %>%
+  mutate(game_id = as.character(game_id),
+    player_hero = recode(player_hero, "Lúcio"="Lucio", "Torbjörn" = "Torbjorn"),
+         player_kill = (player_name == attacker_name)*1,
+         player_death = (player_name == victim_name)*1,
+         tf_win = ((sum(player_team != victim_team)/6)/mean(kills) > 0.5)*1) %>% 
   select(game_id, tf_no, kill_id, player_name, player_hero, player_kill, player_death, adv, state, tf_length, tf_win) ->
   tf_stats
 
-tf_stats %>% write_csv('test_tf_stats.csv')  
+# tf_stats %>% write_csv('test_tf_stats.csv')  
+library(odbc)
+library(DBI)
+library(tidyverse)
 
-library(bigrquery)
-billing <- "civil-ripple-305517"
-con <- DBI::dbConnect(
-  # driver
-  bigrquery::bigquery(),
-  # projects are server names in aws
-  project = "civil-ripple-305517",
-  # datasets are databases in aws 
-  dataset = "overwatch",
-  billing = billing
-)
-tf_stats %>%
-  # as.list() %>%
-  bq_table_create(x = bq_table("civil-ripple-305517",'overwatch','TF_STATS'))
+con <- DBI::dbConnect(drv = RMySQL::MySQL(),
+                      dbname = "overwatch",
+                      username    = 'admin',
+                      password    = "guerrillas",
+                      host = "database-1.cyhyxhbkkfox.us-east-2.rds.amazonaws.com",
+                      port = 3306)
 
-tf_stats %>%
-  bq_table_upload(x = bq_table("civil-ripple-305517",'overwatch','TF_STATS'),
-                  create_disposition='CREATE_IF_NEEDED', write_disposition='WRITE_APPEND')
+## check games in db
+tbl(con, "TF_STATS") %>%
+  group_by(game_id) %>%
+  count() %>% pull(game_id) ->
+  games_already_in
+
+# append on new rows
+DBI::dbWriteTable(con,"TF_STATS", tf_stats %>%
+                    filter(!game_id %in% games_already_in) %>%
+                    mutate(player_hero = recode(player_hero, "Lúcio" = "Lucio",
+                                                "Torbjörn" = "Torbjorn")),
+                  overwrite = F, append = T, row.names = F)
+
+
 
 # pivot_wider(id_cols = c(game_id, tf_no, tf_win, player_name, player_hero, tf_length),
   #             names_from = c(state, player_event), values_from = player_event, values_fn = length, values_fill = 0) %>%
