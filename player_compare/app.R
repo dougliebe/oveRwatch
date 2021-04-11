@@ -42,6 +42,7 @@ con <- DBI::dbConnect(drv = RMySQL::MySQL(),
 
 stats_q <- tbl(con, "STATS")
 tf_stats_q <- tbl(con, "TF_STATS")
+team_game_q <- tbl(con, 'TEAM_GAME')
 aliases_q <- read_sheet("1WuctfnFjLekCh3SX4kpv9TS9WD07hsVgVEI98ywMaok",
                         sheet = 'aliases',
                         col_types = 'cccc') %>%
@@ -67,60 +68,108 @@ winpct <- tibble(adv = seq(-6, 6),
 ui <- dashboardPage(
     dashboardHeader(title = "Compare Players"),
     dashboardSidebar(
-        selectInput(
-            inputId = "hero_filter",
-            label = "Choose Hero",
-            choices = heros_list %>%
-                arrange(Hero),
-            selected = "Ana"
-        ),
-        checkboxGroupInput(
-            inputId = "patch_filter",
-            label = "Choose Patches",
-            selected = patch_list,
-            choices = patch_list
-        ),
-        checkboxGroupInput(
-            inputId = "region_filter",
-            label = "Choose Region",
-            choices = region_list,
-            selected = region_list
-        ),
-        selectInput(
-            inputId = "opp_filter",
-            label = "Choose Opponents (optional)",
-            choices = opponent_list,
-            multiple = T
-        ),
-        selectInput(
-            inputId = "map_filter",
-            label = "Choose Maps (optional)",
-            choices = map_list,
-            multiple = T
-        ),
-        sliderInput(
-            inputId = "time_filter",
-            label = "Min. Time Played (m)",
-            min = 0,
-            max = 250,
-            value = 0,
-            step = 10
-        ),
-        actionButton("button", "Run Query")
+        sidebarMenu(id = 'sidebarid',
+            menuItem(
+                "Compare Players",
+                tabName = "compare_players"
+            ),
+            menuItem(
+                "Widgets",
+                tabName = 'map_performance'
+            ),
+            conditionalPanel(
+                'input.sidebarid == "compare_players"',
+                selectInput(
+                inputId = "hero_filter",
+                label = "Choose Hero",
+                choices = heros_list %>%
+                    arrange(Hero),
+                selected = "Ana"
+            ),
+            checkboxGroupInput(
+                inputId = "patch_filter",
+                label = "Choose Patches",
+                selected = patch_list,
+                choices = patch_list
+            ),
+            checkboxGroupInput(
+                inputId = "region_filter",
+                label = "Choose Region",
+                choices = region_list,
+                selected = region_list
+            ),
+            selectInput(
+                inputId = "opp_filter",
+                label = "Choose Opponents (optional)",
+                choices = opponent_list,
+                multiple = T
+            ),
+            selectInput(
+                inputId = "map_filter",
+                label = "Choose Maps (optional)",
+                choices = map_list,
+                multiple = T
+            ),
+            sliderInput(
+                inputId = "time_filter",
+                label = "Min. Time Played (m)",
+                min = 0,
+                max = 250,
+                value = 0,
+                step = 10
+            ),
+            actionButton(inputId = "player_button",label =  "Run Query")),
+            conditionalPanel(
+                'input.sidebarid == "map_performance"',
+                checkboxGroupInput(
+                    inputId = "patch_filter_map",
+                    label = "Choose Patches",
+                    selected = patch_list,
+                    choices = patch_list
+                ),
+                checkboxGroupInput(
+                    inputId = "region_filter_map",
+                    label = "Choose Region",
+                    choices = region_list,
+                    selected = region_list
+                ),
+                selectInput(
+                    inputId = "map_filter_map",
+                    label = "Choose Maps (optional)",
+                    choices = map_list,
+                    multiple = T
+                ),
+                actionButton(inputId = "map_button",label =  "Run Query"))
+        )
     ),
     dashboardBody(
-        box(
-            fluidRow(
-                DTOutput("table")
+        tabItems(
+            tabItem(
+                tabName = "compare_players",
+                h2("Select 'Run Query' to start"),
+                box(
+                    fluidRow(
+                        DTOutput("table")
+                    ),
+                    width = 12
+                )
             ),
-            width = 12
+            tabItem(
+                tabName = "map_performance",
+                h2("Select Map"),
+                box(
+                    fluidRow(
+                        plotOutput("map_graph")
+                    ),
+                    width = 12,height = 800
+                )
+            )
         )
     )
 )
 
-# Define server logic required to draw a histogram
 server <- function(input, output) {
-    table <- eventReactive(eventExpr = input$button, {
+    table <- eventReactive(eventExpr = input$player_button, {
         if(length(input$opp_filter)==0) {
             opp_filter_ <- opponent_list
         } else {opp_filter_ <- input$opp_filter}
@@ -206,10 +255,98 @@ server <- function(input, output) {
         return(list(dt = dt))
     })
     
+    map_graph <- eventReactive(eventExpr = input$map_button, {
+        if(length(input$map_filter_map)==0) {
+            map_filter_ <- map_list
+        } else {map_filter_ <- input$map_filter_map}
+        ## find game ids that match
+        game_ids_filter <- games_q %>%
+            filter(region %in% input$region_filter_map,
+                   patch %in% input$patch_filter_map, 
+                   map %in% map_filter_) %>%
+            pull(game_id)
+        ## Get stats and summarise dmg healing and shields by game
+        stats_q %>%
+            filter(game_id %in% !!game_ids_filter) %>%
+            # filter(game_id == 030220210302153522) %>%
+            collect() %>%
+            left_join(aliases_q, by = c('player_id' = 'player_name')) %>%
+            mutate(player_name = coalesce(player_alias, player_id)) %>%
+            group_by(game_id, player_name, player_team) %>%
+            summarise(
+                dmg_dlt_raw = sum(parse_number(hero_damage_dealt))/sum(hero_time_played)*600,
+                dmg_tkn_raw = sum(parse_number(damage_taken))/sum(hero_time_played)*600,
+                shield_blk_raw = sum(parse_number(damage_blocked))/sum(hero_time_played)*600,
+                shield_dlt_raw = sum(parse_number(barrier_damage_dealt))/sum(hero_time_played)*600,
+                heal_dlt_raw = (sum(parse_number(healing_dealt)) +
+                    sum(parse_number(self_healing)))/sum(hero_time_played)*600,
+                heal_tkn_raw = sum(parse_number(healing_received))/sum(hero_time_played)*600
+            ) %>%
+            group_by(game_id) %>%
+            mutate(
+                dmg_dlt_game = dmg_dlt_raw/sum(dmg_dlt_raw),
+                dmg_tkn_game = dmg_tkn_raw/sum(dmg_tkn_raw),
+                shield_blk_game = shield_blk_raw/sum(shield_blk_raw),
+                shield_dlt_game = shield_dlt_raw/sum(shield_dlt_raw),
+                heal_dlt_game = heal_dlt_raw/sum(heal_dlt_raw),
+                heal_tkn_game = heal_tkn_raw/sum(heal_tkn_raw),
+                
+            ) %>%
+            group_by(game_id, player_team) %>%
+            mutate(
+                dmg_dlt_team = dmg_dlt_raw/sum(dmg_dlt_raw),
+                dmg_tkn_team = dmg_tkn_raw/sum(dmg_tkn_raw),
+                shield_blk_team = shield_blk_raw/sum(shield_blk_raw),
+                shield_dlt_team = shield_dlt_raw/sum(shield_dlt_raw),
+                heal_dlt_team = heal_dlt_raw/sum(heal_dlt_raw),
+                heal_tkn_team = heal_tkn_raw/sum(heal_tkn_raw)
+            ) %>%
+            group_by(game_id) %>%
+            mutate(game_num = cur_group_id()) %>%
+            group_by(player_name) %>%
+            mutate(dmg_dlt_10 = zoo::rollmeanr(dmg_dlt_team, k = 10, fill = NA),
+                   dmg_tkn_10 = zoo::rollmeanr(dmg_tkn_team, k = 10, fill = NA),
+                   shield_blk_10 = zoo::rollmeanr(shield_blk_team, k = 10, fill = NA),
+                   shield_dlt_10 = zoo::rollmeanr(shield_dlt_team, k = 10, fill = NA),
+                   heal_dlt_10 = zoo::rollmeanr(heal_dlt_team, k = 10, fill = NA),
+                   heal_tkn_10 = zoo::rollmeanr(heal_tkn_team, k = 10, fill = NA),
+                   overall_10 = dmg_dlt_raw - dmg_tkn_raw + shield_blk_raw + shield_dlt_raw + heal_dlt_raw
+            ) %>%
+            left_join(team_game_q %>%
+                          filter(game_id %in% !!game_ids_filter) %>%
+                          collect(),
+                      by = c("game_id", 'player_team' = 'team_in_game_name')) %>%
+            ungroup() %>%
+            # filter(team_name == "gladiators") %>%
+            filter(player_name %in% c("kev", 'bird','mirror','shu','space','skewed','muze','moth')) %>%
+            select(-team_num, -player_team) %>%
+            pivot_longer(c(ends_with("_raw"), ends_with("_game"),
+                           ends_with("_team"), ends_with("_10")),
+                         names_to = "stat") ->
+            core_six
+        mg <- 
+            core_six %>%
+            filter(endsWith(stat, "_10")) %>%
+            ggplot(aes(game_num, value, color = player_name))+
+            # geom_point()+
+            geom_line(size = 1)+
+            guides(color = guide_legend(override.aes = list(size=5)))+
+            labs(title = input$map_filter_map)+
+            facet_wrap(~stat, scales = 'free',ncol = 2)+
+            theme_bw()+
+            lims(x = c(10,NA)) +
+            theme(legend.text = element_text(size = 14))
+        return(list(
+            mg = mg
+        ))
+    })
+    
     output$table <- renderDataTable({
        table()$dt
     })
-    
+    output$map_graph <- renderPlot(height = 800,{
+        map_graph()$mg
+    })
 }
 
 # Run the application 
