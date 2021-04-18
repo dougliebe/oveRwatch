@@ -26,9 +26,22 @@ games_q <-  read_sheet("1WuctfnFjLekCh3SX4kpv9TS9WD07hsVgVEI98ywMaok",
 
 ## get eich games only
 games_q %>% 
-  filter(map == "Eichenwalde") %>%
+  filter(map == "Watchpoint: Gibraltar") %>%
   pull(game_id) ->
   games_filter_
+
+games_q %>% 
+  filter(map == "Watchpoint: Gibraltar") %>%
+  mutate(result = as.numeric(result),
+         gn = 1:n()) %>%
+  filter(!is.na(result)) %>%
+  mutate(win_roll = zoo::rollmeanr(result, k = 10, fill = NA)) %>%
+  filter(date > "2021-03-07") %>%
+  ggplot(aes(date, win_roll))+
+  geom_line()+
+  theme_bw()+
+  labs(x = "Date", y = "Win %", title = "10-game Win%", subtitle = "Watchpoint: Gibraltor")+
+  scale_y_continuous(label= scales::percent)
 
 stats_q %>%
   filter(game_id %in% games_filter_ ) %>%
@@ -121,3 +134,34 @@ data %>%
             games = n()) %>%
   filter(games > 5) %>%
   arrange(desc(fb10_mult))
+
+## Space D.Va damage blocked by date
+## show league average
+stats_q %>%
+  filter(player_hero == "D.Va", hero_time_played > 5*60) %>%
+  collect() %>%
+  left_join(aliases_q, by = c('player_id' = 'player_name')) %>%
+  mutate(player_name = coalesce(player_alias, player_id)) %>%
+  filter(player_name != "space") %>%
+  mutate(dmg10 = parse_number(damage_blocked)/hero_time_played*600) %>%
+  summarise(avg = mean(dmg10))
+
+stats_q %>%
+  filter(player_hero == "D.Va") %>%
+  collect() %>%
+  left_join(aliases_q, by = c('player_id' = 'player_name')) %>%
+  mutate(player_name = coalesce(player_alias, player_id)) %>%
+  filter(player_name == "space") %>%
+  # mutate(date = paste0(substr(game_id, 5,8),
+  #                      "-", substr(game_id, 1,2),
+  #                      "-", substr(game_id, 3,4)),
+  #        date = lubridate::as_date(date)) %>%
+  mutate(dmg10 = parse_number(damage_blocked)/hero_time_played*600) %>%
+  # group_by(game_id) %>%
+  mutate(gn = 1:n(), dmg_blk_10 = zoo::rollmeanr(dmg10, k = 10, fill = NA)) %>%
+  ggplot(aes(gn, dmg_blk_10))+
+  geom_line()+
+  geom_hline(yintercept = 7979)+
+  theme_bw()+
+  labs(x = "Game #", y = "Damage Blocked per 10", title = "Rolling 10-game Damage Blocked",
+       subtitle = "Space on D.Va. \nLine = league average")

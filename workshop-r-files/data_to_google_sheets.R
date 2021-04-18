@@ -233,7 +233,6 @@ data %>%
   player_hero_time_map
 
 ## add new names to alias table
-googlesheets4::gs4_auth()
 player_hero_time_map %>%
   anti_join(aliases_q, by = c('player_id'='player_name')) %>%
   ungroup() %>%
