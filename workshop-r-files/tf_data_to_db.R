@@ -118,10 +118,11 @@ tf_kill_context %>%
   group_by(game_id, tf_no, player_team) %>%
   mutate(game_id = as.character(game_id),
     player_hero = recode(player_hero, "Lúcio"="Lucio", "Torbjörn" = "Torbjorn"),
-         player_kill = (player_name == attacker_name)*1,
-         player_death = (player_name == victim_name)*1,
+   player_kill = (player_name == attacker_name)*1,
+   player_death = (player_name == victim_name)*1,
+    adv = ifelse(player_team == attacker_team,adv,-adv),
          tf_win = ((sum(player_team != victim_team)/6)/mean(kills) > 0.5)*1) %>% 
-  select(game_id, tf_no, kill_id, player_name, player_hero, player_kill, player_death, adv, state, tf_length, tf_win) ->
+  select(game_id,time, tf_no, kill_id, player_name, player_hero, player_kill, player_death, adv, state, tf_length, tf_win) ->
   tf_stats
 
 # tf_stats %>% write_csv('test_tf_stats.csv')  

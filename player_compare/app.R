@@ -442,10 +442,16 @@ server <- function(input, output, session) {
                 overall_10 = dmg_dlt_raw - dmg_tkn_raw + shield_blk_raw + shield_dlt_raw + heal_dlt_raw
             ) %>%
             group_by(player_hero) %>%
+          filter(n() > 25) %>%
             mutate(game_num = 1:n(),
                    roll_overall = zoo::rollmeanr(overall_10, k = 25, fill = NA)) %>%
           ggplot(aes(game_num, roll_overall, color = player_hero))+
-          geom_line()
+          geom_line(size = 1) +
+          theme_bw()+
+          labs(x = "game #",
+               y = 'TotalDmg10',
+               title = "TotalDmg10 for Space",
+               subtitle = "25-game average")
     })
     
     output$table <- renderDataTable({

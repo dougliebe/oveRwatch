@@ -94,5 +94,5 @@ pbp_data_wide %>%
   group_by(game_id) %>%
   mutate(state = as.factor(paste0(for_alive, "v", against_alive)),
          adv = for_alive - against_alive) %>%
-  select(game_id, kill_id, adv, state) ->
+  select(game_id,time, kill_id, adv, state) ->
   state_by_events
