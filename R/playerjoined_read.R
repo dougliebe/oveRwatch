@@ -6,7 +6,7 @@ library(purrr)
 
 ## find file names in folder
 
-filenames <- list.files(path = "D:/OW/",pattern = "payload_playerjoined.*.tsv$",full.names = T)
+filenames <- list.files(path = here::here('data','match_data','20210419'),pattern = "payload_playerjoined.*.tsv",full.names = T)
 data <- read.table(file = filenames[1], sep = '\t', header = TRUE, nrows = 1)
 head(data,1)
 

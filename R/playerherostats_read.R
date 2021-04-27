@@ -6,8 +6,8 @@ library(purrr)
 
 ## find file names in folder
 
-filenames <- list.files(path = "D:/OW/",pattern = "payload_playerherostats.*.tsv$",full.names = T)
-data <- read.table(file = filenames[1], sep = '\t', header = TRUE, nrows = 1000 )
+filenames <- list.files(path = here::here('data','match_data','20210419'),pattern = "payload_playerherostats.*.tsv",full.names = T)
+data <- read.table(file = filenames[1], sep = '\t', header = TRUE, nrow = 100)
 head(data,1)
 
 
@@ -42,5 +42,6 @@ data$player %>%
   select(-document.id) %>%
   bind_cols(time = data$time,
             hero_guid = data$hero_guid,
-            stat_lifespan = data$stat_lifespan)
+            stat_lifespan = data$stat_lifespan) ->
+  player_hero_stats
 Sys.time() - start

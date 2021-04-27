@@ -6,7 +6,7 @@ library(purrr)
 
 ## find file names in folder
 
-filenames <- list.files(path = "D:/OW/",pattern = "payload_teamstats.*.tsv$",full.names = T)
+filenames <- list.files(path = here::here('data','match_data','20210419'),pattern = "payload_teamstats.*.tsv",full.names = T)
 data <- read.table(file = filenames[1], sep = '\t', header = TRUE)
 head(data,1)
 
@@ -43,18 +43,18 @@ data %>%
       spread_values(
         esports_team_id = jnumber(esports_team_id)
       ) %>%
-      as.tibble() %>%
+      as_tibble() %>%
       left_join(data$stat %>%
                   spread_values(
                     short_stat_guid = jnumber(short_stat_guid),
                     amount = jnumber(amount)
                   ) %>%
-                  as.tibble(), by = 'document.id') %>%
+                  as_tibble(), by = 'document.id') %>%
       left_join(data$info %>%
                   spread_values(match_game_id = jstring(esports_ids, match_game_id),
                                 event_id = jnumber(event_id)) %>%
-                  as.tibble(), by = "document.id") %>%
+                  as_tibble(), by = "document.id") %>%
       select(-document.id)
     ) %>%
-  as.tibble()
+  as_tibble()
 Sys.time()-start

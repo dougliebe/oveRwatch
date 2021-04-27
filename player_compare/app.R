@@ -72,9 +72,14 @@ ui <- dashboardPage(
                 tabName = "compare_players"
             ),
             menuItem(
-                "Widgets",
-                tabName = 'map_performance'
+              "Map Performaance",
+              tabName = 'map_performance'
             ),
+            menuItem(
+              "Player Over Time",
+              tabName = 'player_time'
+            ),
+            ######### For player comapre
             conditionalPanel(
                 'input.sidebarid == "compare_players"',
                 selectInput(
@@ -116,6 +121,7 @@ ui <- dashboardPage(
                 value = 0,
                 step = 10
             ),
+            ########## for map time
             actionButton(inputId = "player_button",label =  "Run Query")),
             conditionalPanel(
               'input.sidebarid == "map_performance"',
@@ -138,27 +144,33 @@ ui <- dashboardPage(
                 multiple = T
               ),
               actionButton(inputId = "map_button",label =  "Run Query")),
+            ################## for player time
             conditionalPanel(
               'input.sidebarid == "player_time"',
+              selectInput(
+                inputId = "player_time_selected",
+                label = "select player",
+                choices = c("bird",'kev','mirror','muze','space','moth','skewed','shu')
+              ),
               checkboxGroupInput(
-                inputId = "patch_filter_map",
+                inputId = "patch_filter_player",
                 label = "Choose Patches",
                 selected = patch_list,
                 choices = patch_list
               ),
               checkboxGroupInput(
-                inputId = "region_filter_map",
+                inputId = "region_filter_player",
                 label = "Choose Region",
                 choices = region_list,
                 selected = region_list
               ),
               selectInput(
-                inputId = "map_filter_map",
+                inputId = "map_filter_player",
                 label = "Choose Maps (optional)",
                 choices = map_list,
                 multiple = T
               ),
-              actionButton(inputId = "map_button",label =  "Run Query"))
+              actionButton(inputId = "player_time_button",label =  "Run Query"))
         )
     ),
     dashboardBody(
@@ -185,7 +197,7 @@ ui <- dashboardPage(
             ),
             tabItem(
               tabName = "player_time",
-              h2("Select Map"),
+              h2("Select player"),
               box(
                 fluidRow(
                   plotOutput("player_graph")
@@ -382,54 +394,69 @@ server <- function(input, output, session) {
     player_time <- eventReactive(eventExpr = input$player_time_button, {
       
       # player_filter_ <- 
-        
+      if(length(input$map_filter_player)==0) {
+        map_filter_ <- map_list
+      } else {map_filter_ <- input$map_filter_player}
+      game_ids_filter <- games_q %>%
+        filter(region %in% input$region_filter,
+               patch %in% input$patch_filter, 
+               map %in% map_filter_) %>%
+        pull(game_id)
       
-      tf_stats_q %>%
-        # filter(player_hero == !!input$hero_filter) %>%
-        # filter(game_id %in% !!game_ids_filter) %>%
-        filter(player_name %in% c('gla004','space')) %>%
-        collect() %>%
-        left_join(aliases_q, by = c('player_name' = 'player_name_lower')) %>%
-        mutate(player_name = coalesce(player_alias, player_name)) %>%
-        # filter(player_name == "space") %>%
-        left_join(winpct, by = 'adv') %>%
-        group_by(game_id, tf_no, player_name, player_hero) %>%
-        # view()
-        summarise(win = any(tf_win==1),
-                  ev_kills = sum(player_kill==1 & adv %in% c(-1,0,1)),
-                  ev_deaths = sum(player_death==1 & adv %in% c(-1,0,1)),
-                  wpa = sum(wpa*player_kill)-sum(wpa*player_death)) %>%
-        group_by(player_name, player_hero) %>%
-        mutate(tf_num = 1:n(),
-               roll_wpa = zoo::rollmeanr(wpa,
-                                         k = 100, fill = NA)) %>%
-        ggplot(aes(tf_num, roll_wpa, color = player_hero))+
-        geom_line()
+      # tf_stats_q %>%
+      #   # filter(player_hero == !!input$hero_filter) %>%
+      #   # filter(game_id %in% !!game_ids_filter) %>%
+      #   filter(player_name %in% c('gla004','space')) %>%
+      #   collect() %>%
+      #   left_join(aliases_q, by = c('player_name' = 'player_name_lower')) %>%
+      #   mutate(player_name = coalesce(player_alias, player_name)) %>%
+      #   # filter(player_name == "space") %>%
+      #   left_join(winpct, by = 'adv') %>%
+      #   group_by(game_id, tf_no, player_name, player_hero) %>%
+      #   # view()
+      #   summarise(win = any(tf_win==1),
+      #             ev_kills = sum(player_kill==1 & adv %in% c(-1,0,1)),
+      #             ev_deaths = sum(player_death==1 & adv %in% c(-1,0,1)),
+      #             wpa = sum(wpa*player_kill)-sum(wpa*player_death),
+      #             wpa_kill = sum(wpa*player_kill),
+      #             wpa_death = sum(wpa*player_death)) %>%
+      #   group_by(player_name, player_hero) %>%
+      #   mutate(tf_num = 1:n(),
+      #          roll_wpa = zoo::rollmeanr(wpa,
+      #                                    k = 100, fill = NA),
+      #          roll_wpa_kill = zoo::rollmeanr(wpa_kill,
+      #                                    k = 101, fill = NA),
+      #          roll_wpa_death = zoo::rollmeanr(wpa_death,
+      #                                    k = 101, fill = NA)) %>%
+      #   ggplot(aes(tf_num, roll_wpa_kill, color = player_hero))+
+      #   geom_smooth()
       
-      stats_q %>%
-        filter(player_id %in% c('gla004','space')) %>%
-        # filter(game_id %in% !!game_ids_filter) %>%
-        # filter(game_id == 030220210302153522) %>%
-        collect() %>%
-        left_join(aliases_q, by = c('player_id' = 'player_name')) %>%
-        mutate(player_name = coalesce(player_alias, player_id)) %>%
-        # filter(player_name == "space") %>%
-        group_by( player_name, player_hero) %>%
-        summarise(time_played = sum(hero_time_played)) %>%
-        ggplot(aes(area = time_played, fill = player_hero, label = player_hero))+
-        treemapify::geom_treemap()+
-        treemapify::geom_treemap_text(colour = "white", place = "centre",
-                                      grow = TRUE)+
-        theme(legend.position = 'none')
+      # stats_q %>%
+      #   filter(player_id %in% c('gla004','space')) %>%
+      #   # filter(game_id %in% !!game_ids_filter) %>%
+      #   # filter(game_id == 030220210302153522) %>%
+      #   collect() %>%
+      #   left_join(aliases_q, by = c('player_id' = 'player_name')) %>%
+      #   mutate(player_name = coalesce(player_alias, player_id)) %>%
+      #   # filter(player_name == "space") %>%
+      #   group_by( player_name, player_hero) %>%
+      #   summarise(time_played = sum(hero_time_played)) %>%
+      #   ggplot(aes(area = time_played, fill = player_hero, label = player_hero))+
+      #   treemapify::geom_treemap()+
+      #   treemapify::geom_treemap_text(colour = "white", place = "centre",
+      #                                 grow = TRUE)+
+      #   theme(legend.position = 'none') ->
+      #   heroes_played_plot
       
         stats_q %>%
-          filter(player_id %in% c('gla004','space')) %>%
-            # filter(game_id %in% !!game_ids_filter) %>%
+          # filter(player_id %in% c('gla004','space')) %>%
+            filter(game_id %in% !!game_ids_filter) %>%
             # filter(game_id == 030220210302153522) %>%
             collect() %>%
             left_join(aliases_q, by = c('player_id' = 'player_name')) %>%
             mutate(player_name = coalesce(player_alias, player_id)) %>%
-            filter(player_name == "space") %>%
+            # filter(player_name == "space") %>%
+          filter(player_name == input$player_time_selected) %>%
             group_by(game_id, player_name, player_hero) %>%
             summarise(
                 dmg_dlt_raw = sum(parse_number(hero_damage_dealt))/sum(hero_time_played)*600,
@@ -439,19 +466,27 @@ server <- function(input, output, session) {
                 heal_dlt_raw = (sum(parse_number(healing_dealt)) +
                     sum(parse_number(self_healing)))/sum(hero_time_played)*600,
                 heal_tkn_raw = sum(parse_number(healing_received))/sum(hero_time_played)*600,
+                kills_10 = sum(parse_number(final_blows))/sum(hero_time_played)*600,
                 overall_10 = dmg_dlt_raw - dmg_tkn_raw + shield_blk_raw + shield_dlt_raw + heal_dlt_raw
             ) %>%
             group_by(player_hero) %>%
           filter(n() > 25) %>%
             mutate(game_num = 1:n(),
-                   roll_overall = zoo::rollmeanr(overall_10, k = 25, fill = NA)) %>%
+                   roll_overall = zoo::rollmeanr(overall_10, k = 25, fill = NA),
+                   roll_fb = zoo::rollmeanr(kills_10, k = 25, fill = NA)) %>%
           ggplot(aes(game_num, roll_overall, color = player_hero))+
           geom_line(size = 1) +
           theme_bw()+
           labs(x = "game #",
                y = 'TotalDmg10',
-               title = "TotalDmg10 for Space",
-               subtitle = "25-game average")
+               title = paste0("TotalDmg10 for ",input$player_time_selected),
+               subtitle = "25-game average") ->
+          total_dmg_plot
+        
+        return(list(
+          # heroes_played_plot = heroes_played_plot,
+          total_dmg_plot = total_dmg_plot
+        ))
     })
     
     output$table <- renderDataTable({
@@ -460,6 +495,9 @@ server <- function(input, output, session) {
     # output$map_graph <- renderPlot(height = 800,{
     #     map_graph()$mg
     # })
+    output$player_graph <- renderPlot({
+      player_time()$total_dmg_plot
+    })
 }
 
 # Run the application 

@@ -1,130 +1,125 @@
 ## trying to get a picture of tfs based on heros in comps, 
 # not players specifically
 # should probably break down by map and side too
-source(here::here('workshop-r-files',"convert_log_data.R"))
+library(odbc)
+library(DBI)
+library(tidyverse)
+library(googlesheets4)
 
-head(data)
-head(teamfight_index)
-# add to game info
-data %>% filter(event == "match_start") %>%
-  separate(log, into = c('map', 'mode'),sep ="," ,extra = 'drop') %>%
-  select(game_id, map, mode) %>%
-  right_join(game_info) %>%
-  arrange(game_id) ->
-  GAME
+con <- DBI::dbConnect(drv = RMySQL::MySQL(),
+                      dbname = "overwatch",
+                      username    = 'admin',
+                      password    = "guerrillas",
+                      host = "database-1.cyhyxhbkkfox.us-east-2.rds.amazonaws.com",
+                      port = 3306)
 
-## get kills
-data %>%
-  filter(event == "kill") %>%
-  group_by(game_id) %>%
-  mutate(kill_id = 1:n(),
-         time = as.numeric(time)) %>%
-  separate(log, into = c(
-    'Attacker Team',
-    'Attacker Name',
-    'Attacker Hero',
-    'Victim Team',
-    'Victim Name',
-    'Victim Hero',
-    'Event Ability',
-    'Event Damage',	
-    'Is Critical Hit',
-    'Is Environmental'
-  ), sep = ",", extra = 'drop') %>%
-  janitor::clean_names() %>%
-  mutate(across(c(attacker_name, victim_name), tolower) ) ->
-  KILLS
+## check games in db
+tbl(con, "TF_STATS") %>%
+  collect() ->
+  tf_data
+team_game_q <- tbl(con, 'TEAM_GAME')
+aliases_q <- read_sheet("1WuctfnFjLekCh3SX4kpv9TS9WD07hsVgVEI98ywMaok",
+                        sheet = 'aliases',
+                        col_types = 'cccc') %>%
+  mutate(player_alias = tolower(player_alias),
+         player_name = tolower(player_name))
+games_q <- read_sheet("1WuctfnFjLekCh3SX4kpv9TS9WD07hsVgVEI98ywMaok",
+                                  sheet = 'Fixed GameScores') %>% filter(!is.na(game_id))
 
-## we first need times of all hero switches
-kill_times <-
-  data %>%
-  filter(event == 'kill') %>%
-  separate(log, into = c(
-    'Attacker Team',
-    'Attacker Name',
-    'Attacker Hero',
-    'Victim Team',
-    'Victim Name',
-    'Victim Hero',
-    'Event Ability',
-    'Event Damage',	
-    'Is Critical Hit',
-    'Is Environmental'
-  ), sep = ",", extra = 'drop') %>%
-  janitor::clean_names() %>%
-  mutate(time = as.numeric(time)) %>%
-  group_by(game_id) %>%
-  expand(game_id,attacker_team, time, p_num = c(1:6))
 
-# which players actually play the round?
-source(here::here('workshop-r-files','get_player_stats.R'))
-head(player_round_max)
-player_round_max %>%
-  select(game_id,player_team, player_id) %>%
-  group_by(game_id, player_team) %>%
-  mutate(p_num = 1:n()) ->
-  players_filter
+tf_data %>%
+  group_by(game_id, tf_no, player_team, kill_id) %>%
+  mutate(suicide = any(player_kill == 1 & player_death == 1)) %>%
+  filter(!suicide) %>%
+  left_join(team_game_q %>% collect(), by = c('game_id','player_team' = 'team_in_game_name')) %>%
+  group_by(game_id, tf_no, team_name, tf_win) %>%
+  summarise(comp = paste0(sort(unique(player_hero)), collapse = "-")) %>%
+  group_by(game_id, tf_no) %>%
+  mutate(opp_comp = ifelse(1:n() == 1, lead(comp), lag(comp))) %>%
+  left_join(games_q %>% select(game_id, date, map, patch, region)) %>%
+  # filter(map == "Eichenwalde") %>%
+  filter( team_name == 'gladiators', date > "2021-03-15") %>%
+  group_by(comp, opp_comp) %>%
+  summarise(win_pct = mean(tf_win),
+            fights = n()) %>%
+  filter(opp_comp == "Baptiste-D.Va-Lucio-McCree-Mei-Reinhardt") %>%
+  arrange(desc(fights))
 
-data %>%
-  filter(event %in% c('hero_spawn', 'hero_swap')) %>%
-  separate(log, into = c(
-    "player_team",
-    'player_name',
-    'player_hero',
-    'previous_hero',
-    'hero_time_played'
-  ), sep = ',',extra = 'drop') %>%
-  mutate(time = as.numeric(time),
-         player_name =tolower(player_name)) %>%
-  inner_join(players_filter, by = c('game_id','player_name' = 'player_id', "player_team")) %>%
-  arrange(game_id, time_s) %>%
-  # filter(player_team == "Team 1", p_num == 4, game_id == "031020210310160547")
-  select(time, game_id, p_num, player_name, player_hero, player_team) %>%
-  group_by(time, game_id,player_team, p_num) %>%
-  slice(n()) %>%
-  # pivot_wider(
-  #   id_cols = c(game_id, time, player_team),
-  #   names_from = c("p_num"),
-  #   names_glue = "P{p_num}",
-  #   values_from = 'player_hero'
-  # ) %>%
-  # ungroup() %>%
-  arrange(game_id,player_team, time) %>%
-  full_join(kill_times, by = c('game_id', 'time','player_team' = "attacker_team", "p_num")) %>%
-  arrange(game_id, player_team,p_num, time) %>%
-  group_by(game_id, player_team, p_num) %>%
-  fill(player_hero, .direction = 'down') %>%
-  group_by(game_id, time) %>%
-  
-  # fill(P1, P2, P3, P4, P5, P6, .direction = "down") %>%
-  # pivot_longer(cols = c(P1,P2,P3,P4, P5, P6),
-  #              values_to = 'hero') %>%
-  # pivot_wider(id_cols = c(game_id, time),
-  #             names_from = c(player_team, name),
-  #             values_from = hero,
-  # ) %>%
-  # janitor::clean_names() %>%
-  left_join(KILLS %>% select(game_id, time,victim_team,victim_hero,kill_id ), by = c("time", 'game_id')) %>%
-  filter(!is.na(kill_id)) ->
-  kill_context
+## look at players in comps
+games_q %>%
+  pivot_longer(c(p_1, p_2, p_3, p_4, p_5, p_6)) %>%
+  left_join(aliases_q, by = c('value' = 'player_name')) %>%
+  mutate(player_name = coalesce(player_alias, value)) %>%
+  filter(map == "Hanamura") %>%
+  group_by(player_name) %>%
+  count()
 
-##  add indicators for TF #s
-source(here::here('workshop-r-files','get_state_full_data.R'))
-kill_context %>%
-  left_join(teamfight_index) %>%
-  # left_join(state_by_events) %>%
-  filter(!is.na(tf_no)) ->
-  tf_kill_context
 
-tf_kill_context %>%
-  mutate(player_hero = recode(player_hero, "Lúcio"="Lucio", "Torbjörn" = "Torbjorn")) %>%
-  group_by(game_id, tf_no, player_team, kills, tf_length) %>%
-  summarise(comp = paste0(sort(unique(player_hero)), collapse = "-"),
-            win = (sum(player_team != victim_team)/6)/mean(kills) > 0.5) %>%
-  group_by(game_id, tf_no, kills, tf_length) %>%
-  summarise(comps = paste0(comp, collapse = "//"),
-            win_team = win[1]) ->
-  comps_tf_context
+## filter out a comp, then look at the order in which they die in wins vs losses
+tf_data %>%
+  group_by(game_id, tf_no, player_team, kill_id) %>%
+  mutate(suicide = any(player_kill == 1 & player_death == 1)) %>%
+  filter(!suicide, player_kill == 1 | player_death == 1) %>%
+  left_join(team_game_q %>% collect(), by = c('game_id','player_team' = 'team_in_game_name')) %>%
+  group_by(game_id, tf_no, team_name, tf_win) %>%
+  arrange(time) %>%
+  mutate(comp = paste0(sort(unique(player_hero)), collapse = "-")) %>%
+  filter(player_death == 1, state == "6v6") %>%
+  filter(comp == "Baptiste-D.Va-Lucio-McCree-Mei-Reinhardt") %>%
+  group_by(game_id, tf_no, team_name, tf_win) %>%
+  summarise(death_order = paste0(player_hero[1:(min(2,length(player_hero)))], collapse = "-"),
+            first_death = player_hero[1],
+            deaths = length(player_hero)) %>%
+  # filter(deaths >= 2) %>%
+  group_by(us = team_name == "gladiators", first_death) %>%
+  summarise(win = mean(tf_win), n = n()) %>%
+  group_by(us) %>%
+  mutate(n = n/sum(n)) %>%
+  # filter(n > 0.02) %>%
+  arrange(desc(n)) %>%
+  ggplot()+
+  ggrepel::geom_label_repel(aes(n,win,label = first_death, color = us))+
+  labs(x = "Occurance, %",
+       y = "TF Win%",
+       title = "TF W% by hero killed first in teamfight")+
+  theme_bw()+
+  scale_y_reverse(labels = scales::percent)+
+  scale_x_continuous(labels = scales::percent)+
+  theme(axis.title = element_text(size = 16))
+
+
+tf_data %>%
+  group_by(game_id, tf_no, player_team, kill_id) %>%
+  mutate(suicide = any(player_kill == 1 & player_death == 1)) %>%
+  filter(!suicide, player_kill == 1 | player_death == 1) %>%
+  left_join(team_game_q %>% collect(), by = c('game_id','player_team' = 'team_in_game_name')) %>%
+  group_by(game_id, tf_no, team_name, tf_win) %>%
+  arrange(time) %>%
+  mutate(comp = paste0(sort(unique(player_hero)), collapse = "-")) %>%
+  filter(player_death == 1) %>%
+  filter(comp == "Baptiste-D.Va-Lucio-McCree-Mei-Reinhardt") %>%
+  # group_by(game_id, tf_no, team_name, tf_win) %>%
+  # summarise(death_order = paste0(player_hero[1:(min(2,length(player_hero)))], collapse = "-"),
+  #           first_death = player_hero[1],
+  #           deaths = length(player_hero)) %>%
+  # filter(deaths >= 2) %>%
+  group_by( player_hero) %>%
+  summarise(win = mean(tf_win), n = n()) %>%
+  mutate(n = n/sum(n)) %>%
+  select(hero_dead = 1, win_tf_after_death = 2, occur_pct = 3) %>%
+  arrange(desc(occur_pct))
+  filter(n > 0.02) %>%
+  arrange(desc(n)) %>%
+  ggplot()+
+  ggrepel::geom_label_repel(aes(n, win, label = player_hero))+
+  labs(x = "Occurance, %",
+       y = "TF Win%",
+       title = "TF W% by hero killed first-second in teamfight")+
+  theme_bw()+
+  scale_y_reverse(labels = scales::percent)+
+  scale_x_continuous(labels = scales::percent)+
+  theme(axis.title = element_text(size = 16))
+
 
 tf_kill_context %>%
   group_by(game_id, tf_no, player_team, kills) %>%

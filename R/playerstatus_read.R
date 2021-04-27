@@ -6,8 +6,8 @@ library(purrr)
 
 ## find file names in folder
 
-filenames <- list.files(path = "D:/OW/",pattern = "payload_playerstatus.*.tsv$",full.names = T)
-data <- read.table(file = filenames[1], sep = '\t', header = TRUE)
+filenames <- list.files(path = here::here('data','match_data','20210419'),pattern = "payload_playerstatus.*.tsv",full.names = T)
+data <- read.table(file = filenames[1], sep = '\t', header = TRUE, nrow = 1)
 head(data,1)
 
 
@@ -15,10 +15,26 @@ head(data,1)
 #### Handle the info ####
 
 ## To look at the data
-data$statuses[1] %>%
+data$info[1] %>%
   as.tbl_json() %>%
   # unnest()
   jsonlite::prettify()
+
+data %>% 
+  # as_tbl_json('statuses') %>%
+  # # spread_all %>%
+  # gather_array() %>%
+  # # enter_object(player_id) %>%
+  # spread_all %>%
+  # as_tibble() %>%
+  as_tbl_json('info') %>%
+  enter_object('esports_ids') %>%
+  gather_object() %>%
+  enter_object('game_context')
+  enter_object(position) %>%
+  gather_object() %>%
+  spread_all
+
 
 start <- Sys.time()
 data$statuses %>%
@@ -58,3 +74,7 @@ data$statuses %>%
   select(-document.id, -array.index)
 Sys.time() - start
 
+data %>%
+  str()
+  enter_object(statuses)
+  gather_array()

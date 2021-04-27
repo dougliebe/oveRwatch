@@ -18,7 +18,7 @@ as_tibble <- tibble::as_tibble
 
 read_GameRosters <- function(path) {
   filenames <- list.files(path = path,pattern = "payload_gameresult.*.tsv$",full.names = T)
-  data <- read.table(file = filenames[1], sep = '\t', header = TRUE)
+  data <- read.table(file = filenames[1], sep = '\t', header = TRUE, nrow = 100)
   ## player info
   data$players %>%
     gather_array() %>%

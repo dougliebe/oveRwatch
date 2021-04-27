@@ -6,7 +6,7 @@ library(purrr)
 
 ## find file names in folder
 
-filenames <- list.files(path = "D:/OW/",pattern = "payload_gameinfo.*.tsv$",full.names = T)
+filenames <- list.files(path = here::here('data','match_data','20210419'),pattern = "payload_gameinfo.*.tsv",full.names = T)
 data <- read.table(file = filenames[1], sep = '\t', header = TRUE, nrows = 1000)
 head(data,1)
 
@@ -14,7 +14,7 @@ head(data,1)
 #### Handle the info ####
 
 ## To look at the data
-data$score_info[1] %>%
+data$info[1] %>%
   as.tbl_json() %>%
   # unnest()
   jsonlite::prettify()
