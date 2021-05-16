@@ -47,6 +47,25 @@ rosters <- roster_data$players %>%
   select(-document.id,-array.index) %>%
   distinct(match_game_id, player_id,.keep_all = T)
 
+teams_of_12 <- rosters %>%
+  mutate(battletag = tolower(battletag)) %>%
+  group_by(match_game_id ) %>%
+  arrange(esports_team_id) %>%
+  summarise(p1 = unique(player_id)[1],
+            p2 = unique(player_id)[2],
+            p3 = unique(player_id)[3],
+            p4 = unique(player_id)[4],
+            p5 = unique(player_id)[5],
+            p6 = unique(player_id)[6],
+            p7 = unique(player_id)[7],
+            p8 = unique(player_id)[8],
+            p9 = unique(player_id)[9],
+            p10 = unique(player_id)[10],
+            p11 = unique(player_id)[11],
+            p12 = unique(player_id)[12]) %>%
+  mutate(across(.cols = starts_with("p"), .fn = as.character)) %>%
+  mutate(across(.cols = starts_with("p"), .fn = as.numeric))
+
 #### Handle the info ####
 
 
@@ -95,11 +114,11 @@ full_data <- kill_data %>%
 roles <- read_csv(here::here('guids','hero_guids_role.csv'))
 
 raw_data <- full_data %>%
-  select(match_game_id, time, killed_player_hero_guid, round,
-         team_kill = esports_team_id.y, team_death = esports_team_id.x) %>%
+  select(match_game_id, time, final_blow_player_id,killed_player_id, killed_player_hero_guid, round,
+         team_kill_id = esports_team_id.y, team_death_id = esports_team_id.x) %>%
   group_by(match_game_id) %>%
   mutate(time_from_last_kill_s = (time - lag(time))/1000,
-         team_kill = ifelse(team_kill == unique(team_kill)[1], "A","B"),
+         team_kill = ifelse(team_kill_id == unique(team_kill_id)[1], "A","B"),
          team_death = ifelse(team_kill == "A", "B", "A")) %>%
   left_join(roles %>% select(2,death_role = 3), by = c(killed_player_hero_guid = 'hero_guid'))
 
@@ -132,19 +151,52 @@ add_variables <- raw_data %>%
                                      team_B_alive_pre-team_A_alive_pre)) 
   # head(20) %>% data.frame()
 
+players_alive_added <- add_variables %>%
+  left_join(teams_of_12, by = c('match_game_id')) %>%
+  mutate(p1 = replace(p1, cumany(p1 == lag(killed_player_id)), NA),
+         p2 = replace(p2, cumany(p2 == lag(killed_player_id)), NA),
+         p3 = replace(p3, cumany(p3 == lag(killed_player_id)), NA),
+         p4 = replace(p4, cumany(p4 == lag(killed_player_id)), NA),
+         p5 = replace(p5, cumany(p5 == lag(killed_player_id)), NA),
+         p6 = replace(p6, cumany(p6 == lag(killed_player_id)), NA),
+         p7 = replace(p7, cumany(p7 == lag(killed_player_id)), NA),
+         p8 = replace(p8, cumany(p8 == lag(killed_player_id)), NA),
+         p9 = replace(p9, cumany(p9 == lag(killed_player_id)), NA),
+         p10 = replace(p10, cumany(p10 == lag(killed_player_id)), NA),
+         p11 = replace(p11, cumany(p11 == lag(killed_player_id)), NA),
+         p12 = replace(p12, cumany(p12 == lag(killed_player_id)), NA),
+  ) %>%
+  pivot_longer(cols = starts_with("p"), names_to = 'player',
+               values_to = 'player_id') %>%
+  # filter(!is.na(player_id)) %>%
+  left_join(rosters %>% select(match_game_id, player_id, esports_team_id), by = c('match_game_id', 'player_id'))
+  
+players_alive_added %>%  
+  mutate(on_killing_team = (esports_team_id == team_kill_id)*1,
+         got_kill = (player_id == final_blow_player_id)*1,
+         got_dead = (player_id == killed_player_id)*1) %>%
+  # mutate(p1 = na_if(!cumany(p1 == killed_player_id), p1)) %>%
+  # group_by()
+  # mutate(p1 = ifelse(any(cumany(killed_player_id %in% p1)),0,p1 )) %>%
+  head(10) %>% data.frame()
+
 add_variables %>%
   ungroup() %>%
   # filter(first_blood == 1) %>%
-  group_by(situation_pre_kill, death_role) %>%
+  group_by(situation_pre_kill) %>%
   summarise(win = mean(team_kill_won, na.rm = T),
             n = n()) %>%
   filter(n > 30) %>%
-  ggplot(aes(situation_pre_kill, win, label = scales::percent((win),accuracy = 0.1)))+
+  ungroup() %>%
+  mutate(win_gain = -(lag(win)-win),
+         win_mult = win_gain*100
+         ) %>%
+  ggplot(aes(situation_pre_kill, win, label = scales::percent(-(lag(win)-win),accuracy = 0.1)))+
   geom_line()+
   geom_point()+
   geom_label()+
-  theme_minimal()+
-  facet_wrap(~death_role,nrow = 2)
+  theme_minimal()
+  # facet_wrap(~death_role,nrow = 2)
 
 add_variables %>%
   mutate(sit = paste0(kill_team_alive_pre,"v", death_team_alive_pre)) %>%
@@ -157,7 +209,7 @@ add_variables %>%
 add_variables %>%
   ungroup() %>%
   filter(first_blood == 1) %>%
-  # group_by(kills_in_teamfight) %>%
+  group_by(kills_in_teamfight) %>%
   summarise(win = mean(team_kill_won, na.rm = T),
             n = n()) %>%
   filter(n > 30) %>%
@@ -167,5 +219,34 @@ add_variables %>%
   geom_label()+
   theme_minimal()
 
+add_variables %>%
+  mutate(time_bins = cut(time_from_last_kill_s, breaks = c(0,2,4,6,8,10,15,20,30,60,500))) %>%
+  group_by( time_bins, situation_pre_kill) %>%
+  summarise(win = mean(team_kill_won, na.rm =T),
+            n = n()) %>%
+  filter(n > 30) %>%
+  ggplot(aes(situation_pre_kill, win, col=time_bins))+geom_point()+facet_wrap(~time_bins)
 
+add_variables %>%
+  mutate(impact_added = case_when(
+    situation_pre_kill < -3 ~ 3,
+    situation_pre_kill == -2 ~ 6,
+    situation_pre_kill == -1 ~ 29,
+    situation_pre_kill == 0 ~ 35,
+    situation_pre_kill == 1 ~ 13,
+    situation_pre_kill == 2 ~ 3,
+    situation_pre_kill == 3 ~ 2,
+    situation_pre_kill > 3 ~ 1
+  )) %>%
+  group_by(final_blow_player_id)
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 

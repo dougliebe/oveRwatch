@@ -53,7 +53,7 @@ patch_list <- unique(games_q$patch)
 region_list <- unique(games_q$region)
 opponent_list <- unique(games_q$opponent) 
 map_list <- unique(games_q$map)
-heros_list <- read_delim(here::here('player_compare',"hero_list.txt"), delim = "\n")
+heros_list <- read_delim(here::here("hero_list.txt"), delim = "\n")
 colfunc <- colorRampPalette(c("blue", "deepskyblue"))
 winpct <- tibble(adv = seq(-6, 6),
                  wpa = c(0,0,0,6.2,
@@ -241,6 +241,7 @@ server <- function(input, output, session) {
                       death10 = sum(parse_number(deaths))/sum(hero_time_played)*600,
                       dmg10 = sum(parse_number(hero_damage_dealt))/sum(hero_time_played)*600,
                       # dmg10 = sum(parse_number(damage_blocked))/sum(hero_time_played)*600,
+                      heal10 = sum(parse_number(healing_dealt))/sum(hero_time_played)*600,
                       ult10 = sum(parse_number(ultimates_earned))/sum(hero_time_played)*600) %>%
           filter(time > input$time_filter*60) %>%
           filter(time > 60*60) %>%
@@ -275,14 +276,14 @@ server <- function(input, output, session) {
             # mutate(high_leverage_death_pct = ev_deaths/tfs,
             #        high_leverage_kill_pct = ev_kills/tfs,
             # ) %>%
-            select(player_name, player_hero, time, tfs, win_pct, wpa_all,fb10, death10, dmg10, ult10)
+            select(player_name, player_hero, time, tfs, win_pct, wpa_all,fb10, death10, dmg10,heal10, ult10)
         df %>%
             filter(!is.na(tfs)) %>%
             # summary()
             datatable ->
             dt
         # Loop through the columns formatting according to that column's distribution
-        for (j in c(5:10)) {
+        for (j in c(5:ncol(df))) {
             # Create breaks for shading column values high to low
             nums <- df[[j]][!is.na(df[[j]])]
             brks <- stats::quantile(x <- nums, probs = seq(.05, .95, .05), na.rm = TRUE)
@@ -296,113 +297,113 @@ server <- function(input, output, session) {
             dt <- DT::formatStyle(dt, j, backgroundColor = DT::styleInterval(brks, clrs))
         }
         dt <- dt %>%
-            formatRound(columns = 6:10) %>%
+            formatRound(columns = 6:ncol(df)) %>%
             formatPercentage(5)
         
         return(list(dt = dt))
     })
     
     ############### MAP COMPARE #########################
-    # map_graph <- eventReactive(eventExpr = input$map_button, {
-    #     if(length(input$map_filter_map)==0) {
-    #         map_filter_ <- map_list
-    #     } else {map_filter_ <- input$map_filter_map}
-    #     ## find game ids that match
-    #     game_ids_filter <- games_q %>%
-    #         filter(region %in% input$region_filter_map,
-    #                patch %in% input$patch_filter_map, 
-    #                map %in% map_filter_) %>%
-    #         pull(game_id)
-    #     ## Get stats and summarise dmg healing and shields by game
-    #     stats_q %>%
-    #         filter(game_id %in% !!game_ids_filter) %>%
-    #         # filter(game_id == 030220210302153522) %>%
-    #         collect() %>%
-    #         left_join(aliases_q, by = c('player_id' = 'player_name')) %>%
-    #         mutate(player_name = coalesce(player_alias, player_id)) %>%
-    #         group_by(game_id, player_name, player_team) %>%
-    #         summarise(
-    #             dmg_dlt_raw = sum(parse_number(hero_damage_dealt))/sum(hero_time_played)*600,
-    #             dmg_tkn_raw = sum(parse_number(damage_taken))/sum(hero_time_played)*600,
-    #             shield_blk_raw = sum(parse_number(damage_blocked))/sum(hero_time_played)*600,
-    #             shield_dlt_raw = sum(parse_number(barrier_damage_dealt))/sum(hero_time_played)*600,
-    #             heal_dlt_raw = (sum(parse_number(healing_dealt)) +
-    #                 sum(parse_number(self_healing)))/sum(hero_time_played)*600,
-    #             heal_tkn_raw = sum(parse_number(healing_received))/sum(hero_time_played)*600
-    #         ) %>%
-    #         group_by(game_id) %>%
-    #         mutate(
-    #             dmg_dlt_game = dmg_dlt_raw/sum(dmg_dlt_raw),
-    #             dmg_tkn_game = dmg_tkn_raw/sum(dmg_tkn_raw),
-    #             shield_blk_game = shield_blk_raw/sum(shield_blk_raw),
-    #             shield_dlt_game = shield_dlt_raw/sum(shield_dlt_raw),
-    #             heal_dlt_game = heal_dlt_raw/sum(heal_dlt_raw),
-    #             heal_tkn_game = heal_tkn_raw/sum(heal_tkn_raw),
-    #             
-    #         ) %>%
-    #         group_by(game_id, player_team) %>%
-    #         mutate(
-    #             dmg_dlt_team = dmg_dlt_raw/sum(dmg_dlt_raw),
-    #             dmg_tkn_team = dmg_tkn_raw/sum(dmg_tkn_raw),
-    #             shield_blk_team = shield_blk_raw/sum(shield_blk_raw),
-    #             shield_dlt_team = shield_dlt_raw/sum(shield_dlt_raw),
-    #             heal_dlt_team = heal_dlt_raw/sum(heal_dlt_raw),
-    #             heal_tkn_team = heal_tkn_raw/sum(heal_tkn_raw)
-    #         ) %>%
-    #         group_by(game_id) %>%
-    #         mutate(game_num = cur_group_id()) %>%
-    #         group_by(player_name) %>%
-    #         mutate(dmg_dlt_10 = zoo::rollmeanr(dmg_dlt_team, k = 10, fill = NA),
-    #                dmg_tkn_10 = zoo::rollmeanr(dmg_tkn_team, k = 10, fill = NA),
-    #                shield_blk_10 = zoo::rollmeanr(shield_blk_team, k = 10, fill = NA),
-    #                shield_dlt_10 = zoo::rollmeanr(shield_dlt_team, k = 10, fill = NA),
-    #                heal_dlt_10 = zoo::rollmeanr(heal_dlt_team, k = 10, fill = NA),
-    #                heal_tkn_10 = zoo::rollmeanr(heal_tkn_team, k = 10, fill = NA),
-    #                overall_10 = dmg_dlt_raw - dmg_tkn_raw + shield_blk_raw + shield_dlt_raw + heal_dlt_raw
-    #         ) %>%
-    #         left_join(team_game_q %>%
-    #                       filter(game_id %in% !!game_ids_filter) %>%
-    #                       collect(),
-    #                   by = c("game_id", 'player_team' = 'team_in_game_name')) %>%
-    #         ungroup() %>%
-    #         # filter(team_name == "gladiators") %>%
-    #         filter(player_name %in% c("kev", 'bird','mirror','shu','space','skewed','muze','moth')) %>%
-    #         select(-team_num, -player_team) %>%
-    #         pivot_longer(c(ends_with("_raw"), ends_with("_game"),
-    #                        ends_with("_team"), ends_with("_10")),
-    #                      names_to = "stat") ->
-    #         core_six
-    #     mg <- 
-    #         core_six %>%
-    #         filter(endsWith(stat, "_10")) %>%
-    #         ggplot(aes(game_num, value, color = player_name))+
-    #         # geom_point()+
-    #         geom_line(size = 1)+
-    #         guides(color = guide_legend(override.aes = list(size=5)))+
-    #         labs(title = input$map_filter_map)+
-    #         facet_wrap(~stat, scales = 'free',ncol = 2)+
-    #         theme_bw()+
-    #         lims(x = c(10,NA)) +
-    #         theme(legend.text = element_text(size = 14))
-    #     return(list(
-    #         mg = mg
-    #     ))
-    # })
+    map_graph <- eventReactive(eventExpr = input$map_button, {
+        if(length(input$map_filter_map)==0) {
+            map_filter_ <- map_list
+        } else {map_filter_ <- input$map_filter_map}
+        ## find game ids that match
+        game_ids_filter <- games_q %>%
+            filter(region %in% input$region_filter_map,
+                   patch %in% input$patch_filter_map,
+                   map %in% map_filter_) %>%
+            pull(game_id)
+        ## Get stats and summarise dmg healing and shields by game
+        stats_q %>%
+            filter(game_id %in% !!game_ids_filter) %>%
+            # filter(game_id == 030220210302153522) %>%
+            collect() %>%
+            left_join(aliases_q, by = c('player_id' = 'player_name')) %>%
+            mutate(player_name = coalesce(player_alias, player_id)) %>%
+            group_by(game_id, player_name, player_team) %>%
+            summarise(
+                dmg_dlt_raw = sum(parse_number(hero_damage_dealt))/sum(hero_time_played)*600,
+                dmg_tkn_raw = sum(parse_number(damage_taken))/sum(hero_time_played)*600,
+                shield_blk_raw = sum(parse_number(damage_blocked))/sum(hero_time_played)*600,
+                shield_dlt_raw = sum(parse_number(barrier_damage_dealt))/sum(hero_time_played)*600,
+                heal_dlt_raw = (sum(parse_number(healing_dealt)) +
+                    sum(parse_number(self_healing)))/sum(hero_time_played)*600,
+                heal_tkn_raw = sum(parse_number(healing_received))/sum(hero_time_played)*600
+            ) %>%
+            group_by(game_id) %>%
+            mutate(
+                dmg_dlt_game = dmg_dlt_raw/sum(dmg_dlt_raw),
+                dmg_tkn_game = dmg_tkn_raw/sum(dmg_tkn_raw),
+                shield_blk_game = shield_blk_raw/sum(shield_blk_raw),
+                shield_dlt_game = shield_dlt_raw/sum(shield_dlt_raw),
+                heal_dlt_game = heal_dlt_raw/sum(heal_dlt_raw),
+                heal_tkn_game = heal_tkn_raw/sum(heal_tkn_raw),
+
+            ) %>%
+            group_by(game_id, player_team) %>%
+            mutate(
+                dmg_dlt_team = dmg_dlt_raw/sum(dmg_dlt_raw),
+                dmg_tkn_team = dmg_tkn_raw/sum(dmg_tkn_raw),
+                shield_blk_team = shield_blk_raw/sum(shield_blk_raw),
+                shield_dlt_team = shield_dlt_raw/sum(shield_dlt_raw),
+                heal_dlt_team = heal_dlt_raw/sum(heal_dlt_raw),
+                heal_tkn_team = heal_tkn_raw/sum(heal_tkn_raw)
+            ) %>%
+            group_by(game_id) %>%
+            mutate(game_num = cur_group_id()) %>%
+            group_by(player_name) %>%
+            mutate(dmg_dlt_10 = zoo::rollmeanr(dmg_dlt_raw, k = 10, fill = NA),
+                   dmg_tkn_10 = zoo::rollmeanr(dmg_tkn_raw, k = 10, fill = NA),
+                   shield_blk_10 = zoo::rollmeanr(shield_blk_raw, k = 10, fill = NA),
+                   shield_dlt_10 = zoo::rollmeanr(shield_dlt_raw, k = 10, fill = NA),
+                   heal_dlt_10 = zoo::rollmeanr(heal_dlt_raw, k = 10, fill = NA),
+                   heal_tkn_10 = zoo::rollmeanr(heal_tkn_raw, k = 10, fill = NA),
+                   # overall_10 = dmg_dlt_raw - dmg_tkn_raw + shield_blk_raw + shield_dlt_raw + heal_dlt_raw
+            ) %>%
+            left_join(team_game_q %>%
+                          filter(game_id %in% !!game_ids_filter) %>%
+                          collect(),
+                      by = c("game_id", 'player_team' = 'team_in_game_name')) %>%
+            ungroup() %>%
+            # filter(team_name == "gladiators") %>%
+            filter(player_name %in% c("kev", 'bird','mirror','shu','space','skewed','muze','moth')) %>%
+            select(-team_num, -player_team) %>%
+            pivot_longer(c(ends_with("_raw"), ends_with("_game"),
+                           ends_with("_team"), ends_with("_10")),
+                         names_to = "stat") ->
+            core_six
+        mg <-
+            core_six %>%
+            filter(endsWith(stat, "_10")) %>%
+            ggplot(aes(game_num, value, color = player_name))+
+            # geom_point()+
+            geom_line(size = 1)+
+            guides(color = guide_legend(override.aes = list(size=5)))+
+            labs(title = input$map_filter_map)+
+            facet_wrap(~stat, scales = 'free',ncol = 2)+
+            theme_bw()+
+            lims(x = c(10,NA)) +
+            theme(legend.text = element_text(size = 14))
+        return(list(
+            mg = mg
+        ))
+    })
     
     ############### PLAYER OVER TIME #########################
     
     player_time <- eventReactive(eventExpr = input$player_time_button, {
       
-      # player_filter_ <- 
+      player_filter_ <-
       if(length(input$map_filter_player)==0) {
         map_filter_ <- map_list
       } else {map_filter_ <- input$map_filter_player}
-      game_ids_filter <- games_q %>%
+      game_ids_filter_player <- games_q %>%
         filter(region %in% input$region_filter,
-               patch %in% input$patch_filter, 
+               patch %in% input$patch_filter,
                map %in% map_filter_) %>%
         pull(game_id)
-      
+
       # tf_stats_q %>%
       #   # filter(player_hero == !!input$hero_filter) %>%
       #   # filter(game_id %in% !!game_ids_filter) %>%
@@ -450,7 +451,7 @@ server <- function(input, output, session) {
       
         stats_q %>%
           # filter(player_id %in% c('gla004','space')) %>%
-            filter(game_id %in% !!game_ids_filter) %>%
+            filter(game_id %in% !!game_ids_filter_player) %>%
             # filter(game_id == 030220210302153522) %>%
             collect() %>%
             left_join(aliases_q, by = c('player_id' = 'player_name')) %>%
@@ -467,20 +468,22 @@ server <- function(input, output, session) {
                     sum(parse_number(self_healing)))/sum(hero_time_played)*600,
                 heal_tkn_raw = sum(parse_number(healing_received))/sum(hero_time_played)*600,
                 kills_10 = sum(parse_number(final_blows))/sum(hero_time_played)*600,
+                time_played = sum(hero_time_played),
                 overall_10 = dmg_dlt_raw - dmg_tkn_raw + shield_blk_raw + shield_dlt_raw + heal_dlt_raw
             ) %>%
             group_by(player_hero) %>%
-          filter(n() > 25) %>%
-            mutate(game_num = 1:n(),
-                   roll_overall = zoo::rollmeanr(overall_10, k = 25, fill = NA),
-                   roll_fb = zoo::rollmeanr(kills_10, k = 25, fill = NA)) %>%
-          ggplot(aes(game_num, roll_overall, color = player_hero))+
+          filter(n() > 5) %>%
+            mutate(roll_overall = zoo::rollmeanr(overall_10, k = 5, fill = NA),
+                   roll_time = zoo::rollsumr(time_played, k = 5, fill = NA)) %>%
+          ungroup() %>%
+          mutate(game_num = 1:n()) %>%
+          ggplot(aes(game_num, roll_time, color = player_hero))+
           geom_line(size = 1) +
           theme_bw()+
           labs(x = "game #",
-               y = 'TotalDmg10',
-               title = paste0("TotalDmg10 for ",input$player_time_selected),
-               subtitle = "25-game average") ->
+               y = 'Play Time',
+               title = paste0("Play Time for ",input$player_time_selected),
+               subtitle = "5-game average") ->
           total_dmg_plot
         
         return(list(
@@ -492,9 +495,9 @@ server <- function(input, output, session) {
     output$table <- renderDataTable({
        table()$dt
     })
-    # output$map_graph <- renderPlot(height = 800,{
-    #     map_graph()$mg
-    # })
+    output$map_graph <- renderPlot(height = 800,{
+        map_graph()$mg
+    })
     output$player_graph <- renderPlot({
       player_time()$total_dmg_plot
     })

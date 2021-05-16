@@ -37,7 +37,7 @@ winpct <- tibble(adv = seq(-6, 6),
 
 
 ## first look at hero and player lineups most used by time
-map_filter <-  "Eichenwalde"
+map_filter <-  "Busan"
 
 stats_q %>% 
   left_join(team_game_q, by = c('game_id', 'player_team'='team_in_game_name')) %>%
@@ -52,7 +52,7 @@ stats_q %>%
 ## look at team comps
 data %>%
   mutate(result = ifelse(team_name == "gladiators", result, !result)) %>%
-  filter(date >= "2021-03-20") %>%
+  # filter(date >= "2021-03-20") %>%
   group_by(game_id, team_name, result,map,  date) %>%
   arrange(desc(hero_time_played)) %>%
   slice(1:6) %>%
@@ -60,9 +60,9 @@ data %>%
   group_by(game_id) %>%
   mutate(opp_comp = ifelse(1:n() == 1, lead(heroes), lag(heroes)),
          opp = ifelse(1:n() == 1, lead(team_name), lag(team_name))) %>%
-  filter(heroes == "Ana-Brigitte-Echo-Tracer-Winston-Zarya") %>%
+  # filter(heroes == "Ana-Brigitte-Echo-Tracer-Winston-Zarya") %>%
   # filter(grepl(".*(Mei).*(Reinhardt).*", opp_comp)) %>%
-  filter(grepl("Baptiste-D.Va-Lucio-McCree-Mei-Reinhardt", opp_comp)) %>%
+  # filter(grepl("Baptiste-D.Va-Lucio-McCree-Mei-Reinhardt", opp_comp)) %>%
   group_by(heroes) %>%
   summarise(n = n(),
             win_pct = mean(result, na.rm = T)) %>%
@@ -81,7 +81,7 @@ data %>%
   summarise(n = n(),
             win_pct = mean(result, na.rm = T)) %>%
   # count(heroes) %>%
-  filter(heroes == "Baptiste-D.Va-Lucio-McCree-Mei-Reinhardt") %>%
+  # filter(heroes == "Baptiste-D.Va-Lucio-McCree-Mei-Reinhardt") %>%
   arrange(desc(n))
 
 

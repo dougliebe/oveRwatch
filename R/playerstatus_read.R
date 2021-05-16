@@ -7,15 +7,38 @@ library(purrr)
 ## find file names in folder
 
 filenames <- list.files(path = here::here('data','match_data','20210419'),pattern = "payload_playerstatus.*.tsv",full.names = T)
-data <- read.table(file = filenames[1], sep = '\t', header = TRUE, nrow = 1)
+data <- read.table(file = filenames[1], sep = '\t', header = TRUE, nrow = 1000)
 head(data,1)
 
 
 
 #### Handle the info ####
 
+## Event handling
+
+data$statuses %>%
+  gather_array() %>%
+  spread_all() %>%
+  select(-player_id.src, -player_id.seq, -team.team_id,
+         -team.esports_team_id, -player.battletag, 
+         -player.player_id.src, -player.player_id.seq) %>%
+  left_join(data %>%
+              select( time_c,schema_name,time,esports_match_id) %>%
+              bind_cols(
+                data$info %>%
+                  spread_values(
+                    match_game_id = jstring(esports_ids, match_game_id),
+                    event_id = jnumber(event_id)
+                  ) %>%
+                  as_tibble()
+              ), by = 'document.id' )%>%
+  group_by(match_game_id) %>%
+  mutate(schema_event_id = 1:n()) ->
+  playerstatus_events
+  
+  
 ## To look at the data
-data$info[1] %>%
+data$statuses[[1]] %>%
   as.tbl_json() %>%
   # unnest()
   jsonlite::prettify()

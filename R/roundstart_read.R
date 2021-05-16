@@ -6,13 +6,29 @@ library(purrr)
 
 ## find file names in folder
 
-filenames <- list.files(path = "D:/OW/",pattern = "payload_roundstart.*.tsv$",full.names = T)
-data <- read.delim(file = filenames[1], sep = '\t', header = TRUE)
+filenames <- list.files(path = here::here('data','match_data','20210419'),pattern = "payload_roundstart.*.tsv",full.names = T)
+data <- read.table(file = filenames[1], sep = '\t', header = TRUE, nrows = 100)
 head(data,1)
 
 
 
 #### Handle the info ####
+## EVENT handling
+
+## Event rows
+data %>%
+  select(time, schema_name, time_c, esports_match_id) %>%
+  # # need keys for info only
+  bind_cols(
+    data$info %>%
+      spread_values(event_id = jnumber(event_id),
+                    match_game_id = jstring(esports_ids, match_game_id),
+                    round = jstring(game_context, round)) %>%
+      select(event_id,match_game_id, round) %>% as_tibble
+  ) %>%
+  group_by(match_game_id) %>%
+  mutate(schema_event_id = 1:n()) ->
+  roundstart_events
 
 ## To look at the data
 data$info[1] %>%

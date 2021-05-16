@@ -20,52 +20,79 @@ data$info[1] %>%
   # unnest()
   jsonlite::prettify()
 
+## need to first create the tables for each level of info
+## 1. instance
+data$info %>%
+  spread_values(match_game_id = jstring(esports_ids, match_game_id)) %>%
+  # gather_object %>% 
+  select(match_game_id) %>%
+  enter_object('instance_id') %>%
+  spread_all %>%
+  as_tibble %>%
+  distinct(.) ->
+  INSTANCE
 
-base <- data$info %>%
-  # spread_all() %>%
-  spread_values(
-    esports_match_id = jnumber(esports_ids,esports_match_id),
-    match_id = jstring(esports_ids, match_id),
-    esports_tournament_handle = jstring(esports_ids, esports_tournament_handle),
-    esports_tournament_id = jnumber(esports_ids, esports_tournament_id),
-    map_guid = jnumber(game_context, map_guid),
-    map_type = jstring(game_context, map_type),
-    game_mode_guid = jnumber(game_context, game_mode_guid),
-    match_game_id = jstring(esports_ids, match_game_id),
-    esports_match_game_number = jnumber(esports_ids, esports_match_game_number)
+## 2. matchgame
+data$info %>%
+  spread_values(map_type = jstring(game_context, map_type),
+                game_mode_guid = jstring(game_context, game_mode_guid),
+                esports_match_game_number = jnumber(esports_ids, esports_match_game_number),
+                match_id =  jstring(esports_ids, match_id),
+                match_game_id =  jstring(esports_ids, match_game_id)) %>%
+  select(-document.id) %>%
+  as_tibble %>%
+  distinct(.) ->
+  MATCHGAME
+
+## 3. match
+data$info %>%
+  spread_values(esports_tournament_id = jstring(esports_ids, esports_tournament_id),
+                esports_match_id =  jstring(esports_ids, esports_match_id),
+                match_id =  jstring(esports_ids, match_id)) %>%
+  select(-document.id) %>%
+  as_tibble() %>%
+  distinct(.) ->
+  MATCH
+
+
+## to break down the vector of json entries in attributes
+f2 <- function(x) {
+  res <- fromJSON(paste0("[", paste(x, collapse = ","), "]"), flatten = TRUE)
+  lst <- sapply(res, is.list)
+  res[lst] <- lapply(res[lst], function(x) as.data.table(transpose(x)))
+  res <- flatten(res)
+  return(res)
+}
+
+## 4. Tournament
+data$info %>%
+  enter_object(esports_ids) %>%
+  spread_all %>%
+  select(contains("tournament")) %>%
+  select(-esports_tournament_attributes) %>%
+  bind_cols(
+    data$info %>%
+      spread_values(esports_tournament_attributes = jstring(esports_ids, esports_tournament_attributes)) %>% 
+      pull(esports_tournament_attributes) %>%
+      f2
   ) %>%
-  tibble::as_tibble() 
+  as_tibble() %>%
+  distinct ->
+  TOURNAMENT
 
-string <- data$info %>%
-  enter_object('esports_ids','esports_tournament_attributes') %>%
-  append_values_string()
 
-attributes <- string$string %>%
-  as.tbl_json() %>%
-  # spread_all
-  spread_values(
-    environment = jstring( environment),
-    phase = jstring( phase),
-    season_id = jstring( season_id),
-    type = jstring( type),
-    format = jstring( stage, format)
+## EVENT handling
+
+## Event rows
+data %>%
+  select(time, schema_name, time_c, esports_match_id) %>%
+  # # need keys for info only
+  bind_cols(
+    data$info %>%
+      spread_values(event_id = jnumber(event_id),
+                    match_game_id = jstring(esports_ids, match_game_id)) %>%
+      select(event_id,match_game_id) %>% as_tibble
   ) %>%
-  tibble::as_tibble()
-
-## Match data
-base %>%
-  left_join(attributes, by = 'document.id') %>%
-  select(match_id, esports_match_id, esports_tournament_id, esports_tournament_handle, 
-         environment, phase, season_id, type, format) %>%
-  distinct()
-# %>%
-# write_delim(paste0("D:/OW/new/",
-#                    str_replace(filenames_foroutput[1], ".tsv",replacement = ""),
-#                    "_matches",
-#                    ".txt" ))
-
-## game data
-base %>%
-  select(match_game_id,match_id, esports_match_id, esports_match_game_number, map_guid,
-         map_type, game_mode_guid) %>%
-  distinct()
+  group_by(match_game_id) %>%
+  mutate(schema_event_id = 1:n()) ->
+  instancestart_events

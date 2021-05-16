@@ -20,20 +20,22 @@ data$player[1] %>%
   # unnest()
   jsonlite::prettify()
 
-## player info
-data$player %>%
-  spread_values(
-    esports_player_id = jnumber(esports_player_id)
+
+## EVENT handling
+
+## Event rows
+data %>%
+  select(time, schema_name, time_c, esports_match_id, old_hero_guid, new_hero_guid) %>%
+  # # need keys for info and player
+  bind_cols(
+    data$info %>%
+      spread_values(event_id = jnumber(event_id),
+                    match_game_id = jstring(esports_ids, match_game_id)) %>%
+      select(event_id,match_game_id) %>% as_tibble,
+    data$player %>%
+      spread_values(esports_player_id = jnumber(esports_player_id)) %>%
+      select(esports_player_id) %>% as_tibble
   ) %>%
-  as.tibble() %>%
-  bind_cols(data$info %>%
-              spread_values(
-                match_game_id = jstring(esports_ids, match_game_id),
-                event_id = jnumber(event_id)
-              ) %>%
-              as.tibble() %>%
-              select(-document.id)) %>%
-  bind_cols(time = data$time,
-            old_hero_guid = data$old_hero_guid,
-            new_hero_guid = data$new_hero_guid) %>%
-  select(-document.id)
+  group_by(match_game_id) %>%
+  mutate(schema_event_id = 1:n()) ->
+  heroswitch_events

@@ -21,21 +21,23 @@ data$info[1] %>%
   # unnest()
   jsonlite::prettify()
 
-## Create table with 1 line for kill,
-## will add more lines for recent damagers
+
+### Only need events here
+##
+### Event Handling
 data %>%
-  select(time,killed_player_hero_guid,death_yaw,killer_yaw,killed_pet) %>%
+  select(time,schema_name, time_c,killed_player_hero_guid,death_yaw,killer_yaw,killed_pet) %>%
   bind_cols(data$killed_player_id %>%
               spread_values(
                 killed_player_id = jnumber(seq)
               ) %>%
-              as.tibble() %>%
+              as_tibble() %>%
               select(-document.id),
             data$final_blow_player_id %>%
               spread_values(
                 final_blow_player_id = jnumber(seq)
               ) %>%
-              as.tibble() %>%
+              as_tibble() %>%
               select(-document.id),
             data$death_position  %>%
               spread_values(
@@ -43,7 +45,7 @@ data %>%
                 death_position.y = jnumber(y),
                 death_position.z = jnumber(z)
               ) %>%
-              as.tibble() %>%
+              as_tibble() %>%
               select(-document.id),
             data$killer_position  %>%
               spread_values(
@@ -51,13 +53,17 @@ data %>%
                 killer_position.y = jnumber(y),
                 killer_position.z = jnumber(z)
               ) %>%
-              as.tibble() %>%
-              select(-document.id)) %>%
-  bind_cols(data$info %>%
+              as_tibble() %>%
+              select(-document.id),
+            
+        ## need keys for info
+            data$info %>%
               spread_values(
                 match_game_id = jstring(esports_ids, match_game_id),
                 event_id = jnumber(event_id)
               ) %>%
-              as.tibble() %>%
+              as_tibble() %>%
               select(-document.id)) %>%
-  head
+  group_by(match_game_id) %>%
+  mutate(schema_event_id = 1:n()) ->
+  kill_events

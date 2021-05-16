@@ -145,22 +145,9 @@ tbl(con, "TF_STATS") %>%
 
 # append on new rows
 DBI::dbWriteTable(con,"TF_STATS", tf_stats %>%
-                    filter(!game_id %in% games_already_in) %>%
+                    # filter(!game_id %in% games_already_in) %>%
                     mutate(player_hero = recode(player_hero, "Lúcio" = "Lucio",
                                                 "Torbjörn" = "Torbjorn")),
                   overwrite = F, append = T, row.names = F)
 
 
-
-# pivot_wider(id_cols = c(game_id, tf_no, tf_win, player_name, player_hero, tf_length),
-  #             names_from = c(state, player_event), values_from = player_event, values_fn = length, values_fill = 0) %>%
-  janitor::clean_names()
-  group_by(game_id, tf_no, player_name, player_hero, tf_length) %>%
-  summarise()
-  group_by(game_id, tf_no, player_team, kills, tf_length) %>%
-  summarise(comp = paste0(sort(unique(player_hero)), collapse = "-"),
-            win = (sum(player_team != victim_team)/6)/mean(kills) > 0.5) %>%
-  group_by(game_id, tf_no, kills, tf_length) %>%
-  summarise(comps = paste0(comp, collapse = "//"),
-            win_team = win[1]) ->
-  comps_tf_context

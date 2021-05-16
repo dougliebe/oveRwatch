@@ -13,124 +13,156 @@ head(data,1)
 
 
 #### Handle the info ####
+## need to first create the tables for each level of info
+## 1. instance
+data$info %>%
+  spread_values(match_game_id = jstring(esports_ids, match_game_id)) %>%
+  # gather_object %>% 
+  select(match_game_id) %>%
+  enter_object('instance_id') %>%
+  spread_all %>%
+  as_tibble %>%
+  distinct(.) ->
+  INSTANCE
 
-## To look at the data
-data$players[1] %>%
-  as.tbl_json() %>%
-  # unnest()
-  jsonlite::prettify()
-data$players[1] %>%
-  as.tbl_json() %>%
-  # unnest()
-  jsonlite::prettify()
+## 2. matchgame
+data$info %>%
+  spread_values(map_type = jstring(game_context, map_type),
+                game_mode_guid = jstring(game_context, game_mode_guid),
+                esports_match_game_number = jnumber(esports_ids, esports_match_game_number),
+                match_id =  jstring(esports_ids, match_id),
+                match_game_id =  jstring(esports_ids, match_game_id)) %>%
+  select(-document.id) %>%
+  as_tibble %>%
+  distinct(.) ->
+  MATCHGAME
 
-base <- data$info %>%
-  spread_values(
-    'event_id'= jnumber(event_id),
-    sequence_length = jnumber(sequence_length)
+## 3. match
+data$info %>%
+  spread_values(esports_tournament_id = jstring(esports_ids, esports_tournament_id),
+                esports_match_id =  jstring(esports_ids, esports_match_id),
+                match_id =  jstring(esports_ids, match_id)) %>%
+  select(-document.id) %>%
+  as_tibble() %>%
+  distinct(.) ->
+  MATCH
+
+
+## to break down the vector of json entries in attributes
+f2 <- function(x) {
+  res <- fromJSON(paste0("[", paste(x, collapse = ","), "]"), flatten = TRUE)
+  lst <- sapply(res, is.list)
+  res[lst] <- lapply(res[lst], function(x) as.data.table(transpose(x)))
+  res <- flatten(res)
+  return(res)
+}
+
+## 4. Tournament
+data$info %>%
+  enter_object(esports_ids) %>%
+  spread_all %>%
+  select(contains("tournament")) %>%
+  select(-esports_tournament_attributes) %>%
+  bind_cols(
+    data$info %>%
+      spread_values(esports_tournament_attributes = jstring(esports_ids, esports_tournament_attributes)) %>% 
+      pull(esports_tournament_attributes) %>%
+      f2
   ) %>%
-  tibble::as_tibble() 
+  as_tibble() %>%
+  distinct ->
+  TOURNAMENT
 
-# data.info$esports_ids
-esports_ids <- data$info %>%
-  # spread_all() %>%
-  enter_object('esports_ids') %>%
+
+
+## SCORE Info Handling ###  
+
+## 5. Round
+data$score_info %>%
   spread_all %>%
-  tibble::as_tibble() %>%
-  select(-esports_tournament_attributes)
+  select(round_num, attacking_team_id, round_name_guid) %>%
+  bind_cols(data$info %>%
+              enter_object('instance_id') %>%
+              spread_all %>%
+              as_tibble %>%
+              select(-document.id)) %>%
+  as_tibble() %>%
+  distinct ->
+  ROUND
 
-context <- data$info %>%
-  enter_object('game_context') %>%
-  spread_all %>%
-  tibble::as_tibble()
-
-string <- data$info %>%
-  enter_object('esports_ids','esports_tournament_attributes') %>%
-  append_values_string()
-
-attributes <- string$string %>%
-  as.tbl_json() %>%
-  spread_all %>%
-  tibble::as_tibble()
-
-
-
-######## Break up the score_info data ######
-
-## To look at the data
-data$score_info[1] %>%
-  as.tbl_json() %>%
-  # unnest()
-  jsonlite::prettify()
-
-base_score <- data$score_info %>%
-  spread_all %>%
-  # spread_values(
-  #   round_num= jnumber(round_num),
-  #   round_name_guid = jstring(round_name_guid),
-  #   attacking_team_id = jstring(attacking_team_id)
-  # ) %>%
-  tibble::as_tibble() %>%
-  select(-attacking_team_id) %>%
-  bind_cols(data[,c(1,3,8)])
-
-team_info <- data$score_info %>%
-  enter_object(team_info) %>%
+## 6. Teamscore
+data$score_info %>%
+  spread_values(round_num = jnumber(round_num)) %>%
+  select(-document.id) %>%
+  bind_cols(data$info %>%
+              enter_object('instance_id') %>%
+              spread_all %>%
+              as_tibble %>%
+              select(-document.id)) %>%
+  bind_cols(time = data$time) %>%
+  enter_object('team_info') %>%
   gather_array() %>%
-  # spread_values(
-  #   team_id = jstring(team_id),
-  #   payload_distance = jnumber(payload_distance),
-  #   time_banked = jnumber(time_banked),
-  #   score = jnumber(score),
-  #   control_info = jstring(control_info)
-  # ) %>%
-  # enter_object(team) %>%
   spread_all %>%
-  tibble::as_tibble() %>%
-  select(-team_id)
+  select(-array.index, -team.team_id, -team.esports_team_id) %>%
+  as_tibble() ->
+  TEAMSCORE
 
-## player info
+
+### Handle Players
+
+## 1. Player info table
 data$players %>%
-  gather_array() %>%
-  spread_values(
-    team_id = jstring(team, team_id),
-    esports_team_id = jnumber(team, esports_team_id),
-    battletag = jstring(base_player,battletag),
-    esports_player_id = jnumber(base_player,esports_player_id)
+  gather_array %>% 
+  enter_object(base_player) %>%
+  spread_all() %>%
+  select(-document.id, -array.index) %>%
+  as_tibble() %>%
+  distinct(player_id.seq, player_id.src, .keep_all = T) ->
+  PLAYERS
+
+## 2. Team info
+data$players %>%
+  gather_array %>% 
+  enter_object(team) %>%
+  spread_all() %>%
+  select(-document.id, -array.index) %>%
+  as_tibble() %>%
+  distinct ->
+  TEAMS
+
+## Roster for each game
+data$players %>%
+  as_tbl_json() %>%
+  bind_cols(data$info %>%
+              enter_object('instance_id') %>%
+              spread_all %>%
+              as_tibble %>%
+              select(-document.id)) %>%
+  gather_array %>% 
+  spread_all() %>%
+  select(src, seq, base_player.esports_player_id, team.esports_team_id) %>%
+  as_tibble() %>% 
+  distinct ->
+  ROSTERS
+
+
+
+## EVENT handling
+
+## Event rows
+data %>%
+  select(time, schema_name, time_c, esports_match_id, winningteamid, total_game_time_ms, end_reason) %>%
+  # # need keys for info and score
+  bind_cols(
+    data$info %>%
+      spread_values(event_id = jnumber(event_id),
+                    match_game_id = jstring(esports_ids, match_game_id)) %>%
+      select(event_id,match_game_id) %>% as_tibble,
+    data$score_info %>%
+      spread_values(round_num = jnumber(round_num)) %>%
+      select(round_num) %>%
+      as_tibble
   ) %>%
-  as.tibble() %>%
-  left_join(data$info)
-  bind_cols(esports_match_id = data$esports_match_id,
-            time = data$time) %>%
-  select(-document.id, -array.index)
-
-######## Break up the score_info data ######
-
-  data$score_info %>%
-    spread_values(
-      round_num= jnumber(round_num),
-      # round_name_guid = jstring(round_name_guid),
-      attacking_team_id = jstring(attacking_team_id)
-    ) %>%
-    enter_object(team_info) %>%
-    gather_array() %>%
-    spread_values(
-      team_id = jstring(team_id),
-      payload_distance = jnumber(payload_distance),
-      time_banked = jnumber(time_banked),
-      score = jnumber(score),
-      control_info = jstring(control_info)
-    ) %>%
-    tibble::as_tibble() %>%
-    left_join(data$info %>%
-                spread_values(
-                  event_id = jnumber(event_id),
-                  match_game_id = jstring(esports_ids, match_game_id)
-                ) %>%
-                as.tibble() %>%
-                bind_cols(time = data$time,
-                          time_c = data$time_c,
-                          schema_name = data$schema_name), by = 'document.id'
-    ) %>%
-    select(-team_id, -document.id, -array.index)
-  
+  group_by(match_game_id) %>%
+  mutate(schema_event_id = 1:n()) ->
+  gameresult_events
