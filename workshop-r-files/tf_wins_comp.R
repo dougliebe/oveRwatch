@@ -9,7 +9,7 @@ library(googlesheets4)
 con <- DBI::dbConnect(drv = RMySQL::MySQL(),
                       dbname = "overwatch",
                       username    = 'admin',
-                      password    = "guerrillas",
+                      password    = "laguerrillas",
                       host = "database-1.cyhyxhbkkfox.us-east-2.rds.amazonaws.com",
                       port = 3306)
 
@@ -37,20 +37,45 @@ tf_data %>%
   group_by(game_id, tf_no) %>%
   mutate(opp_comp = ifelse(1:n() == 1, lead(comp), lag(comp))) %>%
   left_join(games_q %>% select(game_id, date, map, patch, region)) %>%
-  # filter(map == "Eichenwalde") %>%
-  filter( team_name == 'gladiators', date > "2021-03-15") %>%
+  # filter(map == "Busan") %>%
+  filter( team_name == 'gladiators', date > "2021-05-01") %>%
   group_by(comp, opp_comp) %>%
   summarise(win_pct = mean(tf_win),
             fights = n()) %>%
-  filter(opp_comp == "Baptiste-D.Va-Lucio-McCree-Mei-Reinhardt") %>%
+  filter(opp_comp == "D.Va-Echo-Lucio-Moira-Reaper-Winston") %>%
+  arrange(desc(fights))
+
+## look at heros vs a specific comp
+tf_data %>%
+  group_by(game_id, tf_no, player_team, kill_id) %>%
+  mutate(suicide = any(player_kill == 1 & player_death == 1)) %>%
+  filter(!suicide) %>%
+  left_join(team_game_q %>% collect(), by = c('game_id','player_team' = 'team_in_game_name')) %>%
+  group_by(game_id, tf_no, team_name, tf_win) %>%
+  summarise(comp = paste0(sort(unique(player_hero)), collapse = "-")) %>%
+  group_by(game_id, tf_no) %>%
+  mutate(opp_comp = ifelse(1:n() == 1, lead(comp), lag(comp))) %>%
+  left_join(games_q %>% select(game_id, date, map, patch, region)) %>%
+  # filter(map == "Busan") %>%
+  filter( team_name == 'gladiators', date > "2021-05-01") %>%
+  group_by(comp, opp_comp) %>%
+  summarise(win_pct = mean(tf_win),
+            fights = n()) %>%
+  filter(opp_comp == "D.Va-Echo-Lucio-Moira-Reaper-Winston") %>%
+  separate(comp, into = paste0("p", seq(1,6)), sep = "-") %>%
+  pivot_longer(paste0("p", seq(1,6)),values_to = "player_hero") %>%
+  group_by(player_hero) %>% 
+  summarise(win_pct_hero = sum(fights*win_pct)/sum(fights),
+            fights = sum(fights)) %>% 
   arrange(desc(fights))
 
 ## look at players in comps
 games_q %>%
   pivot_longer(c(p_1, p_2, p_3, p_4, p_5, p_6)) %>%
+  mutate(value = tolower(value)) %>% 
   left_join(aliases_q, by = c('value' = 'player_name')) %>%
   mutate(player_name = coalesce(player_alias, value)) %>%
-  filter(map == "Hanamura") %>%
+  # filter(map == "Hanamura") %>%
   group_by(player_name) %>%
   count()
 

@@ -5,8 +5,8 @@ account: dougliebe
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 3913454
-bundleId: 4532757
+bundleId: 4668767
 url: https://dougliebe.shinyapps.io/player_compare/
-when: 1619657795.09048
+when: 1622639023.68083
 asMultiple: FALSE
 asStatic: FALSE

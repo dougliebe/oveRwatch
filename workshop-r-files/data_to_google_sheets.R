@@ -36,12 +36,16 @@ team_game %>%
                    '040720210407132737',
                    '040720210407134526',
                    '040720210407141258',
-                   '040720210407142937') & team_num == 1 ~ lead(team_name),
+                   '040720210407142937',
+                   "052220210522143602",
+                   "052220210522151045") & team_num == 1 ~ lead(team_name),
     game_id  %in% c("030820210308223612",
                     '040720210407132737',
                     '040720210407134526',
                     '040720210407141258',
-                    '040720210407142937') ~ lag(team_name),
+                    '040720210407142937',
+                    "052220210522143602",
+                    "052220210522151045") ~ lag(team_name),
     TRUE ~ team_name
   )) ->
   team_game
@@ -180,6 +184,7 @@ game_result_combined %>%
   sams_output
 
 data %>%
+  # count(event)
   filter(event == "player_stat") %>%
   mutate(time = as.numeric(time)) %>%
   ## hide this
@@ -227,13 +232,15 @@ data %>%
   # filter(player_id == 'SPACE', round_no == 1)
   mutate(hero_time_played = parse_number(hero_time_played),
          player_id = tolower(player_id)) %>%
+  group_by(game_id, player_team, player_id, player_hero) %>%
+  mutate(hero_time_played = hero_time_played - lag(hero_time_played, default = 0)) %>%
   group_by(game_id, player_team, player_id) %>%
   summarise(hero_time_played = max(hero_time_played)) %>%
   filter(hero_time_played > 50) ->
   player_hero_time_map
 
 ## add new names to alias table
-gs4_auth()
+# gs4_auth()
 player_hero_time_map %>%
   anti_join(aliases_q, by = c('player_id'='player_name')) %>%
   ungroup() %>%
@@ -259,7 +266,8 @@ player_hero_time_map %>%
   team_comps
   
 sams_output %>%
-  left_join(team_comps)
+  left_join(team_comps) %>% 
+  view
 
 ## now write to sams copy
 library(googlesheets4)

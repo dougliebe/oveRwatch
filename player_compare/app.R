@@ -34,7 +34,7 @@ gs4_deauth()
 con <- DBI::dbConnect(drv = RMySQL::MySQL(),
                       dbname = "overwatch",
                       username    = 'admin',
-                      password    = "guerrillas",
+                      password    = "laguerrillas",
                       host = "database-1.cyhyxhbkkfox.us-east-2.rds.amazonaws.com",
                       port = 3306)
 
@@ -53,7 +53,8 @@ patch_list <- unique(games_q$patch)
 region_list <- unique(games_q$region)
 opponent_list <- unique(games_q$opponent) 
 map_list <- unique(games_q$map)
-heros_list <- read_delim(here::here("hero_list.txt"), delim = "\n")
+heros_list <- read_delim(here::here("hero_list.txt"), delim = "\n") %>% 
+  mutate(Hero = recode(Hero, "Lúcio"="Lucio", "Torbjörn" = "Torbjorn"))
 colfunc <- colorRampPalette(c("blue", "deepskyblue"))
 winpct <- tibble(adv = seq(-6, 6),
                  wpa = c(0,0,0,6.2,
@@ -83,45 +84,59 @@ ui <- dashboardPage(
             conditionalPanel(
                 'input.sidebarid == "compare_players"',
                 selectInput(
-                inputId = "hero_filter",
-                label = "Choose Hero",
-                choices = heros_list %>%
+                  inputId = "hero_filter",
+                  label = "Choose Hero",
+                  choices = heros_list %>%
                     arrange(Hero),
-                selected = "Ana"
-            ),
-            checkboxGroupInput(
-                inputId = "patch_filter",
-                label = "Choose Patches",
-                selected = patch_list,
-                choices = patch_list
-            ),
-            checkboxGroupInput(
-                inputId = "region_filter",
-                label = "Choose Region",
-                choices = region_list,
-                selected = region_list
-            ),
-            selectInput(
-                inputId = "opp_filter",
-                label = "Choose Opponents (optional)",
-                choices = opponent_list,
-                multiple = T
-            ),
-            selectInput(
-                inputId = "map_filter",
-                label = "Choose Maps (optional)",
-                choices = map_list,
-                multiple = T
-            ),
-            sliderInput(
-                inputId = "time_filter",
-                label = "Min. Time Played (m)",
-                min = 0,
-                max = 250,
-                value = 0,
-                step = 10
-            ),
-            ########## for map time
+                  selected = "Ana"
+                ),
+                checkboxGroupInput(
+                  inputId = "patch_filter",
+                  label = "Choose Patches",
+                  selected = patch_list,
+                  choices = patch_list
+                ),
+                checkboxGroupInput(
+                  inputId = "region_filter",
+                  label = "Choose Region",
+                  choices = region_list,
+                  selected = region_list
+                ),
+                selectInput(
+                  inputId = "opp_filter",
+                  label = "Choose Opponents (optional)",
+                  choices = opponent_list,
+                  multiple = T
+                ),
+                selectInput(
+                  inputId = "map_filter",
+                  label = "Choose Maps (optional)",
+                  choices = map_list,
+                  multiple = T
+                ),
+                sliderInput(
+                  inputId = "time_filter",
+                  label = "Min. Time Played (m)",
+                  min = 0,
+                  max = 250,
+                  value = 0,
+                  step = 10
+                ),
+                selectInput(
+                  inputId = "hero_for_filter",
+                  label = "Choose Team Heroes",
+                  choices = heros_list %>%
+                    arrange(Hero),
+                  multiple = T
+                ),
+                selectInput(
+                  inputId = "hero_against_filter",
+                  label = "Choose Opponent Heroes",
+                  choices = heros_list %>%
+                    arrange(Hero),
+                  multiple = T
+                ),
+                ########## for map time
             actionButton(inputId = "player_button",label =  "Run Query")),
             conditionalPanel(
               'input.sidebarid == "map_performance"',
@@ -214,63 +229,151 @@ onStop(function() {
 })
 server <- function(input, output, session) {
     table <- eventReactive(eventExpr = input$player_button, {
-        if(length(input$opp_filter)==0) {
-            opp_filter_ <- opponent_list
-        } else {opp_filter_ <- input$opp_filter}
-        if(length(input$map_filter)==0) {
-            map_filter_ <- map_list
-        } else {map_filter_ <- input$map_filter}
-        game_ids_filter <- games_q %>%
-            filter(region %in% input$region_filter,
-                   patch %in% input$patch_filter, 
-                   opponent %in% opp_filter_,
-                   map %in% map_filter_) %>%
-            pull(game_id)
+      if(length(input$hero_for_filter)==0) {
+        hero_for_filter_ <- heros_list %>% pull(Hero)
+      } else {hero_for_filter_ <- input$hero_for_filter}
+      if(length(input$hero_against_filter)==0) {
+        hero_against_filter_ <- heros_list %>% pull(Hero)
+      } else {hero_against_filter_ <- input$hero_against_filter}
+      library(kit)
+      stats_q %>% 
+        distinct(game_id, player_team, player_hero) %>% 
+        left_join(
+          stats_q %>% 
+            group_by(game_id, player_team, player_hero) %>% 
+            summarise(time = sum(hero_time_played)) %>% 
+            filter(time > 180) %>%
+            distinct(game_id, player_team, player_hero) %>% 
+            summarise(comp = str_flatten(player_hero, collapse = "-")) %>% 
+            rename(comp_team = player_team),
+          by = "game_id"
+        ) %>% 
+        # filter(player_hero == "Echo") %>% 
+        filter(player_hero == !!input$hero_filter) %>%
+        collect() %>% 
+        group_by(game_id, player_team) %>%
+        mutate(is_in_list_for = ifelse( player_team == comp_team,
+                                        sum(stringr::str_detect(comp, hero_for_filter_)*1),
+                                        0),
+        is_in_list_against = ifelse(player_team != comp_team,
+                                    sum(stringr::str_detect(comp, hero_against_filter_)*1),
+                                    0)
+        ) %>%
+        # mutate(is_in_list_for = sum(stringr::str_detect(comp, hero_for_filter_)),
+        #        # is_in_list_against = ifelse(player_team != comp_team,
+        #        #                             sum(stringr::str_detect(comp, hero_against_filter_)*1),
+        #        #                             0)
+        # ) %>% 
+        group_by(game_id, player_team) %>% 
+        summarise(in_both = sum(is_in_list_for) >= min(6,length(hero_for_filter_)) &
+                    sum(is_in_list_against) >= min(6,length(hero_against_filter_))) %>% 
+        filter(in_both) ->
+        comp_v_comp_filter
         
-        ############### HERO COMPARE #########################
-        stats_q %>%
-            # filter(player_hero == "D.Va") %>%
-            filter(player_hero == !!input$hero_filter) %>%
-            filter(game_id %in% !!game_ids_filter) %>%
-            collect() %>%
-            left_join(aliases_q, by = c('player_id' = 'player_name')) %>%
-            mutate(player_name = coalesce(player_alias, player_id)) %>%
-            group_by(player_name, player_hero) %>%
-            summarise(time = hms::as_hms(sum(hero_time_played)),
-                      fb10 = sum(parse_number(final_blows))/sum(hero_time_played)*600,
-                      death10 = sum(parse_number(deaths))/sum(hero_time_played)*600,
-                      dmg10 = sum(parse_number(hero_damage_dealt))/sum(hero_time_played)*600,
-                      # dmg10 = sum(parse_number(damage_blocked))/sum(hero_time_played)*600,
-                      heal10 = sum(parse_number(healing_dealt))/sum(hero_time_played)*600,
-                      ult10 = sum(parse_number(ultimates_earned))/sum(hero_time_played)*600) %>%
-          filter(time > input$time_filter*60) %>%
-          filter(time > 60*60) %>%
-            arrange(desc(time)) ->
-            df_stats
-        
-        tf_stats_q %>%
-            # filter(player_hero == "D.Va") %>%
-            filter(player_hero == !!input$hero_filter) %>%
-            filter(game_id %in% !!game_ids_filter) %>%
-            collect() %>%
-            left_join(aliases_q, by = c('player_name' = 'player_name_lower')) %>%
-            mutate(player_name = coalesce(player_alias, player_name)) %>%
-            left_join(winpct, by = 'adv') %>%
-            group_by(game_id, tf_no, player_name, player_hero) %>%
-            # view()
-            summarise(win = any(tf_win==1),
-                      ev_kills = sum(player_kill==1 & adv %in% c(-1,0,1)),
-                      ev_deaths = sum(player_death==1 & adv %in% c(-1,0,1)),
-                      wpa = sum(wpa*player_kill)-sum(wpa*player_death)) %>%
-            group_by(player_name, player_hero) %>%
-            summarise(tfs = n(),
-                      win_pct = mean(win),
-                      ev_kills = sum(ev_kills),
-                      ev_deaths = sum(ev_deaths),
-                      wpa_all = mean(wpa, na.rm = T),
-                      # wpa_wins = mean(ifelse(win, wpa, NA), na.rm = T)
-            ) ->
-            tf_df
+        # view()
+      
+      
+      
+      
+      
+      # 
+      # tf_stats_q %>% 
+      #   filter(player_hero == !!input$hero_filter) %>%
+      #   # filter(player_hero == "Echo") %>%
+      #   distinct(game_id, player_name, player_team) %>% 
+      #   left_join(tf_stats_q %>%
+      #               group_by(game_id, player_team, player_hero, tf_no, tf_length) %>%
+      #               count() %>%
+      #               group_by(game_id, player_team, player_hero) %>%
+      #               summarise(time = sum(tf_length)) %>%
+      #               filter(time > 180) %>% 
+      #               group_by(game_id, player_team) %>% 
+      #               summarise(comp = str_flatten(player_hero,collapse = "-")), by = 'game_id') %>%
+      #   collect() %>%
+      #   filter(!is.na(comp)) %>% 
+      #   group_by(game_id, player_team.x, player_team.y) %>%
+      #   mutate(is_in_list_for = ifelse( player_team.x == player_team.y,
+      #                                   sum(stringr::str_detect(comp, hero_for_filter_)),
+      #                                   0),
+      #          is_in_list_against = ifelse( player_team.x != player_team.y,
+      #                                       sum(stringr::str_detect(comp, hero_against_filter_)),
+      #                                       0)) %>%
+      #   # mutate(is_in_list_for = ifelse( player_team.x == player_team.y,
+      #   #                                 sum(stringr::str_detect(comp, heros_list$Hero)),
+      #   #                                 0),
+      #   #        is_in_list_against = ifelse( player_team.x != player_team.y,
+      #   #                                     sum(stringr::str_detect(comp, heros_list$Hero)),
+      #   #                                     0)) %>%
+      #   group_by(game_id, player_name) %>%
+      #   mutate(is_comp  = sum(is_in_list_for) >= min(6,length(hero_for_filter_)) &
+      #            sum(is_in_list_against) >= min(6,length(hero_against_filter_))
+      #   ) %>%
+      #   # mutate(is_comp = sum(is_in_list_for) >= 2 &
+      #   #          sum(is_in_list_against) >= 2
+      #   # ) %>% 
+      #   filter(is_comp) %>% 
+      #   pull(game_id) ->
+      #   comp_v_comp_filter
+      
+      
+      if(length(input$opp_filter)==0) {
+        opp_filter_ <- opponent_list
+      } else {opp_filter_ <- input$opp_filter}
+      if(length(input$map_filter)==0) {
+        map_filter_ <- map_list
+      } else {map_filter_ <- input$map_filter}
+      game_ids_filter <- games_q %>%
+        filter(region %in% input$region_filter,
+               patch %in% input$patch_filter, 
+               opponent %in% opp_filter_,
+               map %in% map_filter_) %>%
+        pull(game_id)
+      
+      ############### HERO COMPARE #########################
+      stats_q %>%
+        # filter(player_hero == "D.Va") %>%
+        filter(player_hero == !!input$hero_filter) %>%
+        filter(game_id %in% !!game_ids_filter) %>%
+        collect() %>%
+        inner_join(comp_v_comp_filter, by = c('game_id', "player_team")) %>% 
+        left_join(aliases_q, by = c('player_id' = 'player_name')) %>%
+        mutate(player_name = coalesce(player_alias, player_id)) %>%
+        group_by(player_name, player_hero) %>%
+        summarise(time = hms::as_hms(sum(hero_time_played)),
+                  fb10 = sum(parse_number(final_blows))/sum(hero_time_played)*600,
+                  death10 = sum(parse_number(deaths))/sum(hero_time_played)*600,
+                  dmg10 = sum(parse_number(hero_damage_dealt))/sum(hero_time_played)*600,
+                  # dmg10 = sum(parse_number(damage_blocked))/sum(hero_time_played)*600,
+                  heal10 = sum(parse_number(healing_dealt))/sum(hero_time_played)*600,
+                  ult10 = sum(parse_number(ultimates_earned))/sum(hero_time_played)*600) %>%
+        filter(time > input$time_filter*60) %>%
+        # filter(time > 60*60) %>%
+        arrange(desc(time)) ->
+        df_stats
+      
+      tf_stats_q %>%
+        # filter(player_hero == "D.Va") %>%
+        filter(player_hero == !!input$hero_filter) %>%
+        filter(game_id %in% !!game_ids_filter) %>%
+        collect() %>%
+        left_join(aliases_q, by = c('player_name' = 'player_name_lower')) %>%
+        mutate(player_name = coalesce(player_alias, player_name)) %>%
+        left_join(winpct, by = 'adv') %>%
+        group_by(game_id, tf_no, player_name, player_hero) %>%
+        # view()
+        summarise(win = any(tf_win==1),
+                  ev_kills = sum(player_kill==1 & adv %in% c(-1,0,1)),
+                  ev_deaths = sum(player_death==1 & adv %in% c(-1,0,1)),
+                  wpa = sum(wpa*player_kill)-sum(wpa*player_death)) %>%
+        group_by(player_name, player_hero) %>%
+        summarise(tfs = n(),
+                  win_pct = mean(win),
+                  ev_kills = sum(ev_kills),
+                  ev_deaths = sum(ev_deaths),
+                  wpa_all = mean(wpa, na.rm = T),
+                  # wpa_wins = mean(ifelse(win, wpa, NA), na.rm = T)
+        ) ->
+        tf_df
         df <- df_stats %>%
             left_join(tf_df, by = c("player_name", 'player_hero')) %>%
             # mutate(high_leverage_death_pct = ev_deaths/tfs,
@@ -399,8 +502,8 @@ server <- function(input, output, session) {
         map_filter_ <- map_list
       } else {map_filter_ <- input$map_filter_player}
       game_ids_filter_player <- games_q %>%
-        filter(region %in% input$region_filter,
-               patch %in% input$patch_filter,
+        filter(region %in% input$region_filter_player,
+               patch %in% input$patch_filter_player,
                map %in% map_filter_) %>%
         pull(game_id)
 
