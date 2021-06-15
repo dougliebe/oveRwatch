@@ -8,7 +8,7 @@ library(purrr)
 
 filenames <- list.files(path = here::here('data','match_data','20210419'),pattern = "payload_roundstart.*.tsv",full.names = T)
 data <- read.table(file = filenames[1], sep = '\t', header = TRUE, nrows = 100)
-head(data,1)
+slice(data,4:7)
 
 
 

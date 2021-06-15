@@ -77,18 +77,6 @@ data$info %>%
 
 ## SCORE Info Handling ###  
 
-## 5. Round
-data$score_info %>%
-  spread_all %>%
-  select(round_num, attacking_team_id, round_name_guid) %>%
-  bind_cols(data$info %>%
-              enter_object('instance_id') %>%
-              spread_all %>%
-              as_tibble %>%
-              select(-document.id)) %>%
-  as_tibble() %>%
-  distinct ->
-  ROUND
 
 ## 6. Teamscore
 data$score_info %>%

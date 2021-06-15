@@ -90,8 +90,10 @@ data %>%
   bind_cols(
     data$info %>%
       spread_values(event_id = jnumber(event_id),
+                    src = jnumber(instance_id, src),
+                    seq = jnumber(instance_id, seq),
                     match_game_id = jstring(esports_ids, match_game_id)) %>%
-      select(event_id,match_game_id) %>% as_tibble
+      select(event_id, seq, src, ,match_game_id) %>% as_tibble
   ) %>%
   group_by(match_game_id) %>%
   mutate(schema_event_id = 1:n()) ->

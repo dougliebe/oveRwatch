@@ -85,8 +85,9 @@ data$info %>%
 ## 5. Round
 data$score_info %>%
   spread_all %>%
-  select(round_num, attacking_team_id, round_name_guid) %>%
+  select(round_num, attacking_team.esports_team_id, round_name_guid) %>%
   bind_cols(data$info %>%
+              spread_values(match_game_id = jstring(esports_ids, match_game_id)) %>% 
               enter_object('instance_id') %>%
               spread_all %>%
               as_tibble %>%
@@ -125,7 +126,8 @@ data %>%
                     match_game_id = jstring(esports_ids, match_game_id)) %>%
       select(event_id,match_game_id) %>% as_tibble,
     data$score_info %>%
-      spread_values(round_num = jnumber(round_num)) %>%
+      spread_values(attacking_team = jstring(attacking_team_id),
+                    round_num = jnumber(round_num)) %>%
       select(round_num) %>%
       as_tibble
   ) %>%
