@@ -331,12 +331,12 @@ server <- function(input, output, session) {
       
       ############### HERO COMPARE #########################
       stats_q %>%
-        # filter(player_hero == "D.Va") %>%
+        # filter(player_hero == "Reaper", player_id == "atl008") %>%
         filter(player_hero == !!input$hero_filter) %>%
         filter(game_id %in% !!game_ids_filter) %>%
         collect() %>%
-        inner_join(comp_v_comp_filter, by = c('game_id', "player_team")) %>% 
-        left_join(aliases_q, by = c('player_id' = 'player_name')) %>%
+        # inner_join(comp_v_comp_filter, by = c('game_id', "player_team")) %>% 
+        left_join(aliases_q, by = c('player_id' = 'player_name')) %>% 
         mutate(player_name = coalesce(player_alias, player_id)) %>%
         group_by(player_name, player_hero) %>%
         summarise(time = hms::as_hms(sum(hero_time_played)),
